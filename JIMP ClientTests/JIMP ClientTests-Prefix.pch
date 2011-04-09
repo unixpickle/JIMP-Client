@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'JIMP ClientTests' target in the 'JIMP ClientTests' project
+//
+
+#ifdef __OBJC__
+	#import <Cocoa/Cocoa.h>
+#endif

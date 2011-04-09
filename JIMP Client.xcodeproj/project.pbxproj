@@ -1,0 +1,456 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FA9868351350940C00EB7F4E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9868341350940C00EB7F4E /* Cocoa.framework */; };
+		FA98683F1350940C00EB7F4E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA98683D1350940C00EB7F4E /* InfoPlist.strings */; };
+		FA9868421350940C00EB7F4E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9868411350940C00EB7F4E /* main.m */; };
+		FA9868451350940D00EB7F4E /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FA9868431350940D00EB7F4E /* Credits.rtf */; };
+		FA9868481350940D00EB7F4E /* JIMP_ClientAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9868471350940D00EB7F4E /* JIMP_ClientAppDelegate.m */; };
+		FA98684B1350940D00EB7F4E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9868491350940D00EB7F4E /* MainMenu.xib */; };
+		FA9868521350940D00EB7F4E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9868341350940C00EB7F4E /* Cocoa.framework */; };
+		FA98685A1350940D00EB7F4E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA9868581350940D00EB7F4E /* InfoPlist.strings */; };
+		FA98685D1350940D00EB7F4E /* JIMP_ClientTests.h in Resources */ = {isa = PBXBuildFile; fileRef = FA98685C1350940D00EB7F4E /* JIMP_ClientTests.h */; };
+		FA98685F1350940D00EB7F4E /* JIMP_ClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA98685E1350940D00EB7F4E /* JIMP_ClientTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FA9868531350940D00EB7F4E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA9868271350940C00EB7F4E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA98682F1350940C00EB7F4E;
+			remoteInfo = "JIMP Client";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FA9868301350940C00EB7F4E /* JIMP Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JIMP Client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA9868341350940C00EB7F4E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		FA9868371350940C00EB7F4E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		FA9868381350940C00EB7F4E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		FA9868391350940C00EB7F4E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FA98683C1350940C00EB7F4E /* JIMP Client-Info.plist */ = {isa = PBXFileReference; path = "JIMP Client-Info.plist"; sourceTree = "<group>"; };
+		FA98683E1350940C00EB7F4E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FA9868401350940C00EB7F4E /* JIMP Client-Prefix.pch */ = {isa = PBXFileReference; path = "JIMP Client-Prefix.pch"; sourceTree = "<group>"; };
+		FA9868411350940C00EB7F4E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FA9868441350940D00EB7F4E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		FA9868461350940D00EB7F4E /* JIMP_ClientAppDelegate.h */ = {isa = PBXFileReference; path = JIMP_ClientAppDelegate.h; sourceTree = "<group>"; };
+		FA9868471350940D00EB7F4E /* JIMP_ClientAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JIMP_ClientAppDelegate.m; sourceTree = "<group>"; };
+		FA98684A1350940D00EB7F4E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		FA9868511350940D00EB7F4E /* JIMP ClientTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JIMP ClientTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA9868571350940D00EB7F4E /* JIMP ClientTests-Info.plist */ = {isa = PBXFileReference; path = "JIMP ClientTests-Info.plist"; sourceTree = "<group>"; };
+		FA9868591350940D00EB7F4E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FA98685B1350940D00EB7F4E /* JIMP ClientTests-Prefix.pch */ = {isa = PBXFileReference; path = "JIMP ClientTests-Prefix.pch"; sourceTree = "<group>"; };
+		FA98685C1350940D00EB7F4E /* JIMP_ClientTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JIMP_ClientTests.h; sourceTree = "<group>"; };
+		FA98685E1350940D00EB7F4E /* JIMP_ClientTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JIMP_ClientTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FA98682D1350940C00EB7F4E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA9868351350940C00EB7F4E /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA98684D1350940D00EB7F4E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA9868521350940D00EB7F4E /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FA9868251350940C00EB7F4E = {
+			isa = PBXGroup;
+			children = (
+				FA98683A1350940C00EB7F4E /* JIMP Client */,
+				FA9868551350940D00EB7F4E /* JIMP ClientTests */,
+				FA9868331350940C00EB7F4E /* Frameworks */,
+				FA9868311350940C00EB7F4E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FA9868311350940C00EB7F4E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FA9868301350940C00EB7F4E /* JIMP Client.app */,
+				FA9868511350940D00EB7F4E /* JIMP ClientTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FA9868331350940C00EB7F4E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FA9868341350940C00EB7F4E /* Cocoa.framework */,
+				FA9868361350940C00EB7F4E /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA9868361350940C00EB7F4E /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FA9868371350940C00EB7F4E /* AppKit.framework */,
+				FA9868381350940C00EB7F4E /* CoreData.framework */,
+				FA9868391350940C00EB7F4E /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		FA98683A1350940C00EB7F4E /* JIMP Client */ = {
+			isa = PBXGroup;
+			children = (
+				FA9868461350940D00EB7F4E /* JIMP_ClientAppDelegate.h */,
+				FA9868471350940D00EB7F4E /* JIMP_ClientAppDelegate.m */,
+				FA9868491350940D00EB7F4E /* MainMenu.xib */,
+				FA98683B1350940C00EB7F4E /* Supporting Files */,
+			);
+			path = "JIMP Client";
+			sourceTree = "<group>";
+		};
+		FA98683B1350940C00EB7F4E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FA98683C1350940C00EB7F4E /* JIMP Client-Info.plist */,
+				FA98683D1350940C00EB7F4E /* InfoPlist.strings */,
+				FA9868401350940C00EB7F4E /* JIMP Client-Prefix.pch */,
+				FA9868411350940C00EB7F4E /* main.m */,
+				FA9868431350940D00EB7F4E /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FA9868551350940D00EB7F4E /* JIMP ClientTests */ = {
+			isa = PBXGroup;
+			children = (
+				FA98685C1350940D00EB7F4E /* JIMP_ClientTests.h */,
+				FA98685E1350940D00EB7F4E /* JIMP_ClientTests.m */,
+				FA9868561350940D00EB7F4E /* Supporting Files */,
+			);
+			path = "JIMP ClientTests";
+			sourceTree = "<group>";
+		};
+		FA9868561350940D00EB7F4E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FA9868571350940D00EB7F4E /* JIMP ClientTests-Info.plist */,
+				FA9868581350940D00EB7F4E /* InfoPlist.strings */,
+				FA98685B1350940D00EB7F4E /* JIMP ClientTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FA98682F1350940C00EB7F4E /* JIMP Client */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA9868621350940D00EB7F4E /* Build configuration list for PBXNativeTarget "JIMP Client" */;
+			buildPhases = (
+				FA98682C1350940C00EB7F4E /* Sources */,
+				FA98682D1350940C00EB7F4E /* Frameworks */,
+				FA98682E1350940C00EB7F4E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "JIMP Client";
+			productName = "JIMP Client";
+			productReference = FA9868301350940C00EB7F4E /* JIMP Client.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FA9868501350940D00EB7F4E /* JIMP ClientTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA9868651350940D00EB7F4E /* Build configuration list for PBXNativeTarget "JIMP ClientTests" */;
+			buildPhases = (
+				FA98684C1350940D00EB7F4E /* Sources */,
+				FA98684D1350940D00EB7F4E /* Frameworks */,
+				FA98684E1350940D00EB7F4E /* Resources */,
+				FA98684F1350940D00EB7F4E /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA9868541350940D00EB7F4E /* PBXTargetDependency */,
+			);
+			name = "JIMP ClientTests";
+			productName = "JIMP ClientTests";
+			productReference = FA9868511350940D00EB7F4E /* JIMP ClientTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FA9868271350940C00EB7F4E /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = FA98682A1350940C00EB7F4E /* Build configuration list for PBXProject "JIMP Client" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FA9868251350940C00EB7F4E;
+			productRefGroup = FA9868311350940C00EB7F4E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FA98682F1350940C00EB7F4E /* JIMP Client */,
+				FA9868501350940D00EB7F4E /* JIMP ClientTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FA98682E1350940C00EB7F4E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA98683F1350940C00EB7F4E /* InfoPlist.strings in Resources */,
+				FA9868451350940D00EB7F4E /* Credits.rtf in Resources */,
+				FA98684B1350940D00EB7F4E /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA98684E1350940D00EB7F4E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA98685A1350940D00EB7F4E /* InfoPlist.strings in Resources */,
+				FA98685D1350940D00EB7F4E /* JIMP_ClientTests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FA98684F1350940D00EB7F4E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FA98682C1350940C00EB7F4E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA9868421350940C00EB7F4E /* main.m in Sources */,
+				FA9868481350940D00EB7F4E /* JIMP_ClientAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA98684C1350940D00EB7F4E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA98685F1350940D00EB7F4E /* JIMP_ClientTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FA9868541350940D00EB7F4E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA98682F1350940C00EB7F4E /* JIMP Client */;
+			targetProxy = FA9868531350940D00EB7F4E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FA98683D1350940C00EB7F4E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA98683E1350940C00EB7F4E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		FA9868431350940D00EB7F4E /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA9868441350940D00EB7F4E /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		FA9868491350940D00EB7F4E /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA98684A1350940D00EB7F4E /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		FA9868581350940D00EB7F4E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA9868591350940D00EB7F4E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FA9868601350940D00EB7F4E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		FA9868611350940D00EB7F4E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		FA9868631350940D00EB7F4E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JIMP Client/JIMP Client-Prefix.pch";
+				INFOPLIST_FILE = "JIMP Client/JIMP Client-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		FA9868641350940D00EB7F4E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JIMP Client/JIMP Client-Prefix.pch";
+				INFOPLIST_FILE = "JIMP Client/JIMP Client-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		FA9868661350940D00EB7F4E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/JIMP Client.app/Contents/MacOS/JIMP Client";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JIMP ClientTests/JIMP ClientTests-Prefix.pch";
+				INFOPLIST_FILE = "JIMP ClientTests/JIMP ClientTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		FA9868671350940D00EB7F4E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/JIMP Client.app/Contents/MacOS/JIMP Client";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JIMP ClientTests/JIMP ClientTests-Prefix.pch";
+				INFOPLIST_FILE = "JIMP ClientTests/JIMP ClientTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FA98682A1350940C00EB7F4E /* Build configuration list for PBXProject "JIMP Client" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA9868601350940D00EB7F4E /* Debug */,
+				FA9868611350940D00EB7F4E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA9868621350940D00EB7F4E /* Build configuration list for PBXNativeTarget "JIMP Client" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA9868631350940D00EB7F4E /* Debug */,
+				FA9868641350940D00EB7F4E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		FA9868651350940D00EB7F4E /* Build configuration list for PBXNativeTarget "JIMP ClientTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA9868661350940D00EB7F4E /* Debug */,
+				FA9868671350940D00EB7F4E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FA9868271350940C00EB7F4E /* Project object */;
+}
