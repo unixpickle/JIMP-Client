@@ -12,9 +12,14 @@
 
 @synthesize window;
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 	// Insert code here to initialize your application
+	signon = [[SignonViewController alloc] initWithWindow:window];
+	[ANViewController displayViewControllerInWindow:signon];
+}
+
+- (void)dealloc {
+	[signon release];
 }
 
 @end

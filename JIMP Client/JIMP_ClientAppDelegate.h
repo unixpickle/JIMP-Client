@@ -7,12 +7,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "SignonViewController.h"
 
 @interface JIMP_ClientAppDelegate : NSObject <NSApplicationDelegate> {
 @private
-	NSWindow *window;
+	NSWindow * window;
+	SignonViewController * signon;
 }
 
-@property (assign) IBOutlet NSWindow *window;
+@property (assign) IBOutlet NSWindow * window;
 
 @end

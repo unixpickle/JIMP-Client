@@ -17,6 +17,15 @@
 		FA98685A1350940D00EB7F4E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA9868581350940D00EB7F4E /* InfoPlist.strings */; };
 		FA98685D1350940D00EB7F4E /* JIMP_ClientTests.h in Resources */ = {isa = PBXBuildFile; fileRef = FA98685C1350940D00EB7F4E /* JIMP_ClientTests.h */; };
 		FA98685F1350940D00EB7F4E /* JIMP_ClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA98685E1350940D00EB7F4E /* JIMP_ClientTests.m */; };
+		FA98686E1350945F00EB7F4E /* ANViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA98686D1350945F00EB7F4E /* ANViewController.m */; };
+		FA986871135097E300EB7F4E /* SignonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA986870135097E300EB7F4E /* SignonViewController.m */; };
+		FA9868741350987F00EB7F4E /* NSTextField+Label.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9868731350987F00EB7F4E /* NSTextField+Label.m */; };
+		FA9868771350A19B00EB7F4E /* ANViewControllerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9868761350A19A00EB7F4E /* ANViewControllerView.m */; };
+		FA98687D1350A90F00EB7F4E /* ANLinkButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FA98687C1350A90E00EB7F4E /* ANLinkButton.m */; };
+		FA9868801350AD7400EB7F4E /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA98687F1350AD7400EB7F4E /* SignupViewController.m */; };
+		FA9868841350B55100EB7F4E /* OOTObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9868831350B55100EB7F4E /* OOTObject.m */; };
+		FA9868871350B57400EB7F4E /* ANByteBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9868861350B57400EB7F4E /* ANByteBuffer.m */; };
+		FA98688A1350BFB100EB7F4E /* OOTConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9868891350BFAF00EB7F4E /* OOTConnection.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,20 +44,38 @@
 		FA9868371350940C00EB7F4E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		FA9868381350940C00EB7F4E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		FA9868391350940C00EB7F4E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		FA98683C1350940C00EB7F4E /* JIMP Client-Info.plist */ = {isa = PBXFileReference; path = "JIMP Client-Info.plist"; sourceTree = "<group>"; };
+		FA98683C1350940C00EB7F4E /* JIMP Client-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JIMP Client-Info.plist"; sourceTree = "<group>"; };
 		FA98683E1350940C00EB7F4E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		FA9868401350940C00EB7F4E /* JIMP Client-Prefix.pch */ = {isa = PBXFileReference; path = "JIMP Client-Prefix.pch"; sourceTree = "<group>"; };
+		FA9868401350940C00EB7F4E /* JIMP Client-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JIMP Client-Prefix.pch"; sourceTree = "<group>"; };
 		FA9868411350940C00EB7F4E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FA9868441350940D00EB7F4E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		FA9868461350940D00EB7F4E /* JIMP_ClientAppDelegate.h */ = {isa = PBXFileReference; path = JIMP_ClientAppDelegate.h; sourceTree = "<group>"; };
+		FA9868461350940D00EB7F4E /* JIMP_ClientAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JIMP_ClientAppDelegate.h; sourceTree = "<group>"; };
 		FA9868471350940D00EB7F4E /* JIMP_ClientAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JIMP_ClientAppDelegate.m; sourceTree = "<group>"; };
 		FA98684A1350940D00EB7F4E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		FA9868511350940D00EB7F4E /* JIMP ClientTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JIMP ClientTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA9868571350940D00EB7F4E /* JIMP ClientTests-Info.plist */ = {isa = PBXFileReference; path = "JIMP ClientTests-Info.plist"; sourceTree = "<group>"; };
+		FA9868571350940D00EB7F4E /* JIMP ClientTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JIMP ClientTests-Info.plist"; sourceTree = "<group>"; };
 		FA9868591350940D00EB7F4E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		FA98685B1350940D00EB7F4E /* JIMP ClientTests-Prefix.pch */ = {isa = PBXFileReference; path = "JIMP ClientTests-Prefix.pch"; sourceTree = "<group>"; };
+		FA98685B1350940D00EB7F4E /* JIMP ClientTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JIMP ClientTests-Prefix.pch"; sourceTree = "<group>"; };
 		FA98685C1350940D00EB7F4E /* JIMP_ClientTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JIMP_ClientTests.h; sourceTree = "<group>"; };
 		FA98685E1350940D00EB7F4E /* JIMP_ClientTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JIMP_ClientTests.m; sourceTree = "<group>"; };
+		FA98686C1350945F00EB7F4E /* ANViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANViewController.h; sourceTree = "<group>"; };
+		FA98686D1350945F00EB7F4E /* ANViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANViewController.m; sourceTree = "<group>"; };
+		FA98686F135097E300EB7F4E /* SignonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignonViewController.h; sourceTree = "<group>"; };
+		FA986870135097E300EB7F4E /* SignonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignonViewController.m; sourceTree = "<group>"; };
+		FA9868721350987F00EB7F4E /* NSTextField+Label.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextField+Label.h"; sourceTree = "<group>"; };
+		FA9868731350987F00EB7F4E /* NSTextField+Label.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextField+Label.m"; sourceTree = "<group>"; };
+		FA9868751350A19A00EB7F4E /* ANViewControllerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANViewControllerView.h; sourceTree = "<group>"; };
+		FA9868761350A19A00EB7F4E /* ANViewControllerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANViewControllerView.m; sourceTree = "<group>"; };
+		FA98687B1350A90E00EB7F4E /* ANLinkButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANLinkButton.h; sourceTree = "<group>"; };
+		FA98687C1350A90E00EB7F4E /* ANLinkButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANLinkButton.m; sourceTree = "<group>"; };
+		FA98687E1350AD7300EB7F4E /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
+		FA98687F1350AD7400EB7F4E /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
+		FA9868821350B55100EB7F4E /* OOTObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOTObject.h; sourceTree = "<group>"; };
+		FA9868831350B55100EB7F4E /* OOTObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOTObject.m; sourceTree = "<group>"; };
+		FA9868851350B57400EB7F4E /* ANByteBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANByteBuffer.h; sourceTree = "<group>"; };
+		FA9868861350B57400EB7F4E /* ANByteBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANByteBuffer.m; sourceTree = "<group>"; };
+		FA9868881350BFAE00EB7F4E /* OOTConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOTConnection.h; sourceTree = "<group>"; };
+		FA9868891350BFAF00EB7F4E /* OOTConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOTConnection.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,10 +139,18 @@
 		FA98683A1350940C00EB7F4E /* JIMP Client */ = {
 			isa = PBXGroup;
 			children = (
+				FA9868811350B53000EB7F4E /* JIMP Connection */,
+				FA98686C1350945F00EB7F4E /* ANViewController.h */,
+				FA98686D1350945F00EB7F4E /* ANViewController.m */,
+				FA9868751350A19A00EB7F4E /* ANViewControllerView.h */,
+				FA9868761350A19A00EB7F4E /* ANViewControllerView.m */,
+				FA98686B1350943D00EB7F4E /* Signon */,
 				FA9868461350940D00EB7F4E /* JIMP_ClientAppDelegate.h */,
 				FA9868471350940D00EB7F4E /* JIMP_ClientAppDelegate.m */,
 				FA9868491350940D00EB7F4E /* MainMenu.xib */,
 				FA98683B1350940C00EB7F4E /* Supporting Files */,
+				FA9868721350987F00EB7F4E /* NSTextField+Label.h */,
+				FA9868731350987F00EB7F4E /* NSTextField+Label.m */,
 			);
 			path = "JIMP Client";
 			sourceTree = "<group>";
@@ -150,6 +185,32 @@
 				FA98685B1350940D00EB7F4E /* JIMP ClientTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FA98686B1350943D00EB7F4E /* Signon */ = {
+			isa = PBXGroup;
+			children = (
+				FA98686F135097E300EB7F4E /* SignonViewController.h */,
+				FA986870135097E300EB7F4E /* SignonViewController.m */,
+				FA98687E1350AD7300EB7F4E /* SignupViewController.h */,
+				FA98687F1350AD7400EB7F4E /* SignupViewController.m */,
+				FA98687B1350A90E00EB7F4E /* ANLinkButton.h */,
+				FA98687C1350A90E00EB7F4E /* ANLinkButton.m */,
+			);
+			name = Signon;
+			sourceTree = "<group>";
+		};
+		FA9868811350B53000EB7F4E /* JIMP Connection */ = {
+			isa = PBXGroup;
+			children = (
+				FA9868821350B55100EB7F4E /* OOTObject.h */,
+				FA9868831350B55100EB7F4E /* OOTObject.m */,
+				FA9868881350BFAE00EB7F4E /* OOTConnection.h */,
+				FA9868891350BFAF00EB7F4E /* OOTConnection.m */,
+				FA9868851350B57400EB7F4E /* ANByteBuffer.h */,
+				FA9868861350B57400EB7F4E /* ANByteBuffer.m */,
+			);
+			name = "JIMP Connection";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +320,15 @@
 			files = (
 				FA9868421350940C00EB7F4E /* main.m in Sources */,
 				FA9868481350940D00EB7F4E /* JIMP_ClientAppDelegate.m in Sources */,
+				FA98686E1350945F00EB7F4E /* ANViewController.m in Sources */,
+				FA986871135097E300EB7F4E /* SignonViewController.m in Sources */,
+				FA9868741350987F00EB7F4E /* NSTextField+Label.m in Sources */,
+				FA9868771350A19B00EB7F4E /* ANViewControllerView.m in Sources */,
+				FA98687D1350A90F00EB7F4E /* ANLinkButton.m in Sources */,
+				FA9868801350AD7400EB7F4E /* SignupViewController.m in Sources */,
+				FA9868841350B55100EB7F4E /* OOTObject.m in Sources */,
+				FA9868871350B57400EB7F4E /* ANByteBuffer.m in Sources */,
+				FA98688A1350BFB100EB7F4E /* OOTConnection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
