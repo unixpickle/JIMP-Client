@@ -46,7 +46,6 @@
 
 - (void)loadView {
 	view = [[ANViewControllerView alloc] initWithFrame:[[window contentView] bounds]];
-	NSLog(@"%@", NSStringFromRect([view frame]));
 }
 
 - (void)presentViewController:(ANViewController *)vc {

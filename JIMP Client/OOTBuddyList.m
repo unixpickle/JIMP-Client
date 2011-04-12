@@ -17,11 +17,9 @@
 @implementation OOTBuddyList
 
 - (id)init {
-    self = [super init];
-    if (self) {
+    if ((self = [super init])) {
         // Initialization code here.
     }
-    
     return self;
 }
 
@@ -60,8 +58,8 @@
 		buffer = [[ANByteBuffer alloc] initWithData:[self classData]];
 		groups = [[OOTArray alloc] initWithByteBuffer:buffer];
 		buddies = [[OOTArray alloc] initWithByteBuffer:buffer];
-		[buffer release];
 	} @catch (NSException * e) {
+		@throw e;
 		returnValue = nil;
 	} @finally {
 		[buffer release];

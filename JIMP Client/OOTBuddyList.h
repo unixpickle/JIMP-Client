@@ -7,14 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "OOTArray.h"
 #import "OOTObject.h"
 #import "OOTBuddy.h"
-#import "OOTArray.h"
 
 
 @interface OOTBuddyList : OOTObject {
-    OOTArray * buddies;
 	OOTArray * groups;
+	OOTArray * buddies;
 }
 
 - (id)initWithObject:(OOTObject *)object;

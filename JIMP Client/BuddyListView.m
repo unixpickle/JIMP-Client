@@ -48,7 +48,13 @@
 	OOTObject * object = [[notification userInfo] objectForKey:@"object"];
 	NSLog(@"object: %@", object);
 	if ([[object className] isEqual:@"blst"]) {
-		
+		OOTBuddyList * blist = [[OOTBuddyList alloc] initWithObject:object];
+		for (OOTText * group in [blist groups]) {
+			NSLog(@"Group: %@", [group textValue]);
+		}
+		for (OOTBuddy * buddy in [blist buddies]) {
+			NSLog(@"Buddy: %@ (%@)", [buddy screenName], [buddy groupName]);
+		}
 	}
 }
 

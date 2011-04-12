@@ -11,6 +11,7 @@
 #import "OOTConnection.h"
 #import "NSTextField+Label.h"
 #import "JIMPSessionManager.h"
+#import "OOTBuddyList.h"
 
 
 @interface BuddyListView : ANViewController {

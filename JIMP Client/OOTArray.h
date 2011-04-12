@@ -10,7 +10,6 @@
 #import "OOTObject.h"
 #import "ANByteBuffer.h"
 #import "OOTUtil.h"
-#import "OOTObjectCreator.h"
 
 
 @interface OOTArray : OOTObject {

@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA3121B61354FF0500BC1F64 /* OOTBuddyList.m in Sources */ = {isa = PBXBuildFile; fileRef = FA53CA331354F3B800D60A4A /* OOTBuddyList.m */; };
 		FA53CA281354E5E600D60A4A /* OOTArray.m in Sources */ = {isa = PBXBuildFile; fileRef = FA53CA271354E5E600D60A4A /* OOTArray.m */; };
 		FA53CA2B1354E69900D60A4A /* OOTUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = FA53CA2A1354E69900D60A4A /* OOTUtil.m */; };
 		FA53CA311354ECE100D60A4A /* OOTBuddy.m in Sources */ = {isa = PBXBuildFile; fileRef = FA53CA301354ECE100D60A4A /* OOTBuddy.m */; };
-		FA53CA341354F3B800D60A4A /* OOTBuddyList.m in Sources */ = {isa = PBXBuildFile; fileRef = FA53CA331354F3B800D60A4A /* OOTBuddyList.m */; };
 		FA53CA371354FB4A00D60A4A /* OOTObjectCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = FA53CA361354FB4700D60A4A /* OOTObjectCreator.m */; };
 		FA9868351350940C00EB7F4E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9868341350940C00EB7F4E /* Cocoa.framework */; };
 		FA98683F1350940C00EB7F4E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA98683D1350940C00EB7F4E /* InfoPlist.strings */; };
@@ -459,8 +459,8 @@
 				FA53CA281354E5E600D60A4A /* OOTArray.m in Sources */,
 				FA53CA2B1354E69900D60A4A /* OOTUtil.m in Sources */,
 				FA53CA311354ECE100D60A4A /* OOTBuddy.m in Sources */,
-				FA53CA341354F3B800D60A4A /* OOTBuddyList.m in Sources */,
 				FA53CA371354FB4A00D60A4A /* OOTObjectCreator.m in Sources */,
+				FA3121B61354FF0500BC1F64 /* OOTBuddyList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

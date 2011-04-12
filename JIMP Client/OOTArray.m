@@ -7,6 +7,8 @@
 //
 
 #import "OOTArray.h"
+#import "OOTObjectCreator.h"
+
 
 @interface OOTArray (private) 
 
