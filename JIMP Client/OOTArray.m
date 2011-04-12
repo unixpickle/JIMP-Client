@@ -93,7 +93,8 @@
 	NSMutableArray * objectArray = [NSMutableArray array];
 	for (int i = 0; i < objectCount; i++) {
 		OOTObject * anObject = [[OOTObject alloc] initWithByteBuffer:buffer];
-		[objectArray addObject:anObject];
+		OOTObject * newObject = [OOTObjectCreator objectSubclassForObject:anObject];
+		[objectArray addObject:newObject];
 		[anObject release];
 	}
 	objects = [[NSArray alloc] initWithArray:objectArray];

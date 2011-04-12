@@ -10,6 +10,8 @@
 		FA53CA281354E5E600D60A4A /* OOTArray.m in Sources */ = {isa = PBXBuildFile; fileRef = FA53CA271354E5E600D60A4A /* OOTArray.m */; };
 		FA53CA2B1354E69900D60A4A /* OOTUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = FA53CA2A1354E69900D60A4A /* OOTUtil.m */; };
 		FA53CA311354ECE100D60A4A /* OOTBuddy.m in Sources */ = {isa = PBXBuildFile; fileRef = FA53CA301354ECE100D60A4A /* OOTBuddy.m */; };
+		FA53CA341354F3B800D60A4A /* OOTBuddyList.m in Sources */ = {isa = PBXBuildFile; fileRef = FA53CA331354F3B800D60A4A /* OOTBuddyList.m */; };
+		FA53CA371354FB4A00D60A4A /* OOTObjectCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = FA53CA361354FB4700D60A4A /* OOTObjectCreator.m */; };
 		FA9868351350940C00EB7F4E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9868341350940C00EB7F4E /* Cocoa.framework */; };
 		FA98683F1350940C00EB7F4E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA98683D1350940C00EB7F4E /* InfoPlist.strings */; };
 		FA9868421350940C00EB7F4E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9868411350940C00EB7F4E /* main.m */; };
@@ -57,6 +59,10 @@
 		FA53CA2A1354E69900D60A4A /* OOTUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOTUtil.m; sourceTree = "<group>"; };
 		FA53CA2F1354ECE100D60A4A /* OOTBuddy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOTBuddy.h; sourceTree = "<group>"; };
 		FA53CA301354ECE100D60A4A /* OOTBuddy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOTBuddy.m; sourceTree = "<group>"; };
+		FA53CA321354F3B800D60A4A /* OOTBuddyList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOTBuddyList.h; sourceTree = "<group>"; };
+		FA53CA331354F3B800D60A4A /* OOTBuddyList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOTBuddyList.m; sourceTree = "<group>"; };
+		FA53CA351354FB4300D60A4A /* OOTObjectCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOTObjectCreator.h; sourceTree = "<group>"; };
+		FA53CA361354FB4700D60A4A /* OOTObjectCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOTObjectCreator.m; sourceTree = "<group>"; };
 		FA9868301350940C00EB7F4E /* JIMP Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JIMP Client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA9868341350940C00EB7F4E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FA9868371350940C00EB7F4E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -165,6 +171,8 @@
 			children = (
 				FA53CA2F1354ECE100D60A4A /* OOTBuddy.h */,
 				FA53CA301354ECE100D60A4A /* OOTBuddy.m */,
+				FA53CA321354F3B800D60A4A /* OOTBuddyList.h */,
+				FA53CA331354F3B800D60A4A /* OOTBuddyList.m */,
 			);
 			name = "Buddy List";
 			sourceTree = "<group>";
@@ -297,6 +305,8 @@
 				FA53CA2E1354ECD100D60A4A /* Buddy List */,
 				FA53CA2D1354ECC800D60A4A /* Accounts */,
 				FA53CA2C1354ECB600D60A4A /* Basic */,
+				FA53CA351354FB4300D60A4A /* OOTObjectCreator.h */,
+				FA53CA361354FB4700D60A4A /* OOTObjectCreator.m */,
 			);
 			name = OOTObject;
 			sourceTree = "<group>";
@@ -449,6 +459,8 @@
 				FA53CA281354E5E600D60A4A /* OOTArray.m in Sources */,
 				FA53CA2B1354E69900D60A4A /* OOTUtil.m in Sources */,
 				FA53CA311354ECE100D60A4A /* OOTBuddy.m in Sources */,
+				FA53CA341354F3B800D60A4A /* OOTBuddyList.m in Sources */,
+				FA53CA371354FB4A00D60A4A /* OOTObjectCreator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

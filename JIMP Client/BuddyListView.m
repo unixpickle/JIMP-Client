@@ -47,6 +47,9 @@
 - (void)connectionGotData:(NSNotification *)notification {
 	OOTObject * object = [[notification userInfo] objectForKey:@"object"];
 	NSLog(@"object: %@", object);
+	if ([[object className] isEqual:@"blst"]) {
+		
+	}
 }
 
 - (void)dealloc {
