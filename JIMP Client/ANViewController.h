@@ -26,6 +26,7 @@
 - (void)loadView;
 
 - (void)presentViewController:(ANViewController *)vc;
+- (void)presentViewControllerNonanimated:(ANViewController *)vc;
 + (void)displayViewControllerInWindow:(ANViewController *)controller;
 - (void)dismissViewController;
 

@@ -20,6 +20,14 @@
     return self;
 }
 
+- (id)initWithObject:(OOTObject *)object {
+	if ((self = [super init])) {
+		className = [[object className] retain];
+		classData = [[object classData] retain];
+	}
+	return self;
+}
+
 - (id)initWithByteBuffer:(ANByteBuffer *)buffer {
 	if ((self = [super init])) {
 		const char * header = [buffer getBytes:12];
@@ -74,7 +82,7 @@
 				[super dealloc];
 				return nil;
 			}
-			length += add;
+			has += add;
 		}
 		
 		classData = [[NSData alloc] initWithBytesNoCopy:bytes length:length freeWhenDone:YES];

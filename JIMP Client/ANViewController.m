@@ -53,18 +53,22 @@
 	// here we will get it's view, add it and such.
 	vc.parentViewController = self;
 	[vc loadView];
+	[[vc view] becomeFirstResponder];
+	
 	NSView * newView = [vc view];
 	NSRect frame = [newView frame];
 	
-	frame.origin.x = [[self view] frame].size.width;
+	frame.origin.x = 0;
 	frame.origin.y = 0;
 	[newView setFrame:frame];
+	[newView setAlphaValue:0.1];
 	
 	[[[self window] contentView] addSubview:newView];
 	
 	[[NSAnimationContext currentContext] setDuration:0.5];
 	[NSAnimationContext beginGrouping];
 	frame.origin.x = 0;
+	frame.origin.y = 0;
 	NSRect windowFrame = [[self window] frame];
 	CGFloat topBar = windowFrame.size.height - [[[self window] contentView] frame].size.height;
 	if (windowFrame.size.width != newView.frame.size.width 
@@ -75,7 +79,35 @@
 		[[self window] setFrame:windowFrame display:YES animate:YES];
 	}
 	[[newView animator] setFrameOrigin:frame.origin];
+	[[newView animator] setAlphaValue:1];
 	[NSAnimationContext endGrouping];
+	
+	subviewController = [vc retain];
+}
+- (void)presentViewControllerNonanimated:(ANViewController *)vc {
+	// here we will get it's view, add it and such.
+	vc.parentViewController = self;
+	[vc loadView];
+	NSView * newView = [vc view];
+	NSRect frame = [newView frame];
+	
+	frame.origin.x = [[self view] frame].size.width;
+	frame.origin.y = 0;
+	[newView setFrame:frame];
+	
+	[[[self window] contentView] addSubview:newView];
+	
+	frame.origin.x = 0;
+	NSRect windowFrame = [[self window] frame];
+	CGFloat topBar = windowFrame.size.height - [[[self window] contentView] frame].size.height;
+	if (windowFrame.size.width != newView.frame.size.width 
+		|| windowFrame.size.height - topBar != newView.frame.size.height) {
+		// 
+		windowFrame.size.height = topBar + newView.frame.size.height;
+		windowFrame.size.width = newView.frame.size.width;
+		[[self window] setFrame:windowFrame display:YES animate:NO];
+	}
+	[newView setFrameOrigin:frame.origin];
 	
 	subviewController = [vc retain];
 }
@@ -89,11 +121,8 @@
 	
 	[[[vc window] contentView] addSubview:newView];
 	
-	[[NSAnimationContext currentContext] setDuration:0.5];
-	[NSAnimationContext beginGrouping];
 	frame.origin.x = 0;
-	[[newView animator] setFrameOrigin:frame.origin];
-	[NSAnimationContext endGrouping];
+	[newView setFrameOrigin:frame.origin];
 }
 - (void)dismissViewController {
 	[[subviewController view] removeFromSuperview];

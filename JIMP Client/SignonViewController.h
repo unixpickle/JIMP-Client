@@ -11,7 +11,16 @@
 #import "ANViewController.h"
 #import "ANLinkButton.h"
 
+#import "JIMPSessionManager.h"
+#import "OOTConnection.h"
+#import "OOTObject.h"
+#import "OOTAccount.h"
+#import "OOTError.h"
+
 #import "SignupViewController.h"
+#import "LoadingViewController.h"
+#import "BuddyListView.h"
+
 
 @interface SignonViewController : ANViewController <NSTextFieldDelegate> {
     NSTextField * usernameIndicator;
@@ -19,6 +28,7 @@
 	ANLinkButton * createUsername;
 	NSTextField * passwordIndicator;
 	NSSecureTextField * password;
+	NSButton * signonButton;
 }
 
 @property (nonatomic, retain) NSTextField * usernameIndicator;
@@ -26,7 +36,10 @@
 @property (nonatomic, retain) ANLinkButton * createUsername;
 @property (nonatomic, retain) NSTextField * passwordIndicator;
 @property (nonatomic, retain) NSSecureTextField * password;
+@property (nonatomic, retain) NSButton * signonButton;
 
 - (void)showNewScreenname:(id)sender;
+- (void)signonPressed:(id)sender;
+- (void)connectionGotData:(NSNotification *)notification;
 
 @end

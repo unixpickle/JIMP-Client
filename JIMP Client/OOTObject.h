@@ -14,6 +14,7 @@
 	NSData * classData;
 }
 
+- (id)initWithObject:(OOTObject *)object;
 - (id)initWithByteBuffer:(ANByteBuffer *)buffer;
 - (id)initWithData:(NSData *)data;
 - (id)initWithHeader:(NSData *)header fromSocket:(int)fileDescriptor;

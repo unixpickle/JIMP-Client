@@ -14,8 +14,10 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 	// Insert code here to initialize your application
+	[[JIMPSessionManager sharedInstance] newConnection];
 	signon = [[SignonViewController alloc] initWithWindow:window];
 	[ANViewController displayViewControllerInWindow:signon];
+	[signon release];
 }
 
 - (void)dealloc {

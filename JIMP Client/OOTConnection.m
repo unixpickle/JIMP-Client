@@ -15,7 +15,7 @@
 - (void)readThread:(NSThread *)mainThread;
 - (void)writeThread:(NSThread *)mainThread;
 - (void)connectionClosed;
-- (void)hasData;
+- (void)hasData:(id)anObject;
 - (void)setIsOpen:(BOOL)flag;
 
 @end
@@ -110,6 +110,7 @@
 	if (connect(socketfd, (const struct sockaddr *)&serv_addr, sizeof(struct sockaddr_in)) < 0) {
 		if (error)
 			*error = [NSError errorWithDomain:@"Connect failed" code:202 userInfo:nil];
+		return NO;
 	}
 	
 	[self setIsOpen:YES];
@@ -139,8 +140,9 @@
 	[self setIsOpen:NO];
 }
 
-- (void)hasData {
-	[[NSNotificationCenter defaultCenter] postNotificationName:OOTConnectionHasObjectNotification object:self];
+- (void)hasData:(id)anObject {
+	NSDictionary * info = [NSDictionary dictionaryWithObject:anObject forKey:@"object"];
+	[[NSNotificationCenter defaultCenter] postNotificationName:OOTConnectionHasObjectNotification object:self userInfo:info];
 }
 
 #pragma mark Background
@@ -150,12 +152,27 @@
 	while (true) {
 		NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
 		
-		if (![self isOpen]) {
-			[pool drain];
-			break;
-		}
-		
 		// read the header
+		
+		int error;
+		fd_set readDetector;
+		struct timeval myVar;
+		do {
+			FD_ZERO(&readDetector);
+			FD_SET(newsockfd, &readDetector);
+			myVar.tv_sec = 10;
+			myVar.tv_usec = 0;
+			error = select(newsockfd + 1, &readDetector,
+						   NULL, NULL, &myVar);
+			if (error < 0) {
+				if ([self isOpen]) { // it thinks we are still open.
+					[self performSelector:@selector(connectionClosed) onThread:mainThread withObject:nil waitUntilDone:YES];
+				}
+				[pool drain];
+				return;
+			}
+		} while (!FD_ISSET(socketfd, &readDetector) && error <= 0);
+				
 		char header[12];
 		int headerHas = 0;
 		while (headerHas < 12) {
@@ -181,7 +198,7 @@
 					[bufferedReads addObject:object];
 					[object release];
 				}
-				[self performSelector:@selector(hasData) onThread:mainThread withObject:nil waitUntilDone:YES];
+				[self performSelector:@selector(hasData:) onThread:mainThread withObject:object waitUntilDone:YES];
 			} else {
 				if ([self isOpen]) { // it thinks we are still open.
 					[self performSelector:@selector(connectionClosed) onThread:mainThread withObject:nil waitUntilDone:YES];
@@ -243,6 +260,8 @@
 				hasWritten += wrote;
 			}
 		}
+		
+		[NSThread sleepForTimeInterval:0.2];
 		
 		[pool drain];
 	}

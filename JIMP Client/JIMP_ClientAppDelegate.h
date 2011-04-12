@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "SignonViewController.h"
+#import "JIMPSessionManager.h"
 
 @interface JIMP_ClientAppDelegate : NSObject <NSApplicationDelegate> {
 @private

@@ -13,10 +13,12 @@
 
 @synthesize target;
 @synthesize action;
+@synthesize isEnabled;
 
 - (id)initWithFrame:(NSRect)frame {
     if ((self = [super initWithFrame:frame])) {
         // Initialization code here.
+		isEnabled = YES;
     }
     
     return self;
@@ -33,6 +35,7 @@
 }
 
 - (void)mouseUp:(NSEvent *)theEvent {
+	if (!isEnabled) return;
 	NSPoint point = [theEvent locationInWindow];
 	NSRect selfLocation = self.frame;
 	if ([[self superview] isFlipped]) {

@@ -14,10 +14,12 @@
 	NSTextField * label;
 	id target;
 	SEL action;
+	BOOL isEnabled;
 }
 
 @property (nonatomic, retain) id target;
 @property (readwrite) SEL action;
+@property (readwrite) BOOL isEnabled;
 
 - (void)setButtonText:(NSString *)text;
 

@@ -8,7 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 #import "ANViewController.h"
+#import "LoadingViewController.h"
 
+#import "ANLinkButton.h"
+
+#import "JIMPSessionManager.h"
+#import "OOTSignup.h"
+#import "OOTError.h"
 
 @interface SignupViewController : ANViewController <NSTextFieldDelegate> {
     NSTextField * usernameField;
@@ -25,5 +31,7 @@
 @property (nonatomic, retain) NSButton * createButton;
 
 - (void)cancelSignup:(id)sender;
+- (void)createPressed:(id)sender;
+- (void)connectionGotData:(NSNotification *)notification;
 
 @end
