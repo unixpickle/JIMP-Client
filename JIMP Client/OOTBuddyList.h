@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "OOTObject.h"
-#import "OOTArray.h"
 #import "OOTBuddy.h"
+#import "OOTArray.h"
 
 
 @interface OOTBuddyList : OOTObject {

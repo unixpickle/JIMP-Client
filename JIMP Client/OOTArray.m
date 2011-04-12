@@ -53,7 +53,7 @@
 - (id)initWithObject:(OOTObject *)object {
 	if ((self = [super initWithObject:object])) {
 		if (![self initializeArrayContents]) {
-			[super dealloc];
+			[self dealloc];
 			return nil;
 		}
 	}
@@ -62,7 +62,7 @@
 - (id)initWithByteBuffer:(ANByteBuffer *)buffer {
 	if ((self = [super initWithByteBuffer:buffer])) {
 		if (![self initializeArrayContents]) {
-			[super dealloc];
+			[self dealloc];
 			return nil;
 		}
 	}
@@ -71,7 +71,7 @@
 - (id)initWithData:(NSData *)data {
 	if ((self = [super initWithData:data])) {
 		if (![self initializeArrayContents]) {
-			[super dealloc];
+			[self dealloc];
 			return nil;
 		}
 	}
