@@ -12,11 +12,13 @@
 #import "NSTextField+Label.h"
 #import "JIMPSessionManager.h"
 #import "OOTBuddyList.h"
+#import "BuddyListDisplayView.h"
 
 
 @interface BuddyListView : ANViewController {
 	NSString * currentUsername;
 	OOTConnection * currentConnection;
+	BuddyListDisplayView * buddyDisplay;
 	
 	NSTextField * usernameLabel;
 	NSButton * signoffButton;
@@ -25,6 +27,7 @@
 @property (nonatomic, retain) NSString * currentUsername;
 @property (nonatomic, retain) NSTextField * usernameLabel;
 @property (nonatomic, retain) NSButton * signoffButton;
+@property (nonatomic, retain) BuddyListDisplayView * buddyDisplay;
 
 - (void)connectionGotData:(NSNotification *)notification;
 

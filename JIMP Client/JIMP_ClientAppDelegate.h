@@ -11,9 +11,9 @@
 #import "JIMPSessionManager.h"
 
 @interface JIMP_ClientAppDelegate : NSObject <NSApplicationDelegate> {
-@private
 	NSWindow * window;
 	SignonViewController * signon;
+	
 }
 
 @property (assign) IBOutlet NSWindow * window;

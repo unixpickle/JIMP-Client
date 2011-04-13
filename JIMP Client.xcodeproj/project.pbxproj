@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		FA3121B61354FF0500BC1F64 /* OOTBuddyList.m in Sources */ = {isa = PBXBuildFile; fileRef = FA53CA331354F3B800D60A4A /* OOTBuddyList.m */; };
+		FA34E42313553D0F004F4C20 /* BuddyTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA34E42213553D0F004F4C20 /* BuddyTitleCell.m */; };
+		FA34E426135540E7004F4C20 /* BlankCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA34E425135540E6004F4C20 /* BlankCell.m */; };
 		FA53CA281354E5E600D60A4A /* OOTArray.m in Sources */ = {isa = PBXBuildFile; fileRef = FA53CA271354E5E600D60A4A /* OOTArray.m */; };
 		FA53CA2B1354E69900D60A4A /* OOTUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = FA53CA2A1354E69900D60A4A /* OOTUtil.m */; };
 		FA53CA311354ECE100D60A4A /* OOTBuddy.m in Sources */ = {isa = PBXBuildFile; fileRef = FA53CA301354ECE100D60A4A /* OOTBuddy.m */; };
@@ -40,6 +42,8 @@
 		FA9868AE1350F27300EB7F4E /* BuddyListView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9868AD1350F27300EB7F4E /* BuddyListView.m */; };
 		FA9868B11350F41600EB7F4E /* OOTError.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9868B01350F41400EB7F4E /* OOTError.m */; };
 		FA9868B413510B6D00EB7F4E /* OOTSignup.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9868B313510B6900EB7F4E /* OOTSignup.m */; };
+		FAFD2F9C135501F600534232 /* BuddyListDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFD2F9B135501F600534232 /* BuddyListDisplayView.m */; };
+		FAFD2F9F1355021D00534232 /* BuddyList.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFD2F9E1355021D00534232 /* BuddyList.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +57,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FA34E42113553D0F004F4C20 /* BuddyTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuddyTitleCell.h; sourceTree = "<group>"; };
+		FA34E42213553D0F004F4C20 /* BuddyTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuddyTitleCell.m; sourceTree = "<group>"; };
+		FA34E424135540E6004F4C20 /* BlankCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlankCell.h; sourceTree = "<group>"; };
+		FA34E425135540E6004F4C20 /* BlankCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlankCell.m; sourceTree = "<group>"; };
 		FA53CA261354E5E600D60A4A /* OOTArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOTArray.h; sourceTree = "<group>"; };
 		FA53CA271354E5E600D60A4A /* OOTArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOTArray.m; sourceTree = "<group>"; };
 		FA53CA291354E69800D60A4A /* OOTUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOTUtil.h; sourceTree = "<group>"; };
@@ -118,6 +126,10 @@
 		FA9868B01350F41400EB7F4E /* OOTError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOTError.m; sourceTree = "<group>"; };
 		FA9868B213510B6500EB7F4E /* OOTSignup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOTSignup.h; sourceTree = "<group>"; };
 		FA9868B313510B6900EB7F4E /* OOTSignup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOTSignup.m; sourceTree = "<group>"; };
+		FAFD2F9A135501F600534232 /* BuddyListDisplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuddyListDisplayView.h; sourceTree = "<group>"; };
+		FAFD2F9B135501F600534232 /* BuddyListDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuddyListDisplayView.m; sourceTree = "<group>"; };
+		FAFD2F9D1355021D00534232 /* BuddyList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuddyList.h; sourceTree = "<group>"; };
+		FAFD2F9E1355021D00534232 /* BuddyList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuddyList.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,7 +236,7 @@
 				FA9868751350A19A00EB7F4E /* ANViewControllerView.h */,
 				FA9868761350A19A00EB7F4E /* ANViewControllerView.m */,
 				FA98686B1350943D00EB7F4E /* Signon */,
-				FA9868AB1350F1F700EB7F4E /* Signed On */,
+				FA9868AB1350F1F700EB7F4E /* Main Window */,
 				FA9868461350940D00EB7F4E /* JIMP_ClientAppDelegate.h */,
 				FA9868471350940D00EB7F4E /* JIMP_ClientAppDelegate.m */,
 				FA9868491350940D00EB7F4E /* MainMenu.xib */,
@@ -322,13 +334,21 @@
 			name = MD5;
 			sourceTree = "<group>";
 		};
-		FA9868AB1350F1F700EB7F4E /* Signed On */ = {
+		FA9868AB1350F1F700EB7F4E /* Main Window */ = {
 			isa = PBXGroup;
 			children = (
 				FA9868AC1350F27300EB7F4E /* BuddyListView.h */,
 				FA9868AD1350F27300EB7F4E /* BuddyListView.m */,
+				FAFD2F9A135501F600534232 /* BuddyListDisplayView.h */,
+				FAFD2F9B135501F600534232 /* BuddyListDisplayView.m */,
+				FAFD2F9D1355021D00534232 /* BuddyList.h */,
+				FAFD2F9E1355021D00534232 /* BuddyList.m */,
+				FA34E42113553D0F004F4C20 /* BuddyTitleCell.h */,
+				FA34E42213553D0F004F4C20 /* BuddyTitleCell.m */,
+				FA34E424135540E6004F4C20 /* BlankCell.h */,
+				FA34E425135540E6004F4C20 /* BlankCell.m */,
 			);
-			name = "Signed On";
+			name = "Main Window";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -461,6 +481,10 @@
 				FA53CA311354ECE100D60A4A /* OOTBuddy.m in Sources */,
 				FA53CA371354FB4A00D60A4A /* OOTObjectCreator.m in Sources */,
 				FA3121B61354FF0500BC1F64 /* OOTBuddyList.m in Sources */,
+				FAFD2F9C135501F600534232 /* BuddyListDisplayView.m in Sources */,
+				FAFD2F9F1355021D00534232 /* BuddyList.m in Sources */,
+				FA34E42313553D0F004F4C20 /* BuddyTitleCell.m in Sources */,
+				FA34E426135540E7004F4C20 /* BlankCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -82,6 +82,7 @@
 	[NSAnimationContext endGrouping];
 	
 	subviewController = [vc retain];
+	[[self window] makeFirstResponder:[vc view]];
 }
 - (void)presentViewControllerNonanimated:(ANViewController *)vc {
 	// here we will get it's view, add it and such.
