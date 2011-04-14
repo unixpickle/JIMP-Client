@@ -112,8 +112,8 @@
 - (NSData *)encodeClass {
 	NSMutableData * encoded = [[NSMutableData alloc] init];
 	NSString * classLength = [NSString stringWithFormat:@"%d", [classData length]];
-	
-	// llllllllnnnndddddd... 
+	// l = length, n = name, d = data
+	// llllllllnnnnd*(length)... 
 	for (int i = 0; i < 8 - [classLength length]; i++) {
 		char c = '0';
 		[encoded appendBytes:&c length:1];

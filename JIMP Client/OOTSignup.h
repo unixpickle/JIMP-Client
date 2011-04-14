@@ -18,6 +18,8 @@
 }
 
 - (id)initWithObject:(OOTObject *)object;
+- (id)initWithData:(NSData *)data;
+- (id)initWithByteBuffer:(ANByteBuffer *)buffer;
 
 // @pass should not be given with MD5 encrypting.
 - (id)initWithUsername:(NSString *)user password:(NSString *)pass;
