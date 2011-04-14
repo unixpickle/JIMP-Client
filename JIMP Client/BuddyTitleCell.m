@@ -64,11 +64,9 @@
 	NSRectFill(NSMakeRect(newRect.origin.x, newRect.origin.y + newRect.size.height - 1, newRect.size.width, 1));
 	
 	[super drawWithFrame:cellFrame inView:controlView];
-	NSLog(@"-drawWithFrame:inView:");
 }
 
 - (NSView *)controlView {
-	NSLog(@"-controlView");
 	return [super controlView];
 }
 

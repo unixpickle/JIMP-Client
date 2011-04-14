@@ -13,9 +13,10 @@
 #import "JIMPSessionManager.h"
 #import "OOTBuddyList.h"
 #import "BuddyListDisplayView.h"
+#import "AddBuddyWindow.h"
 
 
-@interface BuddyListView : ANViewController {
+@interface BuddyListView : ANViewController <AddBuddyWindowDelegate> {
 	NSString * currentUsername;
 	OOTConnection * currentConnection;
 	BuddyListDisplayView * buddyDisplay;
@@ -30,5 +31,7 @@
 @property (nonatomic, retain) BuddyListDisplayView * buddyDisplay;
 
 - (void)connectionGotData:(NSNotification *)notification;
+- (void)addBuddy:(id)sender;
+- (void)sheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo;
 
 @end

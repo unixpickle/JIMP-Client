@@ -9,7 +9,26 @@
 #import "BuddyList.h"
 
 
+@interface BuddyList (private)
+
++ (BuddyList **)sharedBuddyListAddress;
+
+@end
+
 @implementation BuddyList
+
++ (BuddyList **)sharedBuddyListAddress {
+	static BuddyList * list;
+	return &list;
+}
+
++ (BuddyList *)sharedBuddyList {
+	return *[BuddyList sharedBuddyListAddress];
+}
++ (void)setSharedBuddyList:(BuddyList *)aList {
+	[*[BuddyList sharedBuddyListAddress] autorelease];
+	*[BuddyList sharedBuddyListAddress] = [aList retain];
+}
 
 - (id)init {
     if ((self = [super init])) {
@@ -36,6 +55,14 @@
 		groups = [[NSArray alloc] initWithArray:groupList];
 	}
 	return self;
+}
+
+- (NSArray *)groupNames {
+	NSMutableArray * groupNames = [NSMutableArray array];
+	for (NSDictionary * groupInfo in groups) {
+		[groupNames addObject:[groupInfo objectForKey:@"name"]];
+	}
+	return groupNames;
 }
 
 - (int)numberOfGroups {

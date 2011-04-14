@@ -11,6 +11,7 @@
 @implementation JIMP_ClientAppDelegate
 
 @synthesize window;
+@synthesize menuItemAddBuddy;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 	// Insert code here to initialize your application

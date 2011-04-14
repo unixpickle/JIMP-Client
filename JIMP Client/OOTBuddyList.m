@@ -24,29 +24,44 @@
 }
 
 - (id)initWithObject:(OOTObject *)object {
-	if ((self = [super initWithObject:object])) {
-		if (![self initializeBuddyList]) {
-			[self dealloc];
-			return nil;
+	@try {
+		if ((self = [super initWithObject:object])) {
+			if (![self initializeBuddyList]) {
+				[self dealloc];
+				return nil;
+			}
 		}
+	} @catch (NSException * ex) {
+		[super dealloc];
+		return nil;
 	}
 	return self;
 }
 - (id)initWithData:(NSData *)data {
-	if ((self = [super initWithData:data])) {
-		if (![self initializeBuddyList]) {
-			[self dealloc];
-			return nil;
+	@try {
+		if ((self = [super initWithData:data])) {
+			if (![self initializeBuddyList]) {
+				[self dealloc];
+				return nil;
+			}
 		}
+	} @catch (NSException * ex) {
+		[super dealloc];
+		return nil;
 	}
 	return self;
 }
 - (id)initWithByteBuffer:(ANByteBuffer *)buffer {
-	if ((self = [super initWithByteBuffer:buffer])) {
-		if (![self initializeBuddyList]) {
-			[self dealloc];
-			return nil;
+	@try {
+		if ((self = [super initWithByteBuffer:buffer])) {
+			if (![self initializeBuddyList]) {
+				[self dealloc];
+				return nil;
+			}
 		}
+	} @catch (NSException * ex) {
+		[super dealloc];
+		return nil;
 	}
 	return self;
 }

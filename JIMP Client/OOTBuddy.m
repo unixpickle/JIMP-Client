@@ -29,8 +29,14 @@
 	groupText = [[OOTText alloc] initWithText:groupName];
 	[encodedData appendData:[groupText encodeClass]];
 	[encodedData appendData:[screennameText encodeClass]];
-	if ((self = [super initWithName:@"budd" data:encodedData])) {
-		// Initialization code here.
+	@try {
+		if ((self = [super initWithName:@"budd" data:encodedData])) {
+			// Initialization code here.
+		}
+	} @catch (NSException * ex) {
+		[super dealloc];
+		[encodedData release];
+		return nil;
 	}
 	[encodedData release];
 	return self;
@@ -45,20 +51,30 @@
 	return self;
 }
 - (id)initWithData:(NSData *)data {
-	if ((self = [super initWithData:data])) {
-		if (![self initializeBuddyInfo]) {
-			[super dealloc];
-			return nil;
+	@try {
+		if ((self = [super initWithData:data])) {
+			if (![self initializeBuddyInfo]) {
+				[super dealloc];
+				return nil;
+			}
 		}
+	} @catch (NSException * ex) {
+		[super dealloc];
+		return nil;
 	}
 	return self;
 }
 - (id)initWithByteBuffer:(ANByteBuffer *)buffer {
-	if ((self = [super initWithByteBuffer:buffer])) {
-		if (![self initializeBuddyInfo]) {
-			[super dealloc];
-			return nil;
+	@try {
+		if ((self = [super initWithByteBuffer:buffer])) {
+			if (![self initializeBuddyInfo]) {
+				[super dealloc];
+				return nil;
+			}
 		}
+	} @catch (NSException * ex) {
+		[super dealloc];
+		return nil;
 	}
 	return self;
 }

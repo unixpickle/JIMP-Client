@@ -16,8 +16,12 @@
 	NSArray * groups;
 }
 
++ (BuddyList *)sharedBuddyList;
++ (void)setSharedBuddyList:(BuddyList *)aList;
+
 - (id)initWithBuddyList:(OOTBuddyList *)buddyList;
 
+- (NSArray *)groupNames;
 - (int)numberOfGroups;
 - (NSString *)groupTitle:(int)index;
 - (int)numberOfItems:(int)group;

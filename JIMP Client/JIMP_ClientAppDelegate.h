@@ -13,9 +13,10 @@
 @interface JIMP_ClientAppDelegate : NSObject <NSApplicationDelegate> {
 	NSWindow * window;
 	SignonViewController * signon;
-	
+	IBOutlet NSMenuItem * menuItemAddBuddy;
 }
 
 @property (assign) IBOutlet NSWindow * window;
+@property (assign) IBOutlet NSMenuItem * menuItemAddBuddy;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "BuddyListView.h"
+#import "JIMP_ClientAppDelegate.h"
 
 
 @implementation BuddyListView
@@ -25,6 +26,13 @@
 
 - (void)loadView {
 	[super loadView];
+	
+	JIMP_ClientAppDelegate * appDelegate = (JIMP_ClientAppDelegate *)[[NSApplication sharedApplication] delegate];
+	NSMenuItem * addItem = [appDelegate menuItemAddBuddy];
+	[addItem setTarget:self];
+	[addItem setAction:@selector(addBuddy:)];
+	[addItem setEnabled:YES];
+	
 	usernameLabel = [NSTextField labelTextFieldWithFont:[NSFont systemFontOfSize:12]];
 	buddyDisplay = [[BuddyListDisplayView alloc] initWithFrame:NSMakeRect(0, 45, self.view.frame.size.width, self.view.frame.size.height - 25)];
 	
@@ -60,9 +68,39 @@
 		}
 		BuddyList * buddyList = [[BuddyList alloc] initWithBuddyList:blist];
 		[buddyDisplay setBuddyList:buddyList];
+		[BuddyList setSharedBuddyList:buddyList];
 		[buddyList release];
 		[blist release];
 	}
+}
+
+- (void)addBuddy:(id)sender {
+	NSLog(@"Add buddy");
+	NSRect addBuddyWindowFrame = NSMakeRect(0, 0, 325, 100);
+	NSView * contentView = [[ANViewControllerView alloc] initWithFrame:addBuddyWindowFrame];
+	AddBuddyWindow * addWindow = [[AddBuddyWindow alloc] initWithContentRect:addBuddyWindowFrame styleMask:NSTitledWindowMask backing:NSBackingStoreBuffered defer:NO];
+	[addWindow setDelegate:self];
+	[addWindow setGroupNames:[[BuddyList sharedBuddyList] groupNames]];
+	[addWindow setContentView:contentView];
+	[addWindow configureContent];
+		
+	[NSApp beginSheet:addWindow modalForWindow:[self window] modalDelegate:self didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:) contextInfo:nil];
+	
+	[addWindow release];
+	[contentView release];
+}
+
+- (void)sheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
+	NSLog(@"-sheetDidEnd");
+}
+
+- (void)addBuddyCancelled:(id)sender {
+	[NSApp endSheet:sender];
+	[sender orderOut:nil];
+}
+
+- (void)addBuddy:(NSString *)username toGroup:(NSString *)group {
+	// TODO: create a buddy list INSERT object here.
 }
 
 - (void)dealloc {
