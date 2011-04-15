@@ -163,7 +163,7 @@
 			myVar.tv_sec = 10;
 			myVar.tv_usec = 0;
 			error = select(newsockfd + 1, &readDetector,
-						   NULL, NULL, &myVar);
+						   NULL, NULL, NULL);
 			if (error < 0) {
 				if ([self isOpen]) { // it thinks we are still open.
 					[self performSelector:@selector(connectionClosed) onThread:mainThread withObject:nil waitUntilDone:YES];
@@ -177,7 +177,7 @@
 		int headerHas = 0;
 		while (headerHas < 12) {
 			int justGot = (int)read(newsockfd, &header[headerHas], 12 - headerHas);
-			if (justGot < 0 && [self isOpen]) { // it thinks we are still open.
+			if (justGot <= 0 && [self isOpen]) { // it thinks we are still open.
 				[self performSelector:@selector(connectionClosed) onThread:mainThread withObject:nil waitUntilDone:YES];
 				headerHas = 0;
 				break;

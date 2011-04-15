@@ -17,6 +17,8 @@
 
 @implementation BuddyList
 
+@synthesize buddyList;
+
 + (BuddyList **)sharedBuddyListAddress {
 	static BuddyList * list;
 	return &list;
@@ -29,6 +31,22 @@
 	[*[BuddyList sharedBuddyListAddress] autorelease];
 	*[BuddyList sharedBuddyListAddress] = [aList retain];
 }
++ (BOOL)handleInsert:(OOTInsertBuddy *)buddyInsert {
+	BuddyList * buddyList = [BuddyList sharedBuddyList];
+	OOTBuddyList * list = [buddyList buddyList];
+	NSMutableArray * buddies = [NSMutableArray arrayWithArray:[list buddies]];
+	NSMutableArray * groups = [NSMutableArray arrayWithArray:[list groups]];
+	[buddies insertObject:[buddyInsert buddy] atIndex:[buddyInsert buddyIndex]];
+	OOTBuddyList * newOOTList = [[OOTBuddyList alloc] initWithBuddies:buddies groups:groups];
+	if (!newOOTList) {
+		return NO;
+	}
+	BuddyList * blist = [[BuddyList alloc] initWithBuddyList:newOOTList];
+	[BuddyList setSharedBuddyList:blist];
+	[blist release];
+	[newOOTList release];
+	return YES;
+}
 
 - (id)init {
     if ((self = [super init])) {
@@ -37,13 +55,13 @@
     return self;
 }
 
-- (id)initWithBuddyList:(OOTBuddyList *)buddyList {
+- (id)initWithBuddyList:(OOTBuddyList *)aBuddyList {
 	if ((self = [super init])) {
 		NSMutableArray * groupList = [NSMutableArray array];
-		for (OOTText * group in [buddyList groups]) {
+		for (OOTText * group in [aBuddyList groups]) {
 			NSString * groupName = [group textValue];
 			NSMutableArray * buddiesInGroup = [NSMutableArray array];
-			for (OOTBuddy * buddy in [buddyList buddies]) {
+			for (OOTBuddy * buddy in [aBuddyList buddies]) {
 				if ([[buddy groupName] isEqual:groupName]) {
 					[buddiesInGroup addObject:[buddy screenName]];
 				}
@@ -51,6 +69,7 @@
 			NSDictionary * groupObject = [NSDictionary dictionaryWithObjectsAndKeys:buddiesInGroup, @"buddies",
 																		groupName, @"name", nil];
 			[groupList addObject:groupObject];
+			buddyList = [aBuddyList retain];
 		}
 		groups = [[NSArray alloc] initWithArray:groupList];
 	}
@@ -98,6 +117,7 @@
 
 - (void)dealloc {
 	[groups release];
+	[buddyList release];
     [super dealloc];
 }
 

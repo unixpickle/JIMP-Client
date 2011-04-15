@@ -23,6 +23,26 @@
     return self;
 }
 
+- (id)initWithBuddies:(NSArray *)theBuddies groups:(NSArray *)theGroups {
+	OOTArray * buddyArray = [[OOTArray alloc] initWithArray:theBuddies];
+	OOTArray * groupArray = [[OOTArray alloc] initWithArray:theGroups];
+	NSMutableData * encodedData = [NSMutableData data];
+	[encodedData appendData:[groupArray encodeClass]];
+	[encodedData appendData:[buddyArray encodeClass]];
+	@try {
+		if ((self = [super initWithName:@"blst" data:encodedData])) {
+			buddies = buddyArray;
+			groups = groupArray;
+		}
+	} @catch (NSException * ex) {
+		[buddyArray release];
+		[groupArray release];
+		[super dealloc];
+		return nil;
+	}
+	return self;
+}
+
 - (id)initWithObject:(OOTObject *)object {
 	@try {
 		if ((self = [super initWithObject:object])) {

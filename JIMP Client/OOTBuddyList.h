@@ -17,6 +17,7 @@
 	OOTArray * buddies;
 }
 
+- (id)initWithBuddies:(NSArray *)theBuddies groups:(NSArray *)theGroups;
 - (id)initWithObject:(OOTObject *)object;
 - (id)initWithData:(NSData *)data;
 - (id)initWithByteBuffer:(ANByteBuffer *)buffer;

@@ -30,7 +30,7 @@
 		[dataContent appendData:[string dataUsingEncoding:NSASCIIStringEncoding]];
 		[dataContent appendData:encoded];
 		
-		if ((self = [super initWithName:@"isrt" data:encoded])) {
+		if ((self = [super initWithName:@"isrt" data:dataContent])) {
 			buddy = [aBuddy retain];
 			buddyIndex = index;
 		}

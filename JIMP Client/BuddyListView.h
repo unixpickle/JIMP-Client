@@ -14,6 +14,7 @@
 #import "OOTBuddyList.h"
 #import "BuddyListDisplayView.h"
 #import "AddBuddyWindow.h"
+#import "OOTInsertBuddy.h"
 
 
 @interface BuddyListView : ANViewController <AddBuddyWindowDelegate> {
@@ -31,7 +32,9 @@
 @property (nonatomic, retain) BuddyListDisplayView * buddyDisplay;
 
 - (void)connectionGotData:(NSNotification *)notification;
+- (void)connectionDidClose:(NSNotification *)notification;
 - (void)addBuddy:(id)sender;
 - (void)sheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo;
+- (void)closeView:(id)sender;
 
 @end

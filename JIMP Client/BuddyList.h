@@ -9,17 +9,22 @@
 #import <Foundation/Foundation.h>
 #import "OOTBuddyList.h"
 #import "OOTBuddy.h"
+#import "OOTInsertBuddy.h"
 
 
 @interface BuddyList : NSObject {
     // group = {"name": x, "buddies": [bud1, bud2, bud3, ...]};
 	NSArray * groups;
+	OOTBuddyList * buddyList;
 }
+
+@property (readonly) OOTBuddyList * buddyList;
 
 + (BuddyList *)sharedBuddyList;
 + (void)setSharedBuddyList:(BuddyList *)aList;
++ (BOOL)handleInsert:(OOTInsertBuddy *)buddyInsert;
 
-- (id)initWithBuddyList:(OOTBuddyList *)buddyList;
+- (id)initWithBuddyList:(OOTBuddyList *)aBuddyList;
 
 - (NSArray *)groupNames;
 - (int)numberOfGroups;
