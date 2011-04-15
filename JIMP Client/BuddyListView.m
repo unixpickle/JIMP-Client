@@ -32,6 +32,11 @@
 	[addItem setTarget:self];
 	[addItem setAction:@selector(addBuddy:)];
 	[addItem setEnabled:YES];
+	NSMenuItem * addGItem = [appDelegate menuItemAddGroup];
+	[addGItem setTarget:self];
+	[addGItem setAction:@selector(addGroup:)];
+	[addGItem setEnabled:YES];
+
 	
 	self.usernameLabel = [NSTextField labelTextFieldWithFont:[NSFont systemFontOfSize:12]];
 	buddyDisplay = [[BuddyListDisplayView alloc] initWithFrame:NSMakeRect(0, 45, self.view.frame.size.width, self.view.frame.size.height - 25)];
@@ -106,15 +111,29 @@
 }
 
 - (void)addBuddy:(id)sender {
-	NSLog(@"Add buddy");
 	NSRect addBuddyWindowFrame = NSMakeRect(0, 0, 325, 100);
 	NSView * contentView = [[ANViewControllerView alloc] initWithFrame:addBuddyWindowFrame];
 	AddBuddyWindow * addWindow = [[AddBuddyWindow alloc] initWithContentRect:addBuddyWindowFrame styleMask:NSTitledWindowMask backing:NSBackingStoreBuffered defer:NO];
+	
 	[addWindow setDelegate:self];
 	[addWindow setGroupNames:[[BuddyList sharedBuddyList] groupNames]];
 	[addWindow setContentView:contentView];
 	[addWindow configureContent];
 		
+	[NSApp beginSheet:addWindow modalForWindow:[self window] modalDelegate:self didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:) contextInfo:nil];
+	
+	[addWindow release];
+	[contentView release];
+}
+
+- (void)addGroup:(id)sender {
+	NSRect addGroupWindowFrame = NSMakeRect(0, 0, 325, 100);
+	NSView * contentView = [[ANViewControllerView alloc] initWithFrame:addGroupWindowFrame];
+	AddBuddyWindow * addWindow = [[AddGroupWindow alloc] initWithContentRect:addGroupWindowFrame styleMask:NSTitledWindowMask backing:NSBackingStoreBuffered defer:NO];
+
+	[addWindow setContentView:contentView];
+	[addWindow configureContent];
+	
 	[NSApp beginSheet:addWindow modalForWindow:[self window] modalDelegate:self didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:) contextInfo:nil];
 	
 	[addWindow release];
@@ -139,12 +158,30 @@
 	[buddy release];
 }
 
+- (void)addGroupClicked:(NSString *)aGroup {
+	int index = (int)[[[[BuddyList sharedBuddyList] buddyList] groups] count];
+	
+}
+
+- (void)addGroupCancelled:(NSWindow *)sender {
+	[NSApp endSheet:sender];
+	[sender orderOut:nil];
+}
+
 - (void)closeView:(id)sender {
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:OOTConnectionClosedNotification object:currentConnection];
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:OOTConnectionHasObjectNotification object:currentConnection];
 	[currentConnection release];
 	currentConnection = nil;
 	[[self parentViewController] dismissViewController];
+	
+	JIMP_ClientAppDelegate * appDelegate = (JIMP_ClientAppDelegate *)[[NSApplication sharedApplication] delegate];
+	NSMenuItem * addItem = [appDelegate menuItemAddBuddy];
+	[addItem setTarget:nil];
+	[addItem setEnabled:NO];
+	NSMenuItem * addGItem = [appDelegate menuItemAddGroup];
+	[addGItem setTarget:nil];
+	[addGItem setEnabled:NO];
 }
 
 - (void)dealloc {

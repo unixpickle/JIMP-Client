@@ -11,6 +11,8 @@
 		FA34E42313553D0F004F4C20 /* BuddyTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA34E42213553D0F004F4C20 /* BuddyTitleCell.m */; };
 		FA34E426135540E7004F4C20 /* BlankCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA34E425135540E6004F4C20 /* BlankCell.m */; };
 		FA34E4381356778A004F4C20 /* AddBuddyWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FA34E4371356778A004F4C20 /* AddBuddyWindow.m */; };
+		FA426FFF1357C29B00E0D8EC /* AddGroupWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FA426FFE1357C29B00E0D8EC /* AddGroupWindow.m */; };
+		FA4270021357C91700E0D8EC /* OOTInsertGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4270011357C91600E0D8EC /* OOTInsertGroup.m */; };
 		FA53CA281354E5E600D60A4A /* OOTArray.m in Sources */ = {isa = PBXBuildFile; fileRef = FA53CA271354E5E600D60A4A /* OOTArray.m */; };
 		FA53CA2B1354E69900D60A4A /* OOTUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = FA53CA2A1354E69900D60A4A /* OOTUtil.m */; };
 		FA53CA311354ECE100D60A4A /* OOTBuddy.m in Sources */ = {isa = PBXBuildFile; fileRef = FA53CA301354ECE100D60A4A /* OOTBuddy.m */; };
@@ -65,6 +67,10 @@
 		FA34E425135540E6004F4C20 /* BlankCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlankCell.m; sourceTree = "<group>"; };
 		FA34E4361356778A004F4C20 /* AddBuddyWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBuddyWindow.h; sourceTree = "<group>"; };
 		FA34E4371356778A004F4C20 /* AddBuddyWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBuddyWindow.m; sourceTree = "<group>"; };
+		FA426FFD1357C29B00E0D8EC /* AddGroupWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddGroupWindow.h; sourceTree = "<group>"; };
+		FA426FFE1357C29B00E0D8EC /* AddGroupWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGroupWindow.m; sourceTree = "<group>"; };
+		FA4270001357C91600E0D8EC /* OOTInsertGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOTInsertGroup.h; sourceTree = "<group>"; };
+		FA4270011357C91600E0D8EC /* OOTInsertGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOTInsertGroup.m; sourceTree = "<group>"; };
 		FA53CA261354E5E600D60A4A /* OOTArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOTArray.h; sourceTree = "<group>"; };
 		FA53CA271354E5E600D60A4A /* OOTArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOTArray.m; sourceTree = "<group>"; };
 		FA53CA291354E69800D60A4A /* OOTUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOTUtil.h; sourceTree = "<group>"; };
@@ -189,6 +195,8 @@
 			children = (
 				FA34E4361356778A004F4C20 /* AddBuddyWindow.h */,
 				FA34E4371356778A004F4C20 /* AddBuddyWindow.m */,
+				FA426FFD1357C29B00E0D8EC /* AddGroupWindow.h */,
+				FA426FFE1357C29B00E0D8EC /* AddGroupWindow.m */,
 			);
 			name = "Pop-ups";
 			sourceTree = "<group>";
@@ -389,6 +397,8 @@
 			children = (
 				FAF97A40135788AA00B4A9E9 /* OOTInsertBuddy.h */,
 				FAF97A41135788AA00B4A9E9 /* OOTInsertBuddy.m */,
+				FA4270001357C91600E0D8EC /* OOTInsertGroup.h */,
+				FA4270011357C91600E0D8EC /* OOTInsertGroup.m */,
 			);
 			name = Editing;
 			sourceTree = "<group>";
@@ -529,6 +539,8 @@
 				FA34E426135540E7004F4C20 /* BlankCell.m in Sources */,
 				FA34E4381356778A004F4C20 /* AddBuddyWindow.m in Sources */,
 				FAF97A42135788AA00B4A9E9 /* OOTInsertBuddy.m in Sources */,
+				FA426FFF1357C29B00E0D8EC /* AddGroupWindow.m in Sources */,
+				FA4270021357C91700E0D8EC /* OOTInsertGroup.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

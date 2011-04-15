@@ -14,9 +14,11 @@
 	NSWindow * window;
 	SignonViewController * signon;
 	IBOutlet NSMenuItem * menuItemAddBuddy;
+	IBOutlet NSMenuItem * menuItemAddGroup;
 }
 
 @property (assign) IBOutlet NSWindow * window;
 @property (assign) IBOutlet NSMenuItem * menuItemAddBuddy;
+@property (assign) IBOutlet NSMenuItem * menuItemAddGroup;
 
 @end
