@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "BuddyList.h"
 #import "BuddyTitleCell.h"
+#import "BuddyListCell.h"
 #import "BlankCell.h"
 
 

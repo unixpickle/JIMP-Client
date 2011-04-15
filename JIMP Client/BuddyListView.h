@@ -17,6 +17,7 @@
 #import "OOTConnection.h"
 #import "OOTBuddyList.h"
 #import "OOTInsertBuddy.h"
+#import "OOTInsertGroup.h"
 
 
 @interface BuddyListView : ANViewController <AddBuddyWindowDelegate, AddGroupWindowDelegate> {

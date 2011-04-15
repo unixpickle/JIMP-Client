@@ -39,13 +39,20 @@
 
 	
 	self.usernameLabel = [NSTextField labelTextFieldWithFont:[NSFont systemFontOfSize:12]];
-	buddyDisplay = [[BuddyListDisplayView alloc] initWithFrame:NSMakeRect(0, 45, self.view.frame.size.width, self.view.frame.size.height - 25)];
+	buddyDisplay = [[BuddyListDisplayView alloc] initWithFrame:NSMakeRect(0, 0, self.view.frame.size.width, self.view.frame.size.height - 45)];
+	NSBox * line = [[NSBox alloc] initWithFrame:NSMakeRect(-10, self.view.frame.size.height - 44, self.view.frame.size.width + 20, 1)];
 	
-	[usernameLabel setFrame:NSMakeRect(10, 10, self.view.frame.size.width - 20, 25)];
+	[line setBorderType:NSLineBorder];
+	[line setBorderWidth:1];
+	
+	[usernameLabel setFrame:NSMakeRect(10, self.view.frame.size.height - 30, self.view.frame.size.width - 20, 25)];
 	[usernameLabel setStringValue:[NSString stringWithFormat:@"Logged in as: %@", currentUsername]];
-	
+
+	[self.view addSubview:line];
 	[self.view addSubview:usernameLabel];
 	[self.view addSubview:buddyDisplay];
+	
+	[line release];
 	
 	// here we will query the buddy list.
 	OOTObject * object = [[OOTObject alloc] initWithName:@"gbst" data:[NSData data]];
@@ -90,6 +97,20 @@
 		} else {
 			NSLog(@"Buddy list modification failed: add");
 		}
+		[buddyInsert release];
+	} else if ([[object className] isEqual:@"irtg"]) {
+		OOTInsertGroup * groupInsert = [[OOTInsertGroup alloc] initWithObject:object];
+		if (!groupInsert) {
+			NSLog(@"Failed to parse irtg object.");
+			return;
+		}
+		if ([BuddyList handleInsertG:groupInsert]) {
+			NSLog(@"Buddy list modified: add group");
+			[buddyDisplay setBuddyList:[BuddyList sharedBuddyList]];
+		} else {
+			NSLog(@"Buddy list modification failed: add group");
+		}
+		[groupInsert release];
 	} else if ([[object className] isEqual:@"errr"]) {
 		OOTError * error = [[OOTError alloc] initWithObject:object];
 		NSString * message = [error errorMessage];
@@ -132,6 +153,7 @@
 	AddBuddyWindow * addWindow = [[AddGroupWindow alloc] initWithContentRect:addGroupWindowFrame styleMask:NSTitledWindowMask backing:NSBackingStoreBuffered defer:NO];
 
 	[addWindow setContentView:contentView];
+	[addWindow setDelegate:self];
 	[addWindow configureContent];
 	
 	[NSApp beginSheet:addWindow modalForWindow:[self window] modalDelegate:self didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:) contextInfo:nil];
@@ -160,7 +182,9 @@
 
 - (void)addGroupClicked:(NSString *)aGroup {
 	int index = (int)[[[[BuddyList sharedBuddyList] buddyList] groups] count];
-	
+	OOTInsertGroup * group = [[OOTInsertGroup alloc] initWithIndex:index group:aGroup];
+	[currentConnection writeObject:group];
+	[group release];
 }
 
 - (void)addGroupCancelled:(NSWindow *)sender {

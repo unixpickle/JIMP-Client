@@ -10,6 +10,7 @@
 #import "OOTBuddyList.h"
 #import "OOTBuddy.h"
 #import "OOTInsertBuddy.h"
+#import "OOTInsertGroup.h"
 
 
 @interface BuddyList : NSObject {
@@ -23,6 +24,7 @@
 + (BuddyList *)sharedBuddyList;
 + (void)setSharedBuddyList:(BuddyList *)aList;
 + (BOOL)handleInsert:(OOTInsertBuddy *)buddyInsert;
++ (BOOL)handleInsertG:(OOTInsertGroup *)groupInsert;
 
 - (id)initWithBuddyList:(OOTBuddyList *)aBuddyList;
 

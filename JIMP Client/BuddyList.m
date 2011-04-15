@@ -47,6 +47,22 @@
 	[newOOTList release];
 	return YES;
 }
++ (BOOL)handleInsertG:(OOTInsertGroup *)groupInsert {
+	BuddyList * buddyList = [BuddyList sharedBuddyList];
+	OOTBuddyList * list = [buddyList buddyList];
+	NSMutableArray * buddies = [NSMutableArray arrayWithArray:[list buddies]];
+	NSMutableArray * groups = [NSMutableArray arrayWithArray:[list groups]];
+	[groups insertObject:[groupInsert groupName] atIndex:[groupInsert groupIndex]];
+	OOTBuddyList * newOOTList = [[OOTBuddyList alloc] initWithBuddies:buddies groups:groups];
+	if (!newOOTList) {
+		return NO;
+	}
+	BuddyList * blist = [[BuddyList alloc] initWithBuddyList:newOOTList];
+	[BuddyList setSharedBuddyList:blist];
+	[blist release];
+	[newOOTList release];
+	return YES;
+}
 
 - (id)init {
     if ((self = [super init])) {

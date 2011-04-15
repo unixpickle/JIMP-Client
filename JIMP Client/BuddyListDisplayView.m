@@ -18,7 +18,7 @@
         // Initialization code here.
 		indices = [[NSMutableDictionary alloc] init];
 		NSRect bounds = self.bounds;
-		buddyOutline = [[NSOutlineView alloc] initWithFrame:bounds];
+		buddyOutline = [[NSOutlineView alloc] initWithFrame:NSMakeRect(0, 0, bounds.size.width, bounds.size.height)];
 		[buddyOutline setDataSource:self];
 		[buddyOutline setDelegate:self];
 		
@@ -33,14 +33,20 @@
 		[c release];
 		[cell release];
 		
+		[buddyOutline setAutoresizingMask:(NSViewWidthSizable)];
 		[buddyOutline reloadData];
+		[buddyOutline setAutoresizesOutlineColumn:NO];
 		
 		NSScrollView * scrollView = [[NSScrollView alloc] initWithFrame:NSMakeRect(0, 0, bounds.size.width, bounds.size.height)];
 		[scrollView setDocumentView:buddyOutline];
-		[scrollView setAutoresizesSubviews:YES];
+		[scrollView setAutohidesScrollers:YES];
+		[scrollView setScrollsDynamically:YES];
+		[scrollView setHasVerticalScroller:YES];
+		
+		[self setAutoresizesSubviews:YES];
 		
 		[self addSubview:scrollView];
-		// [scrollView release];
+		[scrollView release];
     }
     return self;
 }
@@ -97,6 +103,12 @@
 		[text setTextColor:[NSColor grayColor]];
 		[buddyTitle setUpFieldEditorAttributes:text];
 		return [buddyTitle autorelease];
+	} else { 
+		BuddyListCell * cell = [[BuddyListCell alloc] initTextCell:item];
+		if ([outlineView rowForItem:item] % 2 == 0) {
+			[cell setBackgroundColor:[NSColor colorWithDeviceRed:0.929 green:0.953 blue:0.996 alpha:1]];
+		}
+		return [cell autorelease];
 	}
 	return nil;
 }
@@ -104,6 +116,13 @@
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item {
 	if (![outlineView parentForItem:item]) return NO;
 	return YES;
+}
+
+- (CGFloat)outlineView:(NSOutlineView *)outlineView heightOfRowByItem:(id)item {
+	if ([outlineView parentForItem:item]) {
+		return 34;
+	}
+	return 17;
 }
 
 - (void)dealloc {

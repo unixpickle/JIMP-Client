@@ -29,7 +29,7 @@
 - (id)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)aStyle backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag {
 	if ((self = [super initWithContentRect:contentRect styleMask:aStyle backing:bufferingType defer:flag])) {
 		self.groupLabel = [NSTextField labelTextFieldWithFont:[NSFont systemFontOfSize:[NSFont systemFontSize]]];
-		groupName = [[NSTextField alloc] initWithFrame:NSMakeRect(10, 35, contentRect.size.width - 110, 25)];
+		groupName = [[NSTextField alloc] initWithFrame:NSMakeRect(10, 35, contentRect.size.width - 20, 25)];
 		addButton = [[NSButton alloc] initWithFrame:NSMakeRect(contentRect.size.width - 90, contentRect.size.height - 30, 85, 25)];
 		cancelButton = [[NSButton alloc] initWithFrame:NSMakeRect(contentRect.size.width - 185, contentRect.size.height - 30, 85, 25)];
 				
@@ -42,7 +42,7 @@
 		[cancelButton setBezelStyle:NSRoundRectBezelStyle];
 		
 		[cancelButton setTarget:self];
-		[cancelButton setAction:@selector(cancelButton:)];
+		[cancelButton setAction:@selector(cancelPress:)];
 		[addButton setTarget:self];
 		[addButton setAction:@selector(addPress:)];
 

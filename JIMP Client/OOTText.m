@@ -31,6 +31,13 @@
 	return self;
 }
 
+- (id)initWithData:(NSData *)data {
+	if ((self = [super initWithData:data])) {
+		textValue = [[NSString alloc] initWithData:[self classData] encoding:NSUTF8StringEncoding];
+	}
+	return self;
+}
+
 - (NSString *)textValue {
 	return textValue;
 }

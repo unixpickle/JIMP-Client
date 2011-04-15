@@ -261,7 +261,7 @@
 			}
 		}
 		
-		[NSThread sleepForTimeInterval:0.2];
+		[NSThread sleepForTimeInterval:0.1];
 		
 		[pool drain];
 	}
