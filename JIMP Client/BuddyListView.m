@@ -36,11 +36,18 @@
 	[addGItem setTarget:self];
 	[addGItem setAction:@selector(addGroup:)];
 	[addGItem setEnabled:YES];
+	NSMenuItem * removeItem = [appDelegate menuItemRemoveBuddy];
+	[removeItem setTarget:self];
+	[removeItem setAction:@selector(removeBuddy:)];
+	[removeItem setEnabled:YES];
+	
 
 	
 	self.usernameLabel = [NSTextField labelTextFieldWithFont:[NSFont systemFontOfSize:12]];
 	buddyDisplay = [[BuddyListDisplayView alloc] initWithFrame:NSMakeRect(0, 0, self.view.frame.size.width, self.view.frame.size.height - 45)];
 	NSBox * line = [[NSBox alloc] initWithFrame:NSMakeRect(-10, self.view.frame.size.height - 44, self.view.frame.size.width + 20, 1)];
+	
+	[(BuddyOutline *)[buddyDisplay buddyOutline] setBuddyDelegate:self];
 	
 	[line setBorderType:NSLineBorder];
 	[line setBorderWidth:1];
@@ -74,12 +81,6 @@
 	// NSLog(@"object: %@", object);
 	if ([[object className] isEqual:@"blst"]) {
 		OOTBuddyList * blist = [[OOTBuddyList alloc] initWithObject:object];
-		for (OOTText * group in [blist groups]) {
-			NSLog(@"Group: %@", [group textValue]);
-		}
-		for (OOTBuddy * buddy in [blist buddies]) {
-			NSLog(@"Buddy: %@ (%@)", [buddy screenName], [buddy groupName]);
-		}
 		BuddyList * buddyList = [[BuddyList alloc] initWithBuddyList:blist];
 		[buddyDisplay setBuddyList:buddyList];
 		[BuddyList setSharedBuddyList:buddyList];
@@ -111,6 +112,19 @@
 			NSLog(@"Buddy list modification failed: add group");
 		}
 		[groupInsert release];
+	} else if ([[object className] isEqual:@"delb"]) {
+		OOTDeleteBuddy * buddyDelete = [[OOTDeleteBuddy alloc] initWithObject:object];
+		if (!buddyDelete) {
+			NSLog(@"Failed tok parse delb object.");
+			return;
+		}
+		if ([BuddyList handleDelete:buddyDelete]) {
+			NSLog(@"Buddy list modified: deleted buddy");
+			[buddyDisplay setBuddyList:[BuddyList sharedBuddyList]];
+		} else {
+			NSLog(@"Buddy list modification failed: delete buddy");
+		}
+		[buddyDelete release];
 	} else if ([[object className] isEqual:@"errr"]) {
 		OOTError * error = [[OOTError alloc] initWithObject:object];
 		NSString * message = [error errorMessage];
@@ -162,6 +176,17 @@
 	[contentView release];
 }
 
+- (void)removeBuddy:(id)sender {
+	if ([[buddyDisplay buddyOutline] selectedRow] < 0) {
+		NSBeep();
+		return;
+	}
+	
+	int index = (int)[[buddyDisplay buddyOutline] selectedRow];
+	id item = [[[buddyDisplay buddyOutline] itemAtRow:index] title];
+	[self buddyOutlineDeleteBuddy:item];
+}
+
 - (void)sheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
 }
 
@@ -192,6 +217,16 @@
 	[sender orderOut:nil];
 }
 
+- (void)buddyOutlineDeleteBuddy:(NSString *)buddy {
+	OOTDeleteBuddy * delete = [[OOTDeleteBuddy alloc] initWithBuddyName:buddy];
+	[currentConnection writeObject:delete];
+	[delete release];
+}
+
+- (void)buddyOutlineDeleteGroup:(NSString *)group {
+	NSLog(@"Delete group: %@", group);
+}
+
 - (void)closeView:(id)sender {
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:OOTConnectionClosedNotification object:currentConnection];
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:OOTConnectionHasObjectNotification object:currentConnection];
@@ -206,6 +241,9 @@
 	NSMenuItem * addGItem = [appDelegate menuItemAddGroup];
 	[addGItem setTarget:nil];
 	[addGItem setEnabled:NO];
+	NSMenuItem * removeBuddy = [appDelegate menuItemAddGroup];
+	[removeBuddy setTarget:nil];
+	[removeBuddy setEnabled:NO];
 }
 
 - (void)dealloc {

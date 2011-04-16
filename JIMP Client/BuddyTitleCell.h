@@ -8,9 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+@class BuddyOutline;
 
 @interface BuddyTitleCell : NSCell {
-    
+    BuddyOutline * outlineView;
+	id item;
 }
+
+@property (nonatomic, assign) BuddyOutline * outlineView;
+@property (nonatomic, retain) id item;
 
 @end

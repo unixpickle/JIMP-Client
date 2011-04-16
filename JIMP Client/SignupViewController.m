@@ -33,12 +33,30 @@
 	NSRect frame = [newView frame];
 	frame.size.width = 320;
 	[newView setFrame:frame];
+	
+	NSFont * sysFont = [NSFont systemFontOfSize:[NSFont systemFontSize]];
 
-	usernameField = [[NSTextField alloc] initWithFrame:NSMakeRect(10, 10, frame.size.width - 20, 25)];
-	passwordField = [[NSSecureTextField alloc] initWithFrame:NSMakeRect(10, 45, frame.size.width - 20, 25)];
-	confirmPasswordField = [[NSSecureTextField alloc] initWithFrame:NSMakeRect(10, 80, frame.size.width - 20, 25)];
+	usernameField = [[NSTextField alloc] initWithFrame:NSMakeRect(100, 10, frame.size.width - 110, 23)];
+	passwordField = [[NSSecureTextField alloc] initWithFrame:NSMakeRect(100, 45, frame.size.width - 110, 23)];
+	confirmPasswordField = [[NSSecureTextField alloc] initWithFrame:NSMakeRect(100, 80, frame.size.width - 110, 23)];
 	createButton = [[NSButton alloc] initWithFrame:NSMakeRect(frame.size.width - 90, 115, 80, 25)];
 	cancelButton = [[NSButton alloc] initWithFrame:NSMakeRect(10, 115, 80, 25)];
+	NSTextField * usernameFieldPrompt = [NSTextField labelTextFieldWithFont:sysFont];
+	NSTextField * passwordFieldPrompt = [NSTextField labelTextFieldWithFont:sysFont];
+	NSTextField * confirmFieldPrompt = [NSTextField labelTextFieldWithFont:sysFont];
+	
+	[usernameFieldPrompt setFrame:NSMakeRect(10, 12, 85, 25)];
+	[usernameFieldPrompt setStringValue:@"Screenname:"];
+	
+	[passwordFieldPrompt setFrame:NSMakeRect(10, 48, 85, 25)];
+	[passwordFieldPrompt setStringValue:@"Password:"];
+	
+	[confirmFieldPrompt setFrame:NSMakeRect(10, 83, 85, 25)];
+	[confirmFieldPrompt setStringValue:@"Confirm:"];
+	
+	[usernameFieldPrompt setAlignment:NSRightTextAlignment];
+	[passwordFieldPrompt setAlignment:NSRightTextAlignment];
+	[confirmFieldPrompt setAlignment:NSRightTextAlignment];
 	
 	[usernameField becomeFirstResponder];
 	
@@ -69,6 +87,9 @@
 	[newView addSubview:confirmPasswordField];
 	[newView addSubview:cancelButton];
 	[newView addSubview:createButton];
+	[newView addSubview:usernameFieldPrompt];
+	[newView addSubview:passwordFieldPrompt];
+	[newView addSubview:confirmFieldPrompt];
 }
 
 - (BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector {
@@ -129,7 +150,7 @@
 	} else {
 		NSAlert * alert = [[NSAlert alloc] init];
 		[alert setMessageText:@"The signup failed."];
-		[alert setInformativeText:@"Could not estabolish a connection with the Jitsik server.  Please try again later."];
+		[alert setInformativeText:@"Could not establish a connection with the Jitsik server.  Please try again later."];
 		[alert beginSheetModalForWindow:[self window] modalDelegate:nil didEndSelector:0 contextInfo:NULL];
 		[alert autorelease];
 	}

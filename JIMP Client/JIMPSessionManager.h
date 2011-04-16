@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "OOTConnection.h"
 
-#define kJIMPHost @"127.0.0.1"
+#define kJIMPHost @"192.168.1.101"
 #define kJIMPPort 1338
 
 @interface JIMPSessionManager : NSObject {

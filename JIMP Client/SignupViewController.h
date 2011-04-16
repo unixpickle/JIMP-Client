@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "ANViewController.h"
 #import "LoadingViewController.h"
+#import "NSTextField+Label.h"
 
 #import "ANLinkButton.h"
 

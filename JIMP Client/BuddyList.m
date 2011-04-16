@@ -63,6 +63,27 @@
 	[newOOTList release];
 	return YES;
 }
++ (BOOL)handleDelete:(OOTDeleteBuddy *)buddyDelete {
+	BuddyList * buddyList = [BuddyList sharedBuddyList];
+	OOTBuddyList * list = [buddyList buddyList];
+	NSMutableArray * buddies = [NSMutableArray arrayWithArray:[list buddies]];
+	NSMutableArray * groups = [NSMutableArray arrayWithArray:[list groups]];
+	for (int i = 0; i < [buddies count]; i++) {
+		if ([[[buddies objectAtIndex:i] screenName] isEqual:[buddyDelete screenName]]) {
+			[buddies removeObjectAtIndex:i];
+			break;
+		}
+	}
+	OOTBuddyList * newOOTList = [[OOTBuddyList alloc] initWithBuddies:buddies groups:groups];
+	if (!newOOTList) {
+		return NO;
+	}
+	BuddyList * blist = [[BuddyList alloc] initWithBuddyList:newOOTList];
+	[BuddyList setSharedBuddyList:blist];
+	[blist release];
+	[newOOTList release];
+	return YES;
+}
 
 - (id)init {
     if ((self = [super init])) {

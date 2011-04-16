@@ -7,9 +7,13 @@
 //
 
 #import "BuddyTitleCell.h"
+#import "BuddyOutline.h"
 
 
 @implementation BuddyTitleCell
+
+@synthesize outlineView;
+@synthesize item;
 
 - (id)init {
     if ((self = [super init])) {
@@ -40,13 +44,35 @@
 	return [NSColor whiteColor];
 }
 
+- (void)highlightSelectionInClipRect:(NSRect)clipRect {
+	return;
+}
+
 - (void)setSelectable:(BOOL)flag {
 	[super setSelectable:NO];
+}
+
+- (void)setHighlighted:(BOOL)flag {
+	[super setHighlighted:NO];
+}
+
+- (void)setState:(NSInteger)value {
+	NSLog(@"State: %d", (int)value);
+}
+
+- (void)setRefusesFirstResponder:(BOOL)flag {
+	[super setRefusesFirstResponder:YES];
+}
+
+- (void)setBackgroundStyle:(NSBackgroundStyle)style {
+	[super setBackgroundStyle:NSBackgroundStyleLight];
 }
 
 - (void)drawWithFrame:(NSRect)cellFrame inView:(NSView *)controlView {
 	// create a new rect that covers the bounds
 	// of the entire cell.
+	[[NSColor blackColor] set];
+	NSRectFill(cellFrame);
 	NSRect newRect = cellFrame;
 	newRect.origin.x -= 20;
 	newRect.origin.y -= 1;
@@ -62,8 +88,23 @@
 	NSRectFill(NSMakeRect(newRect.origin.x, newRect.origin.y, newRect.size.width, 1));
 	[[NSColor colorWithDeviceRed:0.741 green:0.741 blue:0.741 alpha:1] set];
 	NSRectFill(NSMakeRect(newRect.origin.x, newRect.origin.y + newRect.size.height - 1, newRect.size.width, 1));
+		
+	NSImage * disclosure = nil;
+	if ([outlineView isExpanded:item]) {
+		disclosure = [NSImage imageNamed:@"expand2.png"];
+	} else {
+		disclosure = [NSImage imageNamed:@"expand1.png"];
+	}
 	
-	[super drawWithFrame:cellFrame inView:controlView];
+	NSSize boxSize = [disclosure size];
+	CGFloat topY = (cellFrame.origin.y + (cellFrame.size.height / 2)) - (boxSize.height / 2);
+	NSRect disclosureRect = NSMakeRect(cellFrame.origin.x - boxSize.width, topY, [disclosure size].width, [disclosure size].height);
+	[disclosure drawInRect:disclosureRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
+	
+	cellFrame.origin.x += 1;
+	[[self attributedStringValue] drawInRect:cellFrame];
+	
+	// [super drawWithFrame:cellFrame inView:controlView];
 }
 
 - (NSView *)controlView {
@@ -71,7 +112,8 @@
 }
 
 - (void)dealloc {
-    [super dealloc];
+	self.item = nil;
+	[super dealloc];
 }
 
 @end

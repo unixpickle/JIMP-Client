@@ -11,15 +11,16 @@
 #import "BuddyTitleCell.h"
 #import "BuddyListCell.h"
 #import "BlankCell.h"
-
+#import "BuddyOutline.h"
+#import "BuddyListItem.h"
 
 @interface BuddyListDisplayView : NSView <NSOutlineViewDataSource, NSOutlineViewDelegate> {
     BuddyList * buddyList;
-	NSOutlineView * buddyOutline;
-	NSMutableDictionary * indices;
+	BuddyOutline * buddyOutline;
 }
 
 - (void)setBuddyList:(BuddyList *)_buddyList;
+- (void)deleteClick:(id)sender;
 
 @property (nonatomic, retain) NSOutlineView * buddyOutline;
 

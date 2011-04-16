@@ -16,9 +16,8 @@
 - (id)initWithFrame:(NSRect)frame {
     if ((self = [super initWithFrame:frame])) {
         // Initialization code here.
-		indices = [[NSMutableDictionary alloc] init];
 		NSRect bounds = self.bounds;
-		buddyOutline = [[NSOutlineView alloc] initWithFrame:NSMakeRect(0, 0, bounds.size.width, bounds.size.height)];
+		buddyOutline = [[BuddyOutline alloc] initWithFrame:NSMakeRect(0, 0, bounds.size.width, bounds.size.height)];
 		[buddyOutline setDataSource:self];
 		[buddyOutline setDelegate:self];
 		
@@ -52,6 +51,7 @@
 }
 
 - (void)setBuddyList:(BuddyList *)_buddyList {
+	[buddyOutline deselectAll:self];
 	[buddyList autorelease];
 	buddyList = [_buddyList retain];
 	[buddyOutline reloadData];
@@ -64,47 +64,55 @@
 
 #pragma mark Outline View
 
-- (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item {
+- (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(BuddyListItem *)item {
 	if (!item) {
 		int count = [buddyList numberOfGroups];
 		return count;
 	} else {
-		int count = [buddyList numberOfItems:[[indices objectForKey:item] intValue]];
+		int count = [buddyList numberOfItems:(int)[(BuddyListItem *)item index]];
 		return count;
 	}
 }
 
 
-- (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {
-    if (![outlineView parentForItem:item]) {
+- (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(BuddyListItem *)item {
+    if ([(BuddyListItem *)item type] == BuddyListItemTypeGroup) {
 		return YES;
 	} else return NO;
 }
 
-- (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item {
+- (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(BuddyListItem *)item {
 	if (!item) {
 		id newItem = [buddyList groupTitle:(int)index];
-		[indices setObject:[NSNumber numberWithInt:(int)index] forKey:newItem];
-		return newItem;
+		return [[BuddyListItem itemWithTitle:newItem type:BuddyListItemTypeGroup index:index] retain];
 	} else {
-		return [buddyList itemAtIndex:(int)index ofGroup:[[indices objectForKey:item] intValue]];
+		NSString * titleItem = [buddyList itemAtIndex:(int)index ofGroup:(int)[(BuddyListItem *)item index]];
+		return [[BuddyListItem itemWithTitle:titleItem type:BuddyListItemTypeBuddy index:index] retain];
 	}
 }
 
-- (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item {
+- (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(BuddyListItem *)item {
 	return item;
 }
 
-- (NSCell *)outlineView:(NSOutlineView *)outlineView dataCellForTableColumn:(NSTableColumn *)tableColumn item:(id)item {
-	if (![outlineView parentForItem:item]) {
-		BuddyTitleCell * buddyTitle = [[BuddyTitleCell alloc] initTextCell:item];
-		NSText * text = [[NSText alloc] init];
-		[text setFont:[NSFont boldSystemFontOfSize:[NSFont systemFontSize]]];
-		[text setTextColor:[NSColor grayColor]];
-		[buddyTitle setUpFieldEditorAttributes:text];
+- (NSCell *)outlineView:(NSOutlineView *)outlineView dataCellForTableColumn:(NSTableColumn *)tableColumn item:(BuddyListItem *)item {
+	if ([(BuddyListItem *)item type] == BuddyListItemTypeGroup) {
+		BuddyTitleCell * buddyTitle = [[BuddyTitleCell alloc] initTextCell:[item title]];
+		
+		NSFont * font = [NSFont boldSystemFontOfSize:13];
+		NSDictionary * attributes = [NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName,
+									 NSForegroundColorAttributeName, [NSColor grayColor], nil];
+		NSAttributedString * string = [[NSAttributedString alloc] initWithString:[item title] attributes:attributes];
+		
+		[buddyTitle setAttributedStringValue:string];
+		[buddyTitle setOutlineView:(BuddyOutline *)outlineView];
+		[buddyTitle setItem:item];
+		
+		[string release];
+		
 		return [buddyTitle autorelease];
 	} else { 
-		BuddyListCell * cell = [[BuddyListCell alloc] initTextCell:item];
+		BuddyListCell * cell = [[BuddyListCell alloc] initTextCell:[item title]];
 		if ([outlineView rowForItem:item] % 2 == 0) {
 			[cell setBackgroundColor:[NSColor colorWithDeviceRed:0.929 green:0.953 blue:0.996 alpha:1]];
 		}
@@ -113,13 +121,24 @@
 	return nil;
 }
 
-- (BOOL)outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item {
-	if (![outlineView parentForItem:item]) return NO;
+- (void)outlineView:(NSOutlineView *)ov willDisplayOutlineCell:(NSButtonCell *)cell forTableColumn:(NSTableColumn *)tableColumn item:(BuddyListItem *)item {
+	NSImage * blank = [[NSImage alloc] init];
+	[cell setImage:blank];
+	[cell setAlternateImage:blank];
+	[blank release];
+}
+
+- (BOOL)outlineView:(NSOutlineView *)outlineView shouldSelectItem:(BuddyListItem *)item {
+	if ([(BuddyListItem *)item type] == BuddyListItemTypeGroup) return NO;
 	return YES;
 }
 
+- (void)deleteClick:(id)sender {
+	
+}
+
 - (CGFloat)outlineView:(NSOutlineView *)outlineView heightOfRowByItem:(id)item {
-	if ([outlineView parentForItem:item]) {
+	if ([(BuddyListItem *)item type] == BuddyListItemTypeBuddy) {
 		return 34;
 	}
 	return 17;
@@ -127,7 +146,6 @@
 
 - (void)dealloc {
 	self.buddyOutline = nil;
-	[indices release];
     [super dealloc];
 }
 

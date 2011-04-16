@@ -18,9 +18,12 @@
 #import "OOTBuddyList.h"
 #import "OOTInsertBuddy.h"
 #import "OOTInsertGroup.h"
+#import "OOTDeleteBuddy.h"
+#import "BuddyListItem.h"
+#import "BuddyOutline.h"
 
 
-@interface BuddyListView : ANViewController <AddBuddyWindowDelegate, AddGroupWindowDelegate> {
+@interface BuddyListView : ANViewController <AddBuddyWindowDelegate, AddGroupWindowDelegate, BuddyOutlineDelegate> {
 	NSString * currentUsername;
 	OOTConnection * currentConnection;
 	BuddyListDisplayView * buddyDisplay;
@@ -38,6 +41,7 @@
 - (void)connectionDidClose:(NSNotification *)notification;
 - (void)addBuddy:(id)sender;
 - (void)addGroup:(id)sender;
+- (void)removeBuddy:(id)sender;
 - (void)sheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo;
 - (void)closeView:(id)sender;
 
