@@ -45,6 +45,7 @@
 		FA9868AE1350F27300EB7F4E /* BuddyListView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9868AD1350F27300EB7F4E /* BuddyListView.m */; };
 		FA9868B11350F41600EB7F4E /* OOTError.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9868B01350F41400EB7F4E /* OOTError.m */; };
 		FA9868B413510B6D00EB7F4E /* OOTSignup.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9868B313510B6900EB7F4E /* OOTSignup.m */; };
+		FADAF1C9135912B300409D27 /* OOTDeleteBuddy.m in Sources */ = {isa = PBXBuildFile; fileRef = FADAF1C8135912B300409D27 /* OOTDeleteBuddy.m */; };
 		FAE517AA1357E7DC00788706 /* BuddyListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE517A91357E7DC00788706 /* BuddyListCell.m */; };
 		FAF97A42135788AA00B4A9E9 /* OOTInsertBuddy.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF97A41135788AA00B4A9E9 /* OOTInsertBuddy.m */; };
 		FAFD2F9C135501F600534232 /* BuddyListDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFD2F9B135501F600534232 /* BuddyListDisplayView.m */; };
@@ -137,6 +138,8 @@
 		FA9868B01350F41400EB7F4E /* OOTError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOTError.m; sourceTree = "<group>"; };
 		FA9868B213510B6500EB7F4E /* OOTSignup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOTSignup.h; sourceTree = "<group>"; };
 		FA9868B313510B6900EB7F4E /* OOTSignup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOTSignup.m; sourceTree = "<group>"; };
+		FADAF1C7135912B300409D27 /* OOTDeleteBuddy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOTDeleteBuddy.h; sourceTree = "<group>"; };
+		FADAF1C8135912B300409D27 /* OOTDeleteBuddy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOTDeleteBuddy.m; sourceTree = "<group>"; };
 		FAE517A81357E7DC00788706 /* BuddyListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuddyListCell.h; sourceTree = "<group>"; };
 		FAE517A91357E7DC00788706 /* BuddyListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuddyListCell.m; sourceTree = "<group>"; };
 		FAF97A40135788AA00B4A9E9 /* OOTInsertBuddy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOTInsertBuddy.h; sourceTree = "<group>"; };
@@ -404,6 +407,8 @@
 				FAF97A41135788AA00B4A9E9 /* OOTInsertBuddy.m */,
 				FA4270001357C91600E0D8EC /* OOTInsertGroup.h */,
 				FA4270011357C91600E0D8EC /* OOTInsertGroup.m */,
+				FADAF1C7135912B300409D27 /* OOTDeleteBuddy.h */,
+				FADAF1C8135912B300409D27 /* OOTDeleteBuddy.m */,
 			);
 			name = Editing;
 			sourceTree = "<group>";
@@ -547,6 +552,7 @@
 				FA426FFF1357C29B00E0D8EC /* AddGroupWindow.m in Sources */,
 				FA4270021357C91700E0D8EC /* OOTInsertGroup.m in Sources */,
 				FAE517AA1357E7DC00788706 /* BuddyListCell.m in Sources */,
+				FADAF1C9135912B300409D27 /* OOTDeleteBuddy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

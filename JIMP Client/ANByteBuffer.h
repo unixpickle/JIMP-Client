@@ -17,6 +17,8 @@
 - (id)initWithData:(NSData *)data;
 - (id)initWithBytes:(const char *)bytes length:(int)length;
 
++ (id)byteBufferWithData:(NSData *)data;
+
 - (char)getByte;
 - (const char *)getBytes:(int)length;
 

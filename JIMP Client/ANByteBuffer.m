@@ -32,6 +32,9 @@
 	}
 	return self;
 }
++ (id)byteBufferWithData:(NSData *)data {
+	return [[[ANByteBuffer alloc] initWithData:data] autorelease];
+}
 
 - (char)getByte {
 	if (offset >= [buffer length]) {
