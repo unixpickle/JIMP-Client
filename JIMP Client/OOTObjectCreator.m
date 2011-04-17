@@ -36,6 +36,18 @@
 	} else if ([[anObject className] isEqual:@"list"]) {
 		OOTArray * array = [[OOTArray alloc] initWithObject:anObject];
 		return [array autorelease];
+	} else if ([[anObject className] isEqual:@"isrt"]) {
+		OOTInsertBuddy * buddyInsert = [[OOTInsertBuddy alloc] initWithObject:anObject];
+		return [buddyInsert autorelease];
+	} else if ([[anObject className] isEqual:@"irtg"]) {
+		OOTInsertGroup * groupInsert = [[OOTInsertGroup alloc] initWithObject:anObject];
+		return [groupInsert autorelease];
+	} else if ([[anObject className] isEqual:@"delg"]) {
+		OOTDeleteGroup * groupDelete = [[OOTDeleteGroup alloc] initWithObject:anObject];
+		return [groupDelete autorelease];
+	} else if ([[anObject className] isEqual:@"delb"]) {
+		OOTDeleteBuddy * buddyDelete = [[OOTDeleteBuddy alloc] initWithObject:anObject];
+		return [buddyDelete autorelease];
 	}
 	return anObject;
 }

@@ -92,8 +92,11 @@
 }
 - (id)initWithName:(NSString *)_className data:(NSData *)_classData {
 	if ((self = [super init])) {
-		className = [_className retain];
-		classData = [_classData retain];
+		if ([_className length] != 4) {
+			@throw [NSException exceptionWithName:@"ClassNameLengthException" reason:@"The class name specified is not four characters long" userInfo:nil];
+		}
+		className = [_className copy];
+		classData = [_classData copy];
 	}
 	return self;
 }
