@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "OOTConnection.h"
 
-#define kJIMPHost @"192.168.1.101"
+#define kJIMPHost @"71.224.215.41"
 #define kJIMPPort 1338
 
 @interface JIMPSessionManager : NSObject {
@@ -17,7 +17,7 @@
 }
 
 + (JIMPSessionManager *)sharedInstance;
-- (OOTConnection *)newConnection;
+- (OOTConnection *)openConnection;
 - (OOTConnection *)firstConnection;
 - (void)connectionDisconnected:(NSNotification *)notification;
 - (NSArray *)connections;

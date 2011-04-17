@@ -94,7 +94,7 @@
 - (void)signonPressed:(id)sender {
 	OOTConnection * connection = [[JIMPSessionManager sharedInstance] firstConnection];
 	if (!connection) {
-		connection = [[JIMPSessionManager sharedInstance] newConnection];
+		connection = [[JIMPSessionManager sharedInstance] openConnection];
 	}
 	
 	if (connection) {
@@ -129,7 +129,7 @@
 		[self dismissViewController];
 		[[NSNotificationCenter defaultCenter] removeObserver:self name:OOTConnectionHasObjectNotification object:connection];
 		NSLog(@"Signon successful.");
-		BuddyListView * blv = [[BuddyListView alloc] init];
+		BuddyListViewController * blv = [[BuddyListViewController alloc] init];
 		[blv setCurrentUsername:[username stringValue]];
 		[self presentViewController:blv];
 		[blv release];

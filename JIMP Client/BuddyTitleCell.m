@@ -102,8 +102,22 @@
 	[disclosure drawInRect:disclosureRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
 	
 	cellFrame.origin.x += 1;
-	[[self attributedStringValue] drawInRect:cellFrame];
+	cellFrame.origin.y -= 0;
+	NSFont * font = [NSFont boldSystemFontOfSize:12];
+	NSShadow * shadow = [[NSShadow alloc] init];
+	NSColor * color = [NSColor colorWithCalibratedWhite:45.5/100.0 alpha:1];
 	
+	[shadow setShadowOffset:NSMakeSize(0,-1)];
+	[shadow setShadowColor:[NSColor colorWithCalibratedWhite:0.9 alpha:1]];
+	//[shadow setShadowBlurRadius:1];
+	
+	NSDictionary * attributes = [NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName,
+								 color, NSForegroundColorAttributeName, 
+								 shadow, NSShadowAttributeName, nil];
+	NSAttributedString * string = [[NSAttributedString alloc] initWithString:[self stringValue] attributes:attributes];
+	
+	[string drawInRect:cellFrame];
+	[string release];
 	// [super drawWithFrame:cellFrame inView:controlView];
 }
 

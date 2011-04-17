@@ -64,13 +64,37 @@
 	return YES;
 }
 + (BOOL)handleDelete:(OOTDeleteBuddy *)buddyDelete {
+	NSString * deleteSN = [[buddyDelete screenName] lowercaseString];
 	BuddyList * buddyList = [BuddyList sharedBuddyList];
 	OOTBuddyList * list = [buddyList buddyList];
 	NSMutableArray * buddies = [NSMutableArray arrayWithArray:[list buddies]];
 	NSMutableArray * groups = [NSMutableArray arrayWithArray:[list groups]];
 	for (int i = 0; i < [buddies count]; i++) {
-		if ([[[buddies objectAtIndex:i] screenName] isEqual:[buddyDelete screenName]]) {
+		NSString * lowercaseSN = [[[buddies objectAtIndex:i] screenName] lowercaseString];
+		if ([lowercaseSN isEqual:deleteSN]) {
 			[buddies removeObjectAtIndex:i];
+			break;
+		}
+	}
+	OOTBuddyList * newOOTList = [[OOTBuddyList alloc] initWithBuddies:buddies groups:groups];
+	if (!newOOTList) {
+		return NO;
+	}
+	BuddyList * blist = [[BuddyList alloc] initWithBuddyList:newOOTList];
+	[BuddyList setSharedBuddyList:blist];
+	[blist release];
+	[newOOTList release];
+	return YES;
+}
+
++ (BOOL)handleDeleteG:(OOTDeleteGroup *)groupDelete {
+	BuddyList * buddyList = [BuddyList sharedBuddyList];
+	OOTBuddyList * list = [buddyList buddyList];
+	NSMutableArray * buddies = [NSMutableArray arrayWithArray:[list buddies]];
+	NSMutableArray * groups = [NSMutableArray arrayWithArray:[list groups]];
+	for (int i = 0; i < [groups count]; i++) {
+		if ([[[groups objectAtIndex:i] textValue] isEqual:[groupDelete groupName]]) {
+			[groups removeObjectAtIndex:i];
 			break;
 		}
 	}

@@ -19,7 +19,7 @@
 
 #import "SignupViewController.h"
 #import "LoadingViewController.h"
-#import "BuddyListView.h"
+#import "BuddyListViewController.h"
 
 
 @interface SignonViewController : ANViewController <NSTextFieldDelegate> {

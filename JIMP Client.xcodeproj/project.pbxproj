@@ -17,10 +17,12 @@
 		FA53CA2B1354E69900D60A4A /* OOTUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = FA53CA2A1354E69900D60A4A /* OOTUtil.m */; };
 		FA53CA311354ECE100D60A4A /* OOTBuddy.m in Sources */ = {isa = PBXBuildFile; fileRef = FA53CA301354ECE100D60A4A /* OOTBuddy.m */; };
 		FA53CA371354FB4A00D60A4A /* OOTObjectCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = FA53CA361354FB4700D60A4A /* OOTObjectCreator.m */; };
+		FA807032135B264C00E46812 /* JIMPBuddyListManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA807031135B264C00E46812 /* JIMPBuddyListManager.m */; };
 		FA8DFD47135A057600BA0CA2 /* BuddyOutline.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8DFD46135A057600BA0CA2 /* BuddyOutline.m */; };
 		FA8DFD4A135A1BE400BA0CA2 /* expand1.png in Resources */ = {isa = PBXBuildFile; fileRef = FA8DFD48135A1BE400BA0CA2 /* expand1.png */; };
 		FA8DFD4B135A1BE400BA0CA2 /* expand2.png in Resources */ = {isa = PBXBuildFile; fileRef = FA8DFD49135A1BE400BA0CA2 /* expand2.png */; };
 		FA8DFD4E135A202100BA0CA2 /* BuddyListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8DFD4D135A202100BA0CA2 /* BuddyListItem.m */; };
+		FA8DFD50135A3AF300BA0CA2 /* jitsikIM.icns in Resources */ = {isa = PBXBuildFile; fileRef = FA8DFD4F135A3AF300BA0CA2 /* jitsikIM.icns */; };
 		FA9868351350940C00EB7F4E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9868341350940C00EB7F4E /* Cocoa.framework */; };
 		FA98683F1350940C00EB7F4E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA98683D1350940C00EB7F4E /* InfoPlist.strings */; };
 		FA9868421350940C00EB7F4E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9868411350940C00EB7F4E /* main.m */; };
@@ -46,10 +48,11 @@
 		FA9868A61350CF9200EB7F4E /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9868A31350CF9200EB7F4E /* NSString+MD5.m */; };
 		FA9868A71350CF9200EB7F4E /* NSData+hex.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9868A51350CF9200EB7F4E /* NSData+hex.m */; };
 		FA9868AA1350ED1F00EB7F4E /* LoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9868A91350ED1C00EB7F4E /* LoadingViewController.m */; };
-		FA9868AE1350F27300EB7F4E /* BuddyListView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9868AD1350F27300EB7F4E /* BuddyListView.m */; };
+		FA9868AE1350F27300EB7F4E /* BuddyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9868AD1350F27300EB7F4E /* BuddyListViewController.m */; };
 		FA9868B11350F41600EB7F4E /* OOTError.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9868B01350F41400EB7F4E /* OOTError.m */; };
 		FA9868B413510B6D00EB7F4E /* OOTSignup.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9868B313510B6900EB7F4E /* OOTSignup.m */; };
 		FADAF1C9135912B300409D27 /* OOTDeleteBuddy.m in Sources */ = {isa = PBXBuildFile; fileRef = FADAF1C8135912B300409D27 /* OOTDeleteBuddy.m */; };
+		FADCFE53135A6FC000F837C4 /* OOTDeleteGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = FADCFE52135A6FC000F837C4 /* OOTDeleteGroup.m */; };
 		FAE517AA1357E7DC00788706 /* BuddyListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE517A91357E7DC00788706 /* BuddyListCell.m */; };
 		FAF97A42135788AA00B4A9E9 /* OOTInsertBuddy.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF97A41135788AA00B4A9E9 /* OOTInsertBuddy.m */; };
 		FAFD2F9C135501F600534232 /* BuddyListDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFD2F9B135501F600534232 /* BuddyListDisplayView.m */; };
@@ -87,12 +90,15 @@
 		FA53CA331354F3B800D60A4A /* OOTBuddyList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOTBuddyList.m; sourceTree = "<group>"; };
 		FA53CA351354FB4300D60A4A /* OOTObjectCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOTObjectCreator.h; sourceTree = "<group>"; };
 		FA53CA361354FB4700D60A4A /* OOTObjectCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOTObjectCreator.m; sourceTree = "<group>"; };
+		FA807030135B264C00E46812 /* JIMPBuddyListManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JIMPBuddyListManager.h; sourceTree = "<group>"; };
+		FA807031135B264C00E46812 /* JIMPBuddyListManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JIMPBuddyListManager.m; sourceTree = "<group>"; };
 		FA8DFD45135A057600BA0CA2 /* BuddyOutline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuddyOutline.h; sourceTree = "<group>"; };
 		FA8DFD46135A057600BA0CA2 /* BuddyOutline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuddyOutline.m; sourceTree = "<group>"; };
 		FA8DFD48135A1BE400BA0CA2 /* expand1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = expand1.png; sourceTree = "<group>"; };
 		FA8DFD49135A1BE400BA0CA2 /* expand2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = expand2.png; sourceTree = "<group>"; };
 		FA8DFD4C135A202000BA0CA2 /* BuddyListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuddyListItem.h; sourceTree = "<group>"; };
 		FA8DFD4D135A202100BA0CA2 /* BuddyListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuddyListItem.m; sourceTree = "<group>"; };
+		FA8DFD4F135A3AF300BA0CA2 /* jitsikIM.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = jitsikIM.icns; sourceTree = "<group>"; };
 		FA9868301350940C00EB7F4E /* JIMP Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JIMP Client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA9868341350940C00EB7F4E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FA9868371350940C00EB7F4E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -142,14 +148,16 @@
 		FA9868A51350CF9200EB7F4E /* NSData+hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+hex.m"; sourceTree = "<group>"; };
 		FA9868A81350ED1B00EB7F4E /* LoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingViewController.h; sourceTree = "<group>"; };
 		FA9868A91350ED1C00EB7F4E /* LoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingViewController.m; sourceTree = "<group>"; };
-		FA9868AC1350F27300EB7F4E /* BuddyListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuddyListView.h; sourceTree = "<group>"; };
-		FA9868AD1350F27300EB7F4E /* BuddyListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuddyListView.m; sourceTree = "<group>"; };
+		FA9868AC1350F27300EB7F4E /* BuddyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuddyListViewController.h; sourceTree = "<group>"; };
+		FA9868AD1350F27300EB7F4E /* BuddyListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuddyListViewController.m; sourceTree = "<group>"; };
 		FA9868AF1350F41200EB7F4E /* OOTError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOTError.h; sourceTree = "<group>"; };
 		FA9868B01350F41400EB7F4E /* OOTError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOTError.m; sourceTree = "<group>"; };
 		FA9868B213510B6500EB7F4E /* OOTSignup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOTSignup.h; sourceTree = "<group>"; };
 		FA9868B313510B6900EB7F4E /* OOTSignup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOTSignup.m; sourceTree = "<group>"; };
 		FADAF1C7135912B300409D27 /* OOTDeleteBuddy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOTDeleteBuddy.h; sourceTree = "<group>"; };
 		FADAF1C8135912B300409D27 /* OOTDeleteBuddy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOTDeleteBuddy.m; sourceTree = "<group>"; };
+		FADCFE51135A6FC000F837C4 /* OOTDeleteGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOTDeleteGroup.h; sourceTree = "<group>"; };
+		FADCFE52135A6FC000F837C4 /* OOTDeleteGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOTDeleteGroup.m; sourceTree = "<group>"; };
 		FAE517A81357E7DC00788706 /* BuddyListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuddyListCell.h; sourceTree = "<group>"; };
 		FAE517A91357E7DC00788706 /* BuddyListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuddyListCell.m; sourceTree = "<group>"; };
 		FAF97A40135788AA00B4A9E9 /* OOTInsertBuddy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOTInsertBuddy.h; sourceTree = "<group>"; };
@@ -186,8 +194,8 @@
 				FA8DFD44135A056500BA0CA2 /* Display */,
 				FA34E42F1356772F004F4C20 /* Pop-ups */,
 				FA34E42E13567716004F4C20 /* Cells */,
-				FA9868AC1350F27300EB7F4E /* BuddyListView.h */,
-				FA9868AD1350F27300EB7F4E /* BuddyListView.m */,
+				FA9868AC1350F27300EB7F4E /* BuddyListViewController.h */,
+				FA9868AD1350F27300EB7F4E /* BuddyListViewController.m */,
 			);
 			name = BuddyList;
 			sourceTree = "<group>";
@@ -332,6 +340,7 @@
 			children = (
 				FA98683C1350940C00EB7F4E /* JIMP Client-Info.plist */,
 				FA98683D1350940C00EB7F4E /* InfoPlist.strings */,
+				FA8DFD4F135A3AF300BA0CA2 /* jitsikIM.icns */,
 				FA8DFD48135A1BE400BA0CA2 /* expand1.png */,
 				FA8DFD49135A1BE400BA0CA2 /* expand2.png */,
 				FA9868401350940C00EB7F4E /* JIMP Client-Prefix.pch */,
@@ -389,6 +398,8 @@
 				FA9868861350B57400EB7F4E /* ANByteBuffer.m */,
 				FA53CA291354E69800D60A4A /* OOTUtil.h */,
 				FA53CA2A1354E69900D60A4A /* OOTUtil.m */,
+				FA807030135B264C00E46812 /* JIMPBuddyListManager.h */,
+				FA807031135B264C00E46812 /* JIMPBuddyListManager.m */,
 			);
 			name = "JIMP Connection";
 			sourceTree = "<group>";
@@ -433,6 +444,8 @@
 				FA4270011357C91600E0D8EC /* OOTInsertGroup.m */,
 				FADAF1C7135912B300409D27 /* OOTDeleteBuddy.h */,
 				FADAF1C8135912B300409D27 /* OOTDeleteBuddy.m */,
+				FADCFE51135A6FC000F837C4 /* OOTDeleteGroup.h */,
+				FADCFE52135A6FC000F837C4 /* OOTDeleteGroup.m */,
 			);
 			name = Editing;
 			sourceTree = "<group>";
@@ -509,6 +522,7 @@
 				FA98684B1350940D00EB7F4E /* MainMenu.xib in Resources */,
 				FA8DFD4A135A1BE400BA0CA2 /* expand1.png in Resources */,
 				FA8DFD4B135A1BE400BA0CA2 /* expand2.png in Resources */,
+				FA8DFD50135A3AF300BA0CA2 /* jitsikIM.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,7 +575,7 @@
 				FA9868A61350CF9200EB7F4E /* NSString+MD5.m in Sources */,
 				FA9868A71350CF9200EB7F4E /* NSData+hex.m in Sources */,
 				FA9868AA1350ED1F00EB7F4E /* LoadingViewController.m in Sources */,
-				FA9868AE1350F27300EB7F4E /* BuddyListView.m in Sources */,
+				FA9868AE1350F27300EB7F4E /* BuddyListViewController.m in Sources */,
 				FA9868B11350F41600EB7F4E /* OOTError.m in Sources */,
 				FA9868B413510B6D00EB7F4E /* OOTSignup.m in Sources */,
 				FA53CA281354E5E600D60A4A /* OOTArray.m in Sources */,
@@ -581,6 +595,8 @@
 				FADAF1C9135912B300409D27 /* OOTDeleteBuddy.m in Sources */,
 				FA8DFD47135A057600BA0CA2 /* BuddyOutline.m in Sources */,
 				FA8DFD4E135A202100BA0CA2 /* BuddyListItem.m in Sources */,
+				FADCFE53135A6FC000F837C4 /* OOTDeleteGroup.m in Sources */,
+				FA807032135B264C00E46812 /* JIMPBuddyListManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

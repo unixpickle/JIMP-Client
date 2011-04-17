@@ -26,7 +26,7 @@
 	}
 	return manager;
 }
-- (OOTConnection *)newConnection {
+- (OOTConnection *)openConnection {
 	OOTConnection * connection = [[OOTConnection alloc] initWithHost:kJIMPHost port:kJIMPPort];
 	if (![connection connect:nil]) {
 		[connection release];
@@ -34,7 +34,7 @@
 	}
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(connectionDisconnected:) name:OOTConnectionClosedNotification object:connection];
 	[connections addObject:connection];
-	return [[connection retain] autorelease];
+	return [connection autorelease];
 }
 - (OOTConnection *)firstConnection {
 	if ([connections count] == 0) return nil;

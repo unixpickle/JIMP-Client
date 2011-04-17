@@ -129,7 +129,7 @@
 	
 	OOTConnection * connection = [[JIMPSessionManager sharedInstance] firstConnection];
 	if (!connection) {
-		connection = [[JIMPSessionManager sharedInstance] newConnection];
+		connection = [[JIMPSessionManager sharedInstance] openConnection];
 	}
 	if (connection) {
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(connectionGotData:) name:OOTConnectionHasObjectNotification object:connection];

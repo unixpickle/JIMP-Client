@@ -32,18 +32,16 @@
 		{
 			NSMenu * menu = [[NSMenu alloc] init];
 			NSPoint where;
-			NSInteger row = -1, col = -1;
+			NSInteger row = -1;
 			
 			[menu addItemWithTitle:@"Delete" action:@selector(deleteClick:) keyEquivalent:@""];
 			
 			where = [self convertPoint:[event locationInWindow] fromView:nil];
 			row = (NSInteger)[self rowAtPoint:where];
-			col = (NSInteger)[self columnAtPoint:where];
 			
 			if (row >= 0) {
-				NSTableColumn * column = nil;
-				if (col >= 0) column = [[self tableColumns] objectAtIndex:col];
-				if ([self parentForItem:[self itemAtRow:row]]) {
+				id item = [self itemAtRow:row];
+				if ([(BuddyListItem *)item type] == BuddyListItemTypeBuddy) {
 					NSMenuItem * item = [menu addItemWithTitle:@"New Chat" action:@selector(newChat:) keyEquivalent:@"C"];
 					[item setKeyEquivalentModifierMask:NSCommandKeyMask];
 				}

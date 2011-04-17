@@ -87,9 +87,12 @@
 	const char * bytes = (const char *)[[self classData] bytes];
 	NSString * lengthString = [[NSString alloc] initWithBytes:bytes length:3 encoding:NSASCIIStringEncoding];
 	if (!lengthString) {
+		[lengthString release];
 		return nil;
 	}
 	int objectCount = [lengthString intValue];
+	[lengthString release];
+	
 	int myLength = (int)([[self classData] length] - 3);
 	ANByteBuffer * buffer = [(ANByteBuffer *)[ANByteBuffer alloc] initWithBytes:&bytes[3] length:myLength];
 	NSMutableArray * objectArray = [NSMutableArray array];
@@ -100,6 +103,7 @@
 		[anObject release];
 	}
 	objects = [[NSArray alloc] initWithArray:objectArray];
+	[buffer release];
 	return self;
 }
 

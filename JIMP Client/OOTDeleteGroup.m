@@ -1,15 +1,15 @@
 //
-//  OOTDeleteBuddy.m
+//  OOTDeleteGroup.m
 //  JIMP Client
 //
-//  Created by Alex Nichol on 4/15/11.
+//  Created by Alex Nichol on 4/16/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "OOTDeleteBuddy.h"
+#import "OOTDeleteGroup.h"
 
 
-@implementation OOTDeleteBuddy
+@implementation OOTDeleteGroup
 
 - (id)init {
     if ((self = [super init])) {
@@ -18,17 +18,17 @@
     return self;
 }
 
-- (id)initWithBuddyName:(NSString *)aScreenname {
-	if ((self = [super initWithName:@"delb" data:[aScreenname dataUsingEncoding:NSUTF8StringEncoding]])) {
-		screenName = [aScreenname retain];
+
+- (id)initWithGroupName:(NSString *)aGroupName {
+	if ((self = [super initWithName:@"delg" data:[aGroupName dataUsingEncoding:NSUTF8StringEncoding]])) {
+		groupName = [aGroupName retain];
 	}
 	return self;
 }
-
 - (id)initWithObject:(OOTObject *)object {
 	@try {
 		if ((self = [super initWithObject:object])) {
-			screenName = [[NSString alloc] initWithData:[self classData] encoding:NSUTF8StringEncoding];
+			groupName = [[NSString alloc] initWithData:[self classData] encoding:NSUTF8StringEncoding];
 		}
 	} @catch (NSException * ex) {
 		[super dealloc];
@@ -36,11 +36,10 @@
 	}
 	return self;
 }
-
 - (id)initWithData:(NSData *)data {
 	@try {
 		if ((self = [super initWithData:data ])) {
-			screenName = [[NSString alloc] initWithData:[self classData] encoding:NSUTF8StringEncoding];
+			groupName = [[NSString alloc] initWithData:[self classData] encoding:NSUTF8StringEncoding];
 		}
 	} @catch (NSException * ex) {
 		[super dealloc];
@@ -48,11 +47,10 @@
 	}
 	return self;
 }
-
 - (id)initWithByteBuffer:(ANByteBuffer *)buffer {
 	@try {
 		if ((self = [super initWithByteBuffer:buffer])) {
-			screenName = [[NSString alloc] initWithData:[self classData] encoding:NSUTF8StringEncoding];
+			groupName = [[NSString alloc] initWithData:[self classData] encoding:NSUTF8StringEncoding];
 		}
 	} @catch (NSException * ex) {
 		[super dealloc];
@@ -60,13 +58,12 @@
 	}
 	return self;
 }
-
-- (NSString *)screenName {
-	return screenName;
+- (NSString *)groupName {
+	return groupName;
 }
 
 - (void)dealloc {
-	[screenName release];
+	[groupName release];
     [super dealloc];
 }
 
