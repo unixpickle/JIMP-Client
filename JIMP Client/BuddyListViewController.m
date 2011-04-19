@@ -94,6 +94,7 @@
 		[alert autorelease];
 		[error release];
 	}
+	NSLog(@"Got object class: %@", [object className]);
 }
 
 - (void)connectionDidClose:(NSNotification *)notification {

@@ -118,7 +118,6 @@
 	
 	[string drawInRect:cellFrame];
 	[string release];
-	// [super drawWithFrame:cellFrame inView:controlView];
 }
 
 - (NSView *)controlView {
