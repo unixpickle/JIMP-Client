@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA0247BE135F741D00410029 /* StatusPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0247BD135F741D00410029 /* StatusPickerView.m */; };
 		FA3121B61354FF0500BC1F64 /* OOTBuddyList.m in Sources */ = {isa = PBXBuildFile; fileRef = FA53CA331354F3B800D60A4A /* OOTBuddyList.m */; };
 		FA34E42313553D0F004F4C20 /* BuddyTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA34E42213553D0F004F4C20 /* BuddyTitleCell.m */; };
 		FA34E426135540E7004F4C20 /* BlankCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA34E425135540E6004F4C20 /* BlankCell.m */; };
@@ -73,6 +74,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FA0247BC135F741D00410029 /* StatusPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusPickerView.h; sourceTree = "<group>"; };
+		FA0247BD135F741D00410029 /* StatusPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusPickerView.m; sourceTree = "<group>"; };
 		FA34E42113553D0F004F4C20 /* BuddyTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuddyTitleCell.h; sourceTree = "<group>"; };
 		FA34E42213553D0F004F4C20 /* BuddyTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuddyTitleCell.m; sourceTree = "<group>"; };
 		FA34E424135540E6004F4C20 /* BlankCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlankCell.h; sourceTree = "<group>"; };
@@ -197,14 +200,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA0247BB135F740700410029 /* Status */ = {
+			isa = PBXGroup;
+			children = (
+				FA0247BC135F741D00410029 /* StatusPickerView.h */,
+				FA0247BD135F741D00410029 /* StatusPickerView.m */,
+			);
+			name = Status;
+			sourceTree = "<group>";
+		};
 		FA34E42D13567709004F4C20 /* BuddyList */ = {
 			isa = PBXGroup;
 			children = (
+				FAFD2F9D1355021D00534232 /* BuddyList.h */,
+				FAFD2F9E1355021D00534232 /* BuddyList.m */,
+				FA9868AC1350F27300EB7F4E /* BuddyListViewController.h */,
+				FA9868AD1350F27300EB7F4E /* BuddyListViewController.m */,
 				FA8DFD44135A056500BA0CA2 /* Display */,
 				FA34E42F1356772F004F4C20 /* Pop-ups */,
 				FA34E42E13567716004F4C20 /* Cells */,
-				FA9868AC1350F27300EB7F4E /* BuddyListViewController.h */,
-				FA9868AD1350F27300EB7F4E /* BuddyListViewController.m */,
 			);
 			name = BuddyList;
 			sourceTree = "<group>";
@@ -278,8 +292,6 @@
 				FAFD2F9B135501F600534232 /* BuddyListDisplayView.m */,
 				FA8DFD45135A057600BA0CA2 /* BuddyOutline.h */,
 				FA8DFD46135A057600BA0CA2 /* BuddyOutline.m */,
-				FAFD2F9D1355021D00534232 /* BuddyList.h */,
-				FAFD2F9E1355021D00534232 /* BuddyList.m */,
 				FA8DFD4C135A202000BA0CA2 /* BuddyListItem.h */,
 				FA8DFD4D135A202100BA0CA2 /* BuddyListItem.m */,
 			);
@@ -437,6 +449,7 @@
 		FA9868AB1350F1F700EB7F4E /* Main Window */ = {
 			isa = PBXGroup;
 			children = (
+				FA0247BB135F740700410029 /* Status */,
 				FA34E42D13567709004F4C20 /* BuddyList */,
 			);
 			name = "Main Window";
@@ -631,6 +644,7 @@
 				FAB60B20135BCD3F0094DC73 /* OOTStatus.m in Sources */,
 				FAB60B24135BD0E20094DC73 /* JIMPStatusHandler.m in Sources */,
 				FA3F14A0135D1F04003C76CE /* OOTGetStatus.m in Sources */,
+				FA0247BE135F741D00410029 /* StatusPickerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

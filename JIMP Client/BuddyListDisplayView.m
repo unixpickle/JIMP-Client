@@ -51,7 +51,6 @@
 }
 
 - (void)setBuddyList:(BuddyList *)_buddyList {
-	[buddyOutline deselectAll:self];
 	[buddyList autorelease];
 	buddyList = [_buddyList retain];
 	[buddyOutline reloadData];
@@ -111,9 +110,18 @@
 		[string release];
 		
 		return [buddyTitle autorelease];
-	} else { 
+	} else {
 		BuddyListCell * cell = [[BuddyListCell alloc] initTextCell:[item title]];
-		if ([outlineView rowForItem:item] % 2 == 0) {
+		int buddyItemIndex = 0;
+		int row = [outlineView rowForItem:item];
+		for (int i = 0; i < [outlineView numberOfRows]; i++) {
+			id anItem = [outlineView itemAtRow:i];
+			if (i == row) break;
+			if ([anItem type] == BuddyListItemTypeBuddy) {
+				buddyItemIndex += 1;
+			}
+		}
+		if (buddyItemIndex % 2 == 0) {
 			[cell setBackgroundColor:[NSColor colorWithDeviceRed:0.929 green:0.953 blue:0.996 alpha:1]];
 		}
 		return [cell autorelease];

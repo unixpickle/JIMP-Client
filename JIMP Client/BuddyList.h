@@ -13,11 +13,13 @@
 #import "OOTInsertGroup.h"
 #import "OOTDeleteBuddy.h"
 #import "OOTDeleteGroup.h"
+#import "JIMPStatusHandler.h"
 
 
 @interface BuddyList : NSObject {
     // group = {"name": x, "buddies": [bud1, bud2, bud3, ...]};
 	NSArray * groups;
+	NSMutableArray * offline;
 	OOTBuddyList * buddyList;
 }
 
@@ -69,14 +71,25 @@
 + (BOOL)handleDeleteG:(OOTDeleteGroup *)groupDelete;
 
 /**
+ * Regenerates the entire buddy list, only changing
+ * the online/offline portion of the buddy list.
+ */
++ (void)regenerateBuddyList;
+
+/**
  * Creates a new BuddyList object using an OOT Buddy List object.
- * @param aBuddyList	An OOT Buddy List object of which to use
+ * This will read the first status manager, getting the online
+ * buddies for use in the buddy list.
+ * @param aBuddyList An OOT Buddy List object of which to use
  * for our initial data.
  * @return	Returns a new BuddyList containing the groups that were
  * encoded in the OOTBuddyList.
  */
 - (id)initWithBuddyList:(OOTBuddyList *)aBuddyList;
 
+/**
+ @return An array of group names.
+ */
 - (NSArray *)groupNames;
 
 /**

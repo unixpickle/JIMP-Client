@@ -11,7 +11,9 @@
 #import "OOTText.h"
 #import "OOTUtil.h"
 
-
+/**
+ * This class is used throughout to represent buddy statuses.
+ */
 @interface OOTStatus : OOTObject {
 	OOTText * statusMessage;
 	OOTText * owner;

@@ -8,9 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
+#define ANViewControllerViewMouseMovedNotification @"ANViewControllerViewMouseMovedNotification"
 
 @interface ANViewControllerView : NSView {
-@private
     
 }
 

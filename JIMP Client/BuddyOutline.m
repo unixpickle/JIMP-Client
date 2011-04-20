@@ -60,24 +60,53 @@
 }
 
 - (void)reloadData {
+	static BOOL isFirstReload = YES;
 	NSMutableArray * expanded = [NSMutableArray array];
+	
+	id selectedItem = nil;
+	NSInteger selected = [self selectedRow];
+	if (selected >= 0)
+		selectedItem = [[self itemAtRow:selected] retain];
+		
 	for (int i = 0; i < [self numberOfRows]; i++) {
 		id item = [self itemAtRow:i];
 		if ([item isExpanded]) {
 			[expanded addObject:item];
 		}
 	}
+	
 	[super reloadData];
+	
 	for (int i = 0; i < [self numberOfRows]; i++) {
 		id item = [self itemAtRow:i];
-		for (int j = 0; j < [expanded count]; j++) {
-			id anItem = [expanded objectAtIndex:j];
-			if ([anItem isEqual:item] && [anItem isExpanded]) {
-				[super expandItem:item];
+		if (isFirstReload) {
+			[super expandItem:item];
+			[item setExpanded:YES];
+		} else {
+			for (int j = 0; j < [expanded count]; j++) {
+				id anItem = [expanded objectAtIndex:j];
+				if (([anItem isEqual:item] && [anItem isExpanded])) {
+					[super expandItem:item];
+					[item setExpanded:YES];
+				}
 			}
 		}
 	}
-	// [self selectRowIndexes:[NSIndexSet indexSetWithIndex:[self rowForItem:selected]] byExtendingSelection:NO];
+	
+	if ([self numberOfRows] > 0) isFirstReload = NO;
+	
+	NSInteger rowIndex = -1;
+	for (int i = 0; i < [self numberOfRows]; i++) {
+		id item = [self itemAtRow:i];
+		if ([item isEqual:selectedItem]) {
+			rowIndex = i;
+			break;
+		}
+	}
+
+	if (rowIndex >= 0) {
+		[self selectRowIndexes:[NSIndexSet indexSetWithIndex:rowIndex] byExtendingSelection:NO];
+	}
 }
 
 - (BOOL)isExpanded:(id)item {

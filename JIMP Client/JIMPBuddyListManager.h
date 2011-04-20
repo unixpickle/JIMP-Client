@@ -30,6 +30,11 @@
 @end
 
 
+/**
+ * Use the Buddy List Manager to handle buddy list modifications,
+ * and to make them.  This will tell its delegate when the buddy list
+ * has changed.
+ */
 @interface JIMPBuddyListManager : NSObject {
 	OOTConnection * connection;
 	id <JIMPBuddyListManagerDelegate> delegate;

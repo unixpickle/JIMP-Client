@@ -57,6 +57,8 @@
 	NSView * newView = [vc view];
 	NSRect frame = [newView frame];
 	
+	[[self window] makeFirstResponder:newView];
+	
 	frame.origin.x = 0;
 	frame.origin.y = 0;
 	[newView setFrame:frame];
@@ -96,6 +98,7 @@
 	[newView setFrame:frame];
 	
 	[[[self window] contentView] addSubview:newView];
+	[[vc window] makeFirstResponder:newView];
 	
 	frame.origin.x = 0;
 	NSRect windowFrame = [[self window] frame];
@@ -113,6 +116,7 @@
 }
 + (void)displayViewControllerInWindow:(ANViewController *)vc {
 	[vc loadView];
+	
 	NSView * newView = [vc view];
 	NSRect frame = [newView frame];
 	
@@ -120,6 +124,7 @@
 	[newView setFrame:frame];
 	
 	[[[vc window] contentView] addSubview:newView];
+	[[vc window] makeFirstResponder:newView];
 	
 	frame.origin.x = 0;
 	[newView setFrameOrigin:frame.origin];

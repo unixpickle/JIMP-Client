@@ -15,12 +15,25 @@
 @synthesize menuItemAddGroup;
 @synthesize menuItemRemoveBuddy;
 
+- (void)awakeFromNib { 
+	
+} 
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 	// Insert code here to initialize your application
-	[[JIMPSessionManager sharedInstance] openConnection];
+	// [[JIMPSessionManager sharedInstance] openConnection];
+	[[self window] setAcceptsMouseMovedEvents:YES];
+	[[self window] makeMainWindow];
+	ANViewControllerView * windowView = [[ANViewControllerView alloc] initWithFrame:[[window contentView] frame]];
+	[window setContentView:windowView];
+	NSLog(@"%d", [windowView canBecomeKeyView]);
+	[window makeFirstResponder:windowView];
+	[windowView release];
+	
 	signon = [[SignonViewController alloc] initWithWindow:window];
 	[ANViewController displayViewControllerInWindow:signon];
-	[signon release];
+	
+	[window makeFirstResponder:signon.view];
 }
 
 - (void)dealloc {

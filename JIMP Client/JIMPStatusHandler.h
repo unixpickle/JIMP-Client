@@ -10,6 +10,7 @@
 #import "OOTStatus.h"
 #import "OOTConnection.h"
 #import "OOTGetStatus.h"
+#import "OOTBuddy.h"
 
 
 @protocol JIMPStatusHandlerDelegate
@@ -25,13 +26,21 @@
 
 @end
 
+/**
+ * This class maintains a cache of buddy's statuses,
+ * as well as monitor status changes and provide callbacks
+ * for said changes.
+ */
 @interface JIMPStatusHandler : NSObject {
     NSMutableArray * statuses;
+	NSMutableArray * queued;
 	OOTConnection * connection;
 	id<JIMPStatusHandlerDelegate> delegate;
 }
 
 @property (assign) id<JIMPStatusHandlerDelegate> delegate;
+
++ (JIMPStatusHandler **)firstStatusHandler;
 
 /**
  * Creates a new JIMPStatusHandler with an open connection.
@@ -41,6 +50,14 @@
  * @return A new status handler object.
  */
 - (id)initWithConnection:(OOTConnection *)aConnection;
+
+/**
+ * Removes cached statuses of buddies that we no longer
+ * have in our buddy list.
+ * @param buddyObjects An array of all OOTBuddy objects in
+ * our current buddy list.
+ */
+- (void)removeBuddyStatuses:(NSArray *)buddyObjects;
 
 /**
  * Gets the status of a buddy.  If the status handler does not

@@ -19,6 +19,8 @@
 
 @synthesize buddyList;
 
+#pragma mark Static Methods
+
 + (BuddyList **)sharedBuddyListAddress {
 	static BuddyList * list;
 	return &list;
@@ -98,6 +100,13 @@
 			break;
 		}
 	}
+	for (int i = 0; i < [buddies count]; i++) {
+		OOTBuddy * buddy = [buddies objectAtIndex:i];
+		if ([[buddy groupName] isEqual:[groupDelete groupName]]) {
+			[buddies removeObjectAtIndex:i];
+			i -= 1;
+		}
+	}
 	OOTBuddyList * newOOTList = [[OOTBuddyList alloc] initWithBuddies:buddies groups:groups];
 	if (!newOOTList) {
 		return NO;
@@ -109,6 +118,14 @@
 	return YES;
 }
 
++ (void)regenerateBuddyList {
+	BuddyList * newList = [[BuddyList alloc] initWithBuddyList:[[BuddyList sharedBuddyList] buddyList]];
+	[BuddyList setSharedBuddyList:newList];
+	[newList release];
+}
+
+#pragma mark Buddy List Methods
+
 - (id)init {
     if ((self = [super init])) {
         // Initialization code here.
@@ -118,6 +135,7 @@
 
 - (id)initWithBuddyList:(OOTBuddyList *)aBuddyList {
 	if ((self = [super init])) {
+		offline = [[NSMutableArray alloc] init];
 		NSMutableArray * groupList = [NSMutableArray array];
 		for (OOTText * group in [aBuddyList groups]) {
 			NSString * groupName = [group textValue];
@@ -131,6 +149,13 @@
 																		groupName, @"name", nil];
 			[groupList addObject:groupObject];
 			buddyList = [aBuddyList retain];
+		}
+		JIMPStatusHandler * handler = *[JIMPStatusHandler firstStatusHandler];
+		for (OOTBuddy * buddy in [aBuddyList buddies]) {
+			OOTStatus * status = [handler statusMessageForBuddy:[buddy screenName]];
+			if (!status || [status statusType] == 'n') {
+				[offline addObject:[[buddy screenName] lowercaseString]];
+			}
 		}
 		groups = [[NSArray alloc] initWithArray:groupList];
 	}
@@ -155,28 +180,31 @@
 	}
 }
 - (int)numberOfItems:(int)group {
-	if (group == [groups count]) return 0; // for now, no offline
+	if (group == [groups count]) return [offline count]; // for now, no offline
 	NSArray * buddies = [[groups objectAtIndex:group] objectForKey:@"buddies"];
 	int count = 0;
 	// do a loop do exclude the offline noobs.
 	for (NSString * sn in buddies) {
-		count += 1;
+		if (![offline containsObject:[sn lowercaseString]]) count += 1;
 	}
 	return count;
 }
 - (NSString *)itemAtIndex:(int)index ofGroup:(int)groupIndex {
-	if (groupIndex == [groups count]) return nil; // for now, no offline
+	if (groupIndex == [groups count]) return [offline objectAtIndex:index]; // for now, no offline
 	NSArray * buddies = [[groups objectAtIndex:groupIndex] objectForKey:@"buddies"];
 	int count = 0;
 	// do a loop do exclude the offline noobs.
 	for (NSString * sn in buddies) {
-		if (count == index) return sn;
-		count += 1;
+		if (![offline containsObject:[sn lowercaseString]]) {
+			if (count == index) return sn;
+			count += 1;
+		}
 	}
 	return nil;
 }
 
 - (void)dealloc {
+	[offline release];
 	[groups release];
 	[buddyList release];
     [super dealloc];

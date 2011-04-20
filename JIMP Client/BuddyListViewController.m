@@ -16,6 +16,7 @@
 @synthesize usernameLabel;
 @synthesize signoffButton;
 @synthesize buddyDisplay;
+@synthesize statusPicker;
 
 - (id)init {
     if ((self = [super init])) {
@@ -27,6 +28,54 @@
 - (void)loadView {
 	[super loadView];
 	
+	[self configureMenuItems];
+	
+	buddyDisplay = [[BuddyListDisplayView alloc] initWithFrame:NSMakeRect(0, 0, self.view.frame.size.width, self.view.frame.size.height - 45)];
+	statusPicker = [[StatusPickerView alloc] initWithFrame:NSMakeRect(10, self.view.frame.size.height - 35, 20, 15)];
+	self.usernameLabel = [NSTextField labelTextFieldWithFont:[NSFont systemFontOfSize:12]];
+	NSBox * line = [[NSBox alloc] initWithFrame:NSMakeRect(-10, self.view.frame.size.height - 44, self.view.frame.size.width + 20, 1)];
+	
+	[line setBorderType:NSLineBorder];
+	[line setBorderWidth:1];
+	
+	[usernameLabel setFrame:NSMakeRect(10, self.view.frame.size.height - 30, self.view.frame.size.width - 20, 25)];
+	[usernameLabel setStringValue:[NSString stringWithFormat:@"Logged in as: %@", currentUsername]];
+	[usernameLabel setHidden:YES];
+	
+	[(BuddyOutline *)[buddyDisplay buddyOutline] setBuddyDelegate:self];
+	
+	OOTStatus * myStatus = [[OOTStatus alloc] initWithMessage:@"" owner:nil type:'n'];
+	[statusPicker setCurrentStatus:myStatus];
+	[myStatus release];
+
+	[self.view addSubview:line];
+	[self.view addSubview:usernameLabel];
+	[self.view addSubview:buddyDisplay];
+	[self.view addSubview:statusPicker];
+	
+	[line release];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mouseMoved:) name:ANViewControllerViewMouseMovedNotification object:self.view];
+	
+	OOTConnection * connection = [[JIMPSessionManager sharedInstance] firstConnection];
+	NSAssert(connection != nil, @"The connection was closed before the buddy list view was loaded.");
+	if (!connection) {
+		NSLog(@"ERROR: Connection closed or some such thing.");
+		return;
+	}
+	JIMPBuddyListManager * manager = [[JIMPBuddyListManager alloc] initWithConnection:connection];
+	[manager setDelegate:self];
+	[manager getBuddylist];
+	buddylistManager = manager;
+	
+	statusHandler = [[JIMPStatusHandler alloc] initWithConnection:connection];
+	[statusHandler setDelegate:self];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(connectionGotData:) name:OOTConnectionHasObjectNotification object:connection];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(connectionDidClose:) name:OOTConnectionClosedNotification object:connection];
+	currentConnection = [connection retain];
+}
+
+- (void)configureMenuItems {
 	JIMP_ClientAppDelegate * appDelegate = (JIMP_ClientAppDelegate *)[[NSApplication sharedApplication] delegate];
 	NSMenuItem * addItem = [appDelegate menuItemAddBuddy];
 	[addItem setTarget:self];
@@ -40,45 +89,34 @@
 	[removeItem setTarget:self];
 	[removeItem setAction:@selector(removeBuddy:)];
 	[removeItem setEnabled:YES];
-	
-
-	
-	self.usernameLabel = [NSTextField labelTextFieldWithFont:[NSFont systemFontOfSize:12]];
-	buddyDisplay = [[BuddyListDisplayView alloc] initWithFrame:NSMakeRect(0, 0, self.view.frame.size.width, self.view.frame.size.height - 45)];
-	NSBox * line = [[NSBox alloc] initWithFrame:NSMakeRect(-10, self.view.frame.size.height - 44, self.view.frame.size.width + 20, 1)];
-	
-	[(BuddyOutline *)[buddyDisplay buddyOutline] setBuddyDelegate:self];
-	
-	[line setBorderType:NSLineBorder];
-	[line setBorderWidth:1];
-	
-	[usernameLabel setFrame:NSMakeRect(10, self.view.frame.size.height - 30, self.view.frame.size.width - 20, 25)];
-	[usernameLabel setStringValue:[NSString stringWithFormat:@"Logged in as: %@", currentUsername]];
-
-	[self.view addSubview:line];
-	[self.view addSubview:usernameLabel];
-	[self.view addSubview:buddyDisplay];
-	
-	[line release];
-	
-	OOTConnection * connection = [[JIMPSessionManager sharedInstance] firstConnection];
-	NSAssert(connection != nil, @"The connection was closed before the buddy list view was loaded.");
-	if (!connection) {
-		NSLog(@"ERROR: Connection closed or some such thing.");
-		return;
-	}
-	JIMPBuddyListManager * manager = [[JIMPBuddyListManager alloc] initWithConnection:connection];
-	[manager setDelegate:self];
-	[manager getBuddylist];
-	buddylistManager = manager;
-	
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(connectionGotData:) name:OOTConnectionHasObjectNotification object:connection];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(connectionDidClose:) name:OOTConnectionClosedNotification object:connection];
-	currentConnection = [connection retain];
+}
+- (void)disableMenuItems {
+	JIMP_ClientAppDelegate * appDelegate = (JIMP_ClientAppDelegate *)[[NSApplication sharedApplication] delegate];
+	NSMenuItem * addItem = [appDelegate menuItemAddBuddy];
+	[addItem setTarget:nil];
+	[addItem setEnabled:NO];
+	NSMenuItem * addGItem = [appDelegate menuItemAddGroup];
+	[addGItem setTarget:nil];
+	[addGItem setEnabled:NO];
+	NSMenuItem * removeBuddy = [appDelegate menuItemAddGroup];
+	[removeBuddy setTarget:nil];
+	[removeBuddy setEnabled:NO];
 }
 
 - (void)buddyListUpdated:(BuddyList *)newBuddylist {
+	static BOOL isFirstList = YES;
 	[buddyDisplay setBuddyList:newBuddylist];
+	//[statusHandler removeBuddyStatuses:[[newBuddylist buddyList] buddies]];
+	//for (OOTBuddy * buddy in [[newBuddylist buddyList] buddies]) {
+	//	[statusHandler statusMessageForBuddy:[[buddy screenName] lowercaseString]];
+	//}
+	// set our status
+	if (isFirstList) {
+		isFirstList = NO;
+		OOTStatus * status = [[OOTStatus alloc] initWithMessage:@"Available" owner:@"" type:'o'];
+		[statusHandler setStatus:status];
+		[status release];
+	}
 }
 
 - (void)connectionGotData:(NSNotification *)notification {
@@ -105,6 +143,8 @@
 	[alert autorelease];
 	[self closeView:self];
 }
+
+#pragma mark UI
 
 - (void)addBuddy:(id)sender {
 	NSRect addBuddyWindowFrame = NSMakeRect(0, 0, 325, 100);
@@ -156,8 +196,55 @@
 	[sender orderOut:nil];
 }
 
+- (void)addGroupCancelled:(NSWindow *)sender {
+	[NSApp endSheet:sender];
+	[sender orderOut:nil];
+}
+
+- (void)closeView:(id)sender {
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:OOTConnectionClosedNotification object:currentConnection];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:OOTConnectionHasObjectNotification object:currentConnection];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:ANViewControllerViewMouseMovedNotification object:self.view];
+	[currentConnection release];
+	currentConnection = nil;
+	[buddylistManager stopManaging];
+	[buddylistManager release];
+	buddylistManager = nil;
+	[statusHandler stopManaging];
+	[statusHandler release];
+	statusHandler = nil;
+	
+	[self disableMenuItems];
+	
+	[[self parentViewController] dismissViewController];
+}
+
+#pragma mark Delegates and Functionality
+
+- (void)mouseMoved:(NSNotification *)notification {
+	NSEvent * theEvent = [[notification userInfo] objectForKey:@"event"];
+	NSPoint point = [theEvent locationInWindow];
+	NSRect selfLocation = statusPicker.frame;
+	if ([self.view isFlipped]) {
+		selfLocation.origin.y = [self.view frame].size.height - selfLocation.origin.y;
+		selfLocation.origin.y -= selfLocation.size.height;
+	}
+	NSView * superview = statusPicker;
+	while ((superview = [superview superview])) {
+		NSRect superFrame = [superview frame];
+		if ([[superview superview] isFlipped]) {
+			superFrame.origin.y = [superview.superview frame].size.height - superFrame.origin.y;
+			superFrame.origin.y -= superFrame.size.height;
+		}
+		selfLocation.origin.x += superFrame.origin.x;
+		selfLocation.origin.y += superFrame.origin.y;
+	}
+	if (NSPointInRect(point, selfLocation)) {
+		[statusPicker setHovering];
+	} else [statusPicker setUnhovering];
+}
+
 - (void)addBuddy:(NSString *)username toGroup:(NSString *)group {
-	// TODO: create a buddy list INSERT object here.
 	int index = (int)[[[[BuddyList sharedBuddyList] buddyList] buddies] count];
 	[buddylistManager insertBuddy:username group:group index:index];
 }
@@ -167,12 +254,9 @@
 	[buddylistManager insertGroup:aGroup index:index];
 }
 
-- (void)addGroupCancelled:(NSWindow *)sender {
-	[NSApp endSheet:sender];
-	[sender orderOut:nil];
-}
 
 - (void)buddyOutlineDeleteBuddy:(NSString *)buddy {
+	NSLog(@"Delete: \"%@\"", buddy);
 	[buddylistManager deleteBuddy:buddy];
 }
 
@@ -180,35 +264,34 @@
 	[buddylistManager deleteGroup:group];
 }
 
-- (void)closeView:(id)sender {
-	[[NSNotificationCenter defaultCenter] removeObserver:self name:OOTConnectionClosedNotification object:currentConnection];
-	[[NSNotificationCenter defaultCenter] removeObserver:self name:OOTConnectionHasObjectNotification object:currentConnection];
-	[currentConnection release];
-	currentConnection = nil;
-	[buddylistManager stopManaging];
-	[buddylistManager release];
-	buddylistManager = nil;
-	[[self parentViewController] dismissViewController];
-	
-	JIMP_ClientAppDelegate * appDelegate = (JIMP_ClientAppDelegate *)[[NSApplication sharedApplication] delegate];
-	NSMenuItem * addItem = [appDelegate menuItemAddBuddy];
-	[addItem setTarget:nil];
-	[addItem setEnabled:NO];
-	NSMenuItem * addGItem = [appDelegate menuItemAddGroup];
-	[addGItem setTarget:nil];
-	[addGItem setEnabled:NO];
-	NSMenuItem * removeBuddy = [appDelegate menuItemAddGroup];
-	[removeBuddy setTarget:nil];
-	[removeBuddy setEnabled:NO];
+#pragma mark Statuses
+
+- (void)statusHandler:(id)sender gotStatus:(OOTStatus *)aStatus previousStatus:(OOTStatus *)anotherStatus {
+	// update the buddy list.
+	[BuddyList regenerateBuddyList];
+	[buddyDisplay setBuddyList:[BuddyList sharedBuddyList]];
+	if ([[aStatus owner] isEqual:[currentUsername lowercaseString]]) {
+		[statusPicker setCurrentStatus:aStatus];
+	}
+}
+
+- (BOOL)statusPicker:(id)sender requestResize:(float)newWidth {
+	NSView * theView = (NSView *)sender;
+	if ([theView frame].origin.x + newWidth > self.view.frame.size.width - 10) {
+		return NO;
+	}
+	return YES;
 }
 
 - (void)dealloc {
 	[currentConnection release];
 	[buddylistManager release];
+	[statusHandler release];
 	self.currentUsername = nil;
 	self.usernameLabel = nil;
 	self.signoffButton = nil;
 	self.buddyDisplay = nil;
+	self.statusPicker = nil;
     [super dealloc];
 }
 

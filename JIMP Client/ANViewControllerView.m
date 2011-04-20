@@ -22,6 +22,26 @@
 	return YES;
 }
 
+- (BOOL)canBecomeKeyView {
+	NSLog(@"Can become key view");
+	return YES;
+}
+
+- (BOOL)acceptsFirstResponder {
+	NSLog(@"AcceptsFirstResponder");
+	return YES;
+}
+
+- (BOOL)acceptsFirstMouse:(NSEvent *)theEvent {
+	NSLog(@"acceptsFirstMouse:");
+	return YES;
+}
+
+- (void)mouseMoved:(NSEvent *)theEvent {
+	NSDictionary * dict = [NSDictionary dictionaryWithObject:theEvent forKey:@"event"];
+	[[NSNotificationCenter defaultCenter] postNotificationName:ANViewControllerViewMouseMovedNotification object:self userInfo:dict];
+}
+
 - (void)dealloc {
     [super dealloc];
 }

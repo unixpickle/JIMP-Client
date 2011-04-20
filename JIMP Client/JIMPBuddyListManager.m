@@ -101,10 +101,19 @@
 - (void)connectionNewPacket:(NSNotification *)notification {
 	OOTObject * object = [[notification userInfo] objectForKey:@"object"];
 	if ([[object className] isEqual:@"blst"]) {
+		NSLog(@"Blist object.");
 		OOTBuddyList * buddyListObj = [[OOTBuddyList alloc] initWithObject:object];
+		/*
+		Remove all of the statuses that we do not have in the buddy list.
+		We will then initialize the buddy list, which will fetch all statuses.
+		*/
+		JIMPStatusHandler * handler = *[JIMPStatusHandler firstStatusHandler];
+		[handler removeBuddyStatuses:[buddyListObj buddies]];
+		
 		BuddyList * buddyList = [[BuddyList alloc] initWithBuddyList:buddyListObj];
 		[BuddyList setSharedBuddyList:buddyList];
 		[delegate buddyListUpdated:[BuddyList sharedBuddyList]];
+		
 		[buddyList release];
 		[buddyListObj release];
 	} else if ([[object className] isEqual:@"isrt"]) {
