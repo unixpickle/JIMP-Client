@@ -23,17 +23,16 @@
 	// Insert code here to initialize your application
 	// [[JIMPSessionManager sharedInstance] openConnection];
 	[[self window] setAcceptsMouseMovedEvents:YES];
-	[[self window] makeMainWindow];
+	
 	ANViewControllerView * windowView = [[ANViewControllerView alloc] initWithFrame:[[window contentView] frame]];
 	[window setContentView:windowView];
-	NSLog(@"%d", [windowView canBecomeKeyView]);
 	[window makeFirstResponder:windowView];
 	[windowView release];
 	
 	signon = [[SignonViewController alloc] initWithWindow:window];
 	[ANViewController displayViewControllerInWindow:signon];
 	
-	[window makeFirstResponder:signon.view];
+	[window makeFirstResponder:[signon view]];
 }
 
 - (void)dealloc {

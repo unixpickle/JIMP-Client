@@ -21,16 +21,13 @@
 		[buddyOutline setDataSource:self];
 		[buddyOutline setDelegate:self];
 		
-		BlankCell * cell = [[BlankCell alloc] initTextCell:@"Buddies:"];
 		NSTableColumn * c = [[NSTableColumn alloc] initWithIdentifier:@"NAME"];
 		[c setEditable:NO];
 		[c setMinWidth:150.0];
-		[c setHeaderCell:cell];
 		[buddyOutline addTableColumn:c];
 		[buddyOutline setOutlineTableColumn:c];
 		[buddyOutline setHeaderView:nil];
 		[c release];
-		[cell release];
 		
 		[buddyOutline setAutoresizingMask:(NSViewWidthSizable)];
 		[buddyOutline reloadData];
@@ -41,10 +38,9 @@
 		[scrollView setAutohidesScrollers:YES];
 		[scrollView setScrollsDynamically:YES];
 		[scrollView setHasVerticalScroller:YES];
-		
 		[self setAutoresizesSubviews:YES];
-		
 		[self addSubview:scrollView];
+		
 		[scrollView release];
     }
     return self;
@@ -159,8 +155,6 @@
 
 - (void)drawRect:(NSRect)dirtyRect {
     // Drawing code here.
-	//[[NSColor blackColor] set];
-	//NSRectFill(dirtyRect);
 }
 
 @end

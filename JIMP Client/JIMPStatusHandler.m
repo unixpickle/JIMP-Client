@@ -119,6 +119,7 @@
 		[queued removeObject:[[status owner] lowercaseString]];
 		[statuses addObject:status];
 		[delegate statusHandler:self gotStatus:status previousStatus:previous];
+		[status release];
 	}
 }
 - (void)connectionDidClose:(NSNotification *)notification {

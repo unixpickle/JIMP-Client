@@ -23,17 +23,14 @@
 }
 
 - (BOOL)canBecomeKeyView {
-	NSLog(@"Can become key view");
 	return YES;
 }
 
 - (BOOL)acceptsFirstResponder {
-	NSLog(@"AcceptsFirstResponder");
 	return YES;
 }
 
 - (BOOL)acceptsFirstMouse:(NSEvent *)theEvent {
-	NSLog(@"acceptsFirstMouse:");
 	return YES;
 }
 

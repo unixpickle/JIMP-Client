@@ -137,6 +137,8 @@ static float textWidth (NSAttributedString * myString, float height) {
 								 pSt, NSParagraphStyleAttributeName, nil];
 	NSAttributedString * as = [[NSAttributedString alloc] initWithString:myString
 															  attributes:attributes];
+	[pSt release];
+	
 	float width = textWidth(as, self.frame.size.height);
 	if (![delegate statusPicker:self requestResize:width + 14]) {
 		// we cannot resize ourselves

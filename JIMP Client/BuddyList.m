@@ -39,6 +39,10 @@
 			[groupList addObject:groupObject];
 			buddyList = [aBuddyList retain];
 		}
+		/*
+		 Filter out the buddies that are offline, moving them
+		 to the temporary Offline group.
+		 */
 		JIMPStatusHandler * handler = *[JIMPStatusHandler firstStatusHandler];
 		for (OOTBuddy * buddy in [aBuddyList buddies]) {
 			OOTStatus * status = [handler statusMessageForBuddy:[buddy screenName]];
@@ -69,20 +73,18 @@
 	}
 }
 - (int)numberOfItems:(int)group {
-	if (group == [groups count]) return [offline count]; // for now, no offline
+	if (group == [groups count]) return [offline count];
 	NSArray * buddies = [[groups objectAtIndex:group] objectForKey:@"buddies"];
 	int count = 0;
-	// do a loop do exclude the offline noobs.
 	for (NSString * sn in buddies) {
 		if (![offline containsObject:[sn lowercaseString]]) count += 1;
 	}
 	return count;
 }
 - (NSString *)itemAtIndex:(int)index ofGroup:(int)groupIndex {
-	if (groupIndex == [groups count]) return [offline objectAtIndex:index]; // for now, no offline
+	if (groupIndex == [groups count]) return [offline objectAtIndex:index];
 	NSArray * buddies = [[groups objectAtIndex:groupIndex] objectForKey:@"buddies"];
 	int count = 0;
-	// do a loop do exclude the offline noobs.
 	for (NSString * sn in buddies) {
 		if (![offline containsObject:[sn lowercaseString]]) {
 			if (count == index) return sn;

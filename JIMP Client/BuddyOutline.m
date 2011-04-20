@@ -103,6 +103,8 @@
 			break;
 		}
 	}
+	
+	[selectedItem release];
 
 	if (rowIndex >= 0) {
 		[self selectRowIndexes:[NSIndexSet indexSetWithIndex:rowIndex] byExtendingSelection:NO];
