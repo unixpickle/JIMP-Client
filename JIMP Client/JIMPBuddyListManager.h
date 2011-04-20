@@ -47,6 +47,59 @@
 @property (assign) id <JIMPBuddyListManagerDelegate> delegate;
 
 /**
+ * Returns a shared buddy list object.
+ * @return	The current shared buddy list object.
+ */
++ (BuddyList *)sharedBuddyList;
+
+/**
+ * Changes the shared buddy list, retaining
+ * the list provided.
+ * @param aList	The new buddy list of which to share
+ */
++ (void)setSharedBuddyList:(BuddyList *)aList;
+
+/**
+ * Modifies the shared buddy list to accomedate an insert
+ * that came from the server.
+ * @param buddyInsert	The insert object that came from the server.
+ * @return	YES if the buddy was successfully inserted, NO if not.
+ */
++ (BOOL)handleInsert:(OOTInsertBuddy *)buddyInsert;
+
+/**
+ * Modifies the shared buddy list to accomedate an insert
+ * that came from the server.
+ * @param groupInsert	The insert object that came from the server.
+ * @return	YES if the group was successfully inserted, NO if not.
+ */
++ (BOOL)handleInsertG:(OOTInsertGroup *)groupInsert;
+
+/**
+ * Modifies the shared buddy list to accomedate a delete
+ * that came from the server.
+ * @param buddyDelete	The delete object that came from the server.
+ * @return YES if the buddy was successfully deleted, NO if not.
+ */
++ (BOOL)handleDelete:(OOTDeleteBuddy *)buddyDelete;
+
+/**
+ * Modifies the shared buddy list to accomedate a delete
+ * that came from the server.
+ * @param groupDelete	The delete object that came from the server.
+ * @return YES if the group was successfully deleted, NO if not.
+ */
++ (BOOL)handleDeleteG:(OOTDeleteGroup *)groupDelete;
+
+/**
+ * Regenerates the entire buddy list, only changing
+ * the online/offline portion of the buddy list.
+ */
++ (void)regenerateBuddyList;
+
+#pragma mark Buddy List
+
+/**
  * Takes a connection and retains it.  Also, registers
  * the notifications that it needs.
  * @return	returns the initialized object.

@@ -50,6 +50,7 @@
 - (void)connectionDidClose:(NSNotification *)notification;
 
 - (void)configureMenuItems;
+- (void)configureManagers;
 - (void)disableMenuItems;
 
 - (void)addBuddy:(id)sender;
@@ -57,6 +58,7 @@
 - (void)removeBuddy:(id)sender;
 
 - (void)mouseMoved:(NSNotification *)notification;
+
 
 - (void)sheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo;
 - (void)closeView:(id)sender;
