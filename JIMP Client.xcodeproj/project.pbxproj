@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		FA0247BE135F741D00410029 /* StatusPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0247BD135F741D00410029 /* StatusPickerView.m */; };
+		FA13932F135F9F3F001FE21D /* NSView+Translate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA13932E135F9F3F001FE21D /* NSView+Translate.m */; };
+		FA13934A1360CCF7001FE21D /* StatusPickerMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1393491360CCF6001FE21D /* StatusPickerMenuItem.m */; };
 		FA3121B61354FF0500BC1F64 /* OOTBuddyList.m in Sources */ = {isa = PBXBuildFile; fileRef = FA53CA331354F3B800D60A4A /* OOTBuddyList.m */; };
 		FA34E42313553D0F004F4C20 /* BuddyTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA34E42213553D0F004F4C20 /* BuddyTitleCell.m */; };
 		FA34E426135540E7004F4C20 /* BlankCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA34E425135540E6004F4C20 /* BlankCell.m */; };
@@ -53,6 +55,8 @@
 		FA9868AE1350F27300EB7F4E /* BuddyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9868AD1350F27300EB7F4E /* BuddyListViewController.m */; };
 		FA9868B11350F41600EB7F4E /* OOTError.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9868B01350F41400EB7F4E /* OOTError.m */; };
 		FA9868B413510B6D00EB7F4E /* OOTSignup.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9868B313510B6900EB7F4E /* OOTSignup.m */; };
+		FAAE96C7135F947400AA39B4 /* smallexpand.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAE96C5135F947400AA39B4 /* smallexpand.png */; };
+		FAAE96C8135F947400AA39B4 /* smallexpand_h.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAE96C6135F947400AA39B4 /* smallexpand_h.png */; };
 		FAB60B20135BCD3F0094DC73 /* OOTStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB60B1F135BCD3F0094DC73 /* OOTStatus.m */; };
 		FAB60B24135BD0E20094DC73 /* JIMPStatusHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB60B23135BD0E20094DC73 /* JIMPStatusHandler.m */; };
 		FADAF1C9135912B300409D27 /* OOTDeleteBuddy.m in Sources */ = {isa = PBXBuildFile; fileRef = FADAF1C8135912B300409D27 /* OOTDeleteBuddy.m */; };
@@ -76,6 +80,10 @@
 /* Begin PBXFileReference section */
 		FA0247BC135F741D00410029 /* StatusPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusPickerView.h; sourceTree = "<group>"; };
 		FA0247BD135F741D00410029 /* StatusPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusPickerView.m; sourceTree = "<group>"; };
+		FA13932D135F9F3F001FE21D /* NSView+Translate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+Translate.h"; sourceTree = "<group>"; };
+		FA13932E135F9F3F001FE21D /* NSView+Translate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+Translate.m"; sourceTree = "<group>"; };
+		FA1393481360CCF6001FE21D /* StatusPickerMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusPickerMenuItem.h; sourceTree = "<group>"; };
+		FA1393491360CCF6001FE21D /* StatusPickerMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusPickerMenuItem.m; sourceTree = "<group>"; };
 		FA34E42113553D0F004F4C20 /* BuddyTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuddyTitleCell.h; sourceTree = "<group>"; };
 		FA34E42213553D0F004F4C20 /* BuddyTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuddyTitleCell.m; sourceTree = "<group>"; };
 		FA34E424135540E6004F4C20 /* BlankCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlankCell.h; sourceTree = "<group>"; };
@@ -162,6 +170,8 @@
 		FA9868B01350F41400EB7F4E /* OOTError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOTError.m; sourceTree = "<group>"; };
 		FA9868B213510B6500EB7F4E /* OOTSignup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOTSignup.h; sourceTree = "<group>"; };
 		FA9868B313510B6900EB7F4E /* OOTSignup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOTSignup.m; sourceTree = "<group>"; };
+		FAAE96C5135F947400AA39B4 /* smallexpand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smallexpand.png; sourceTree = "<group>"; };
+		FAAE96C6135F947400AA39B4 /* smallexpand_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smallexpand_h.png; sourceTree = "<group>"; };
 		FAB60B1E135BCD3F0094DC73 /* OOTStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOTStatus.h; sourceTree = "<group>"; };
 		FAB60B1F135BCD3F0094DC73 /* OOTStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOTStatus.m; sourceTree = "<group>"; };
 		FAB60B22135BD0E20094DC73 /* JIMPStatusHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JIMPStatusHandler.h; sourceTree = "<group>"; };
@@ -205,6 +215,8 @@
 			children = (
 				FA0247BC135F741D00410029 /* StatusPickerView.h */,
 				FA0247BD135F741D00410029 /* StatusPickerView.m */,
+				FA1393481360CCF6001FE21D /* StatusPickerMenuItem.h */,
+				FA1393491360CCF6001FE21D /* StatusPickerMenuItem.m */,
 			);
 			name = Status;
 			sourceTree = "<group>";
@@ -348,10 +360,12 @@
 				FA9868AB1350F1F700EB7F4E /* Main Window */,
 				FA9868461350940D00EB7F4E /* JIMP_ClientAppDelegate.h */,
 				FA9868471350940D00EB7F4E /* JIMP_ClientAppDelegate.m */,
-				FA9868491350940D00EB7F4E /* MainMenu.xib */,
-				FA98683B1350940C00EB7F4E /* Supporting Files */,
 				FA9868721350987F00EB7F4E /* NSTextField+Label.h */,
 				FA9868731350987F00EB7F4E /* NSTextField+Label.m */,
+				FA13932D135F9F3F001FE21D /* NSView+Translate.h */,
+				FA13932E135F9F3F001FE21D /* NSView+Translate.m */,
+				FA9868491350940D00EB7F4E /* MainMenu.xib */,
+				FA98683B1350940C00EB7F4E /* Supporting Files */,
 			);
 			path = "JIMP Client";
 			sourceTree = "<group>";
@@ -361,6 +375,8 @@
 			children = (
 				FA98683C1350940C00EB7F4E /* JIMP Client-Info.plist */,
 				FA98683D1350940C00EB7F4E /* InfoPlist.strings */,
+				FAAE96C5135F947400AA39B4 /* smallexpand.png */,
+				FAAE96C6135F947400AA39B4 /* smallexpand_h.png */,
 				FA8DFD4F135A3AF300BA0CA2 /* jitsikIM.icns */,
 				FA8DFD48135A1BE400BA0CA2 /* expand1.png */,
 				FA8DFD49135A1BE400BA0CA2 /* expand2.png */,
@@ -567,6 +583,8 @@
 				FA8DFD4A135A1BE400BA0CA2 /* expand1.png in Resources */,
 				FA8DFD4B135A1BE400BA0CA2 /* expand2.png in Resources */,
 				FA8DFD50135A3AF300BA0CA2 /* jitsikIM.icns in Resources */,
+				FAAE96C7135F947400AA39B4 /* smallexpand.png in Resources */,
+				FAAE96C8135F947400AA39B4 /* smallexpand_h.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,6 +663,8 @@
 				FAB60B24135BD0E20094DC73 /* JIMPStatusHandler.m in Sources */,
 				FA3F14A0135D1F04003C76CE /* OOTGetStatus.m in Sources */,
 				FA0247BE135F741D00410029 /* StatusPickerView.m in Sources */,
+				FA13932F135F9F3F001FE21D /* NSView+Translate.m in Sources */,
+				FA13934A1360CCF7001FE21D /* StatusPickerMenuItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

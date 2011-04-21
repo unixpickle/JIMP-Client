@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 #import "JIMPStatusHandler.h"
+#import "StatusPickerMenuItem.h"
+
 
 @protocol StatusPickerViewDelegate <NSObject>
 
@@ -23,12 +25,13 @@ typedef enum {
 	StatusPickerViewStateHover
 } StatusPickerViewState;
 
-@interface StatusPickerView : NSView {
+@interface StatusPickerView : NSView <NSMenuDelegate> {
     JIMPStatusHandler * statusHandler;
 	OOTStatus * currentStatus;
 	
 	NSPopUpButton * statusPulldown;
 	NSTextField * statusTextPicker;
+	NSMutableArray * menuItems;
 	
 	id<StatusPickerViewDelegate> delegate;
 	
@@ -36,7 +39,13 @@ typedef enum {
 }
 
 - (void)setHovering;
+- (void)setMouseDown;
+- (void)setMouseUp;
 - (void)setUnhovering;
+- (void)menuItemSelected:(NSMenuItem *)item;
+
+- (NSString *)encodedSavePath;
+- (void)drawBackgroundComponents;
 
 @property (nonatomic, assign) id<StatusPickerViewDelegate> delegate;
 @property (nonatomic, retain) OOTStatus * currentStatus;

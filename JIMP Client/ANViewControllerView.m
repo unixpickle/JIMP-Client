@@ -39,6 +39,16 @@
 	[[NSNotificationCenter defaultCenter] postNotificationName:ANViewControllerViewMouseMovedNotification object:self userInfo:dict];
 }
 
+- (void)mouseDown:(NSEvent *)theEvent {
+	NSDictionary * dict = [NSDictionary dictionaryWithObject:theEvent forKey:@"event"];
+	[[NSNotificationCenter defaultCenter] postNotificationName:ANViewControllerViewMouseDownNotification object:self userInfo:dict];
+}
+
+- (void)mouseUp:(NSEvent *)theEvent {
+	NSDictionary * dict = [NSDictionary dictionaryWithObject:theEvent forKey:@"event"];
+	[[NSNotificationCenter defaultCenter] postNotificationName:ANViewControllerViewMouseUpNotification object:self userInfo:dict];
+}
+
 - (void)dealloc {
     [super dealloc];
 }

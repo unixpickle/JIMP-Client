@@ -9,9 +9,12 @@
 #import <Cocoa/Cocoa.h>
 
 #define ANViewControllerViewMouseMovedNotification @"ANViewControllerViewMouseMovedNotification"
+#define ANViewControllerViewMouseDownNotification @"ANViewControllerViewMouseDownNotification"
+#define ANViewControllerViewMouseUpNotification @"ANViewControllerViewMouseUpNotification"
 
 @interface ANViewControllerView : NSView {
     
 }
+
 
 @end

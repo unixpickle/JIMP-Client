@@ -26,6 +26,7 @@
 #import "OOTDeleteBuddy.h"
 #import "BuddyListItem.h"
 #import "BuddyOutline.h"
+#import "NSView+Translate.h"
 
 
 @interface BuddyListViewController : ANViewController <AddBuddyWindowDelegate, AddGroupWindowDelegate, BuddyOutlineDelegate, JIMPBuddyListManagerDelegate, JIMPStatusHandlerDelegate, StatusPickerViewDelegate> {
@@ -58,9 +59,11 @@
 - (void)removeBuddy:(id)sender;
 
 - (void)mouseMoved:(NSNotification *)notification;
-
+- (void)mouseDown:(NSNotification *)notification;
+- (void)mouseUp:(NSNotification *)notification;
 
 - (void)sheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo;
 - (void)closeView:(id)sender;
+- (void)signOffAndClose:(id)sender;
 
 @end

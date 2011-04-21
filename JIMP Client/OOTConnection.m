@@ -166,7 +166,7 @@
 						   NULL, NULL, NULL);
 			if (error < 0) {
 				if ([self isOpen]) { // it thinks we are still open.
-					[self performSelector:@selector(connectionClosed) onThread:mainThread withObject:nil waitUntilDone:YES];
+					[self performSelector:@selector(connectionClosed) onThread:mainThread withObject:nil waitUntilDone:NO];
 				}
 				[pool drain];
 				return;
@@ -178,7 +178,7 @@
 		while (headerHas < 12) {
 			int justGot = (int)read(newsockfd, &header[headerHas], 12 - headerHas);
 			if (justGot <= 0 && [self isOpen]) { // it thinks we are still open.
-				[self performSelector:@selector(connectionClosed) onThread:mainThread withObject:nil waitUntilDone:YES];
+				[self performSelector:@selector(connectionClosed) onThread:mainThread withObject:nil waitUntilDone:NO];
 				headerHas = 0;
 				break;
 			}
@@ -201,14 +201,14 @@
 				[self performSelector:@selector(hasData:) onThread:mainThread withObject:object waitUntilDone:YES];
 			} else {
 				if ([self isOpen]) { // it thinks we are still open.
-					[self performSelector:@selector(connectionClosed) onThread:mainThread withObject:nil waitUntilDone:YES];
+					[self performSelector:@selector(connectionClosed) onThread:mainThread withObject:nil waitUntilDone:NO];
 					break;
 				}
 			}
 		} @catch (NSException * e) {
 			NSLog(@"Got read exception: %@", e);
 			if ([self isOpen]) { // it thinks we are still open.
-				[self performSelector:@selector(connectionClosed) onThread:mainThread withObject:nil waitUntilDone:YES];
+				[self performSelector:@selector(connectionClosed) onThread:mainThread withObject:nil waitUntilDone:NO];
 				break;
 			}
 			[pool drain];
@@ -261,7 +261,7 @@
 			}
 		}
 		
-		[NSThread sleepForTimeInterval:0.1];
+		[NSThread sleepForTimeInterval:0.05];
 		
 		[pool drain];
 	}

@@ -31,6 +31,7 @@
 	
 	buddyDisplay = [[BuddyListDisplayView alloc] initWithFrame:NSMakeRect(0, 0, self.view.frame.size.width, self.view.frame.size.height - 45)];
 	statusPicker = [[StatusPickerView alloc] initWithFrame:NSMakeRect(10, self.view.frame.size.height - 35, 20, 15)];
+	signoffButton = [[NSButton alloc] initWithFrame:NSMakeRect(self.view.frame.size.width - 90, self.view.frame.size.height - 35, 80, 25)];
 	NSBox * line = [[NSBox alloc] initWithFrame:NSMakeRect(-10, self.view.frame.size.height - 44, self.view.frame.size.width + 20, 1)];
 	self.usernameLabel = [NSTextField labelTextFieldWithFont:[NSFont systemFontOfSize:12]];
 	
@@ -39,26 +40,38 @@
 	[line setBoxType:NSBoxSeparator];
 	[line setBorderWidth:2];
 	
+	[signoffButton setTitle:@"Gtfo"];
+	[signoffButton setTarget:self];
+	[signoffButton setAction:@selector(signOffAndClose:)];
+	
 	[usernameLabel setFrame:NSMakeRect(10, self.view.frame.size.height - 30, self.view.frame.size.width - 20, 25)];
 	[usernameLabel setStringValue:[NSString stringWithFormat:@"Logged in as: %@", currentUsername]];
 	[usernameLabel setHidden:YES];
 	
 	OOTStatus * myStatus = [[OOTStatus alloc] initWithMessage:@"" owner:nil type:'n'];
 	[statusPicker setCurrentStatus:myStatus];
+	[statusPicker setDelegate:self];
 	[myStatus release];
 
 	[self.view addSubview:line];
 	[self.view addSubview:usernameLabel];
 	[self.view addSubview:buddyDisplay];
 	[self.view addSubview:statusPicker];
+	[self.view addSubview:signoffButton];
 	
 	[line release];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mouseMoved:) name:ANViewControllerViewMouseMovedNotification object:self.view];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mouseDown:) name:ANViewControllerViewMouseDownNotification object:self.view];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mouseUp:) name:ANViewControllerViewMouseUpNotification object:self.view];
 	
 	[self configureManagers];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(connectionGotData:) name:OOTConnectionHasObjectNotification object:currentConnection];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(connectionDidClose:) name:OOTConnectionClosedNotification object:currentConnection];
+	
+	OOTStatus * status = [[OOTStatus alloc] initWithMessage:@"Available" owner:@"" type:'o'];
+	[statusHandler setStatus:status];
+	[status release];
 }
 
 - (void)configureMenuItems {
@@ -105,19 +118,8 @@
 #pragma mark Buddy List Handler
 
 - (void)buddyListUpdated:(BuddyList *)newBuddylist {
-	static BOOL isFirstList = YES;
+	NSLog(@"-buddyListUpdated:");
 	[buddyDisplay setBuddyList:newBuddylist];
-	//[statusHandler removeBuddyStatuses:[[newBuddylist buddyList] buddies]];
-	//for (OOTBuddy * buddy in [[newBuddylist buddyList] buddies]) {
-	//	[statusHandler statusMessageForBuddy:[[buddy screenName] lowercaseString]];
-	//}
-	// set our status
-	if (isFirstList) {
-		isFirstList = NO;
-		OOTStatus * status = [[OOTStatus alloc] initWithMessage:@"Available" owner:@"" type:'o'];
-		[statusHandler setStatus:status];
-		[status release];
-	}
 }
 
 #pragma mark Connection
@@ -208,6 +210,8 @@
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:OOTConnectionClosedNotification object:currentConnection];
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:OOTConnectionHasObjectNotification object:currentConnection];
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:ANViewControllerViewMouseMovedNotification object:self.view];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:ANViewControllerViewMouseDownNotification object:self.view];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:ANViewControllerViewMouseUpNotification object:self.view];
 	[currentConnection release];
 	currentConnection = nil;
 	[buddylistManager stopManaging];
@@ -222,27 +226,44 @@
 	[[self parentViewController] dismissViewController];
 }
 
+- (void)signOffAndClose:(id)sender {
+	OOTObject * snof = [[OOTObject alloc] initWithName:@"snof" data:[NSData data]];
+	[currentConnection writeObject:snof];
+	[snof release];
+	[self closeView:nil];
+}
+
+#pragma mark Mouse Events
+
 - (void)mouseMoved:(NSNotification *)notification {
 	NSEvent * theEvent = [[notification userInfo] objectForKey:@"event"];
 	NSPoint point = [theEvent locationInWindow];
-	NSRect selfLocation = statusPicker.frame;
-	if ([self.view isFlipped]) {
-		selfLocation.origin.y = [self.view frame].size.height - selfLocation.origin.y;
-		selfLocation.origin.y -= selfLocation.size.height;
-	}
-	NSView * superview = statusPicker;
-	while ((superview = [superview superview])) {
-		NSRect superFrame = [superview frame];
-		if ([[superview superview] isFlipped]) {
-			superFrame.origin.y = [superview.superview frame].size.height - superFrame.origin.y;
-			superFrame.origin.y -= superFrame.size.height;
-		}
-		selfLocation.origin.x += superFrame.origin.x;
-		selfLocation.origin.y += superFrame.origin.y;
-	}
+	NSRect selfLocation = [statusPicker translateBoundsToWindow];
 	if (NSPointInRect(point, selfLocation)) {
 		[statusPicker setHovering];
 	} else [statusPicker setUnhovering];
+}
+
+- (void)mouseDown:(NSNotification *)notification {
+	NSEvent * theEvent = [[notification userInfo] objectForKey:@"event"];
+	NSPoint point = [theEvent locationInWindow];
+	NSRect selfLocation = [statusPicker translateBoundsToWindow];
+	if (NSPointInRect(point, selfLocation)) {
+		[statusPicker setMouseDown];
+	} else {
+		[statusPicker setMouseUp];
+	}
+}
+
+- (void)mouseUp:(NSNotification *)notification {
+	NSEvent * theEvent = [[notification userInfo] objectForKey:@"event"];
+	NSPoint point = [theEvent locationInWindow];
+	NSRect selfLocation = [statusPicker translateBoundsToWindow];
+	if (NSPointInRect(point, selfLocation)) {
+		[statusPicker setHovering];
+	} else {
+		[statusPicker setMouseUp];
+	}
 }
 
 #pragma mark Buddy Operations (Work)
@@ -259,7 +280,6 @@
 
 
 - (void)buddyOutlineDeleteBuddy:(NSString *)buddy {
-	NSLog(@"Delete: \"%@\"", buddy);
 	[buddylistManager deleteBuddy:buddy];
 }
 
@@ -270,7 +290,6 @@
 #pragma mark Statuses
 
 - (void)statusHandler:(id)sender gotStatus:(OOTStatus *)aStatus previousStatus:(OOTStatus *)anotherStatus {
-	// update the buddy list.
 	[JIMPBuddyListManager regenerateBuddyList];
 	[buddyDisplay setBuddyList:[JIMPBuddyListManager sharedBuddyList]];
 	if ([[aStatus owner] isEqual:[currentUsername lowercaseString]]) {
@@ -279,7 +298,8 @@
 }
 
 - (void)statusPicker:(id)sender setStatus:(OOTStatus *)newStatus {
-	
+	[currentConnection writeObject:newStatus];
+	[self.view setNeedsDisplay:YES];
 }
 
 - (BOOL)statusPicker:(id)sender requestResize:(float)newWidth {

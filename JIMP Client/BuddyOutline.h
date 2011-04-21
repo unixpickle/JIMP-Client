@@ -17,6 +17,7 @@
 
 @interface BuddyOutline : NSOutlineView {
 	id<BuddyOutlineDelegate> buddyDelegate;
+	BOOL hasReloaded;
 }
 
 @property (assign) id<BuddyOutlineDelegate> buddyDelegate;

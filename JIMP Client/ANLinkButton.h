@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "NSTextField+Label.h"
+#import "NSView+Translate.h"
 
 
 @interface ANLinkButton : NSView {

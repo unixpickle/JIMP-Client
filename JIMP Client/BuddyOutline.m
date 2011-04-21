@@ -60,7 +60,6 @@
 }
 
 - (void)reloadData {
-	static BOOL isFirstReload = YES;
 	NSMutableArray * expanded = [NSMutableArray array];
 	
 	id selectedItem = nil;
@@ -79,7 +78,7 @@
 	
 	for (int i = 0; i < [self numberOfRows]; i++) {
 		id item = [self itemAtRow:i];
-		if (isFirstReload) {
+		if (!hasReloaded) {
 			[super expandItem:item];
 			[item setExpanded:YES];
 		} else {
@@ -93,7 +92,7 @@
 		}
 	}
 	
-	if ([self numberOfRows] > 0) isFirstReload = NO;
+	if ([self numberOfRows] > 0) hasReloaded = YES;
 	
 	NSInteger rowIndex = -1;
 	for (int i = 0; i < [self numberOfRows]; i++) {

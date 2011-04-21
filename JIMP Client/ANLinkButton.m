@@ -37,20 +37,7 @@
 - (void)mouseUp:(NSEvent *)theEvent {
 	if (!isEnabled) return;
 	NSPoint point = [theEvent locationInWindow];
-	NSRect selfLocation = self.frame;
-	if ([[self superview] isFlipped]) {
-		selfLocation.origin.y = [[self superview] frame].size.height - selfLocation.origin.y;
-		selfLocation.origin.y -= selfLocation.size.height;
-	}
-	NSView * superview = self;
-	while ((superview = [superview superview])) {
-		NSRect superFrame = [superview frame];
-		if ([[superview superview] isFlipped]) {
-			superFrame.origin.y = [[self superview] frame].size.height - selfLocation.origin.y;
-		}
-		selfLocation.origin.x += superFrame.origin.x;
-		selfLocation.origin.y += superFrame.origin.y;
-	}
+	NSRect selfLocation = [self translateBoundsToWindow];
 	if (NSPointInRect(point, selfLocation)) {
 		if (target) {
 			[target performSelector:action withObject:self];

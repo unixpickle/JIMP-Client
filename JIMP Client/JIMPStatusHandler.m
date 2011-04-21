@@ -89,7 +89,7 @@
 	 Remove from the queue to make sure that we get our latest
 	 status object, otherwise we will have NOTHING to live for!
 	*/
-	[queued removeAllObjects];
+	NSLog(@"Set status.");
 	[connection writeObject:status];
 }
 

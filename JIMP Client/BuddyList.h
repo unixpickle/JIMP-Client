@@ -31,7 +31,7 @@
  * buddies for use in the buddy list.
  * @param aBuddyList An OOT Buddy List object of which to use
  * for our initial data.
- * @return	Returns a new BuddyList containing the groups that were
+ * @return Returns a new BuddyList containing the groups that were
  * encoded in the OOTBuddyList.
  */
 - (id)initWithBuddyList:(OOTBuddyList *)aBuddyList;
@@ -43,21 +43,21 @@
 
 /**
  * Same thing as [groupNames count].
- * @return	The number of group names.
+ * @return The number of group names.
  */
 - (int)numberOfGroups;
 
 /**
  * Get the group title at a particular index.
  * @param index	The index of which to read in the group array.
- * @return	The NSString title of the group.
+ * @return The NSString title of the group.
  */
 - (NSString *)groupTitle:(int)index;
 
 /**
  * Get the number of items at a group index.
  * @param group	The index of the group to count.
- * @return	The number of items in a group.
+ * @return The number of items in a group.
  */
 - (int)numberOfItems:(int)group;
 
@@ -65,7 +65,7 @@
  * Get an item in a group.
  * @param index	The index within the group that we are fetching
  * @param groupIndex	The index of the group that contains the item.
- * @return	An NSString containing a buddy screenname.
+ * @return An NSString containing a buddy screenname.
  */
 - (NSString *)itemAtIndex:(int)index ofGroup:(int)groupIndex;
 
