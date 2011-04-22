@@ -66,21 +66,41 @@ static float textWidth (NSAttributedString * myString, float height) {
 			[away release];
 		}
 		
+		NSRect pulldownFrame = self.bounds;
+		
 		statusHandler = *[JIMPStatusHandler firstStatusHandler];
-		statusPulldown = [[NSPopUpButton alloc] initWithFrame:self.bounds];
+		statusPulldown = [[NSPopUpButton alloc] initWithFrame:pulldownFrame pullsDown:YES];
 		statusTextPicker = [[NSTextField alloc] initWithFrame:self.bounds];
 		
+		//[statusPulldown setPullsDown:YES];
+		
 		StatusPickerMenuItem * lastItem = nil;
+		
+		NSMenuItem * item = [NSMenuItem separatorItem];
+		[[statusPulldown menu] addItem:item];
 		
 		for (StatusPickerMenuItem * menuItem in menuItems) {
 			if ([[lastItem status] statusType] != [[menuItem status] statusType] && lastItem) {
 				NSMenuItem * item = [NSMenuItem separatorItem];
 				[[statusPulldown menu] addItem:item];
+				
+				NSString * title = @"Balls";
+				if ([[lastItem status] statusType] == 'n') {
+					title = @"Custom Available";
+				} else if ([[lastItem status] statusType] == 'o') {
+					title = @"Custom Away";
+				}
+				
+				NSMenuItem * customizeItem = [[NSMenuItem alloc] initWithTitle:title action:@selector(menuItemSelected:) keyEquivalent:@""];
+				[customizeItem setTarget:self];
+				[[statusPulldown menu] addItem:customizeItem];
+				[customizeItem release];
 			}
 			NSMenuItem * newItem = [[NSMenuItem alloc] initWithTitle:[menuItem statusString] action:@selector(menuItemSelected:) keyEquivalent:@""];
 			[newItem setTarget:self];
 			[[statusPulldown menu] addItem:newItem];
 			[menuItem setMenuItem:newItem];
+			[newItem release];
 			lastItem = menuItem;
 		}
 		
@@ -280,6 +300,21 @@ static float textWidth (NSAttributedString * myString, float height) {
 #pragma mark Menu
 
 - (void)menuItemSelected:(NSMenuItem *)anItem {
+	BOOL found = NO;
+	for (StatusPickerMenuItem * item in menuItems) {
+		if (anItem == [item menuItem]) {
+			found = YES;
+		}
+	}
+	if (!found) {
+		[anItem setState:0];
+		if ([[anItem title] isEqual:@"Custom Available"]) {
+			NSLog(@"Custom Available.");
+		} else if ([[anItem title] isEqual:@"Custom Away"]) {
+			NSLog(@"Custom Away.");
+		}
+		return;
+	}
 	for (StatusPickerMenuItem * item in menuItems) {
 		if (anItem == [item menuItem]) {
 			// set the status
