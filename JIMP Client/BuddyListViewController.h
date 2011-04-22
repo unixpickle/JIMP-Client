@@ -25,11 +25,11 @@
 #import "OOTDeleteGroup.h"
 #import "OOTDeleteBuddy.h"
 #import "BuddyListItem.h"
-#import "BuddyOutline.h"
+#import "JKBuddyOutline.h"
 #import "NSView+Translate.h"
 
 
-@interface BuddyListViewController : ANViewController <AddBuddyWindowDelegate, AddGroupWindowDelegate, BuddyOutlineDelegate, JIMPBuddyListManagerDelegate, JIMPStatusHandlerDelegate, StatusPickerViewDelegate> {
+@interface BuddyListViewController : ANViewController <AddBuddyWindowDelegate, AddGroupWindowDelegate, JKBuddyOutlineDelegate, JIMPBuddyListManagerDelegate, JIMPStatusHandlerDelegate, StatusPickerViewDelegate> {
 	NSString * currentUsername;
 	OOTConnection * currentConnection;
 	BuddyListDisplayView * buddyDisplay;

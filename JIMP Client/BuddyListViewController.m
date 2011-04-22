@@ -35,7 +35,7 @@
 	NSBox * line = [[NSBox alloc] initWithFrame:NSMakeRect(-10, self.view.frame.size.height - 44, self.view.frame.size.width + 20, 1)];
 	self.usernameLabel = [NSTextField labelTextFieldWithFont:[NSFont systemFontOfSize:12]];
 	
-	[(BuddyOutline *)[buddyDisplay buddyOutline] setBuddyDelegate:self];
+	[(JKBuddyOutline *)[buddyDisplay buddyOutline] setBuddyDelegate:self];
 	[line setBorderType:NSLineBorder];
 	[line setBoxType:NSBoxSeparator];
 	[line setBorderWidth:2];

@@ -11,12 +11,12 @@
 #import "BuddyTitleCell.h"
 #import "BuddyListCell.h"
 #import "BlankCell.h"
-#import "BuddyOutline.h"
+#import "JKBuddyOutline.h"
 #import "BuddyListItem.h"
 
 @interface BuddyListDisplayView : NSView <NSOutlineViewDataSource, NSOutlineViewDelegate> {
     BuddyList * buddyList;
-	BuddyOutline * buddyOutline;
+	JKBuddyOutline * buddyOutline;
 }
 
 - (void)setBuddyList:(BuddyList *)_buddyList;

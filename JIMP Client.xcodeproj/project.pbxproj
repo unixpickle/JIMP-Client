@@ -22,7 +22,7 @@
 		FA53CA311354ECE100D60A4A /* OOTBuddy.m in Sources */ = {isa = PBXBuildFile; fileRef = FA53CA301354ECE100D60A4A /* OOTBuddy.m */; };
 		FA53CA371354FB4A00D60A4A /* OOTObjectCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = FA53CA361354FB4700D60A4A /* OOTObjectCreator.m */; };
 		FA807032135B264C00E46812 /* JIMPBuddyListManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA807031135B264C00E46812 /* JIMPBuddyListManager.m */; };
-		FA8DFD47135A057600BA0CA2 /* BuddyOutline.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8DFD46135A057600BA0CA2 /* BuddyOutline.m */; };
+		FA8DFD47135A057600BA0CA2 /* JKBuddyOutline.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8DFD46135A057600BA0CA2 /* JKBuddyOutline.m */; };
 		FA8DFD4A135A1BE400BA0CA2 /* expand1.png in Resources */ = {isa = PBXBuildFile; fileRef = FA8DFD48135A1BE400BA0CA2 /* expand1.png */; };
 		FA8DFD4B135A1BE400BA0CA2 /* expand2.png in Resources */ = {isa = PBXBuildFile; fileRef = FA8DFD49135A1BE400BA0CA2 /* expand2.png */; };
 		FA8DFD4E135A202100BA0CA2 /* BuddyListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8DFD4D135A202100BA0CA2 /* BuddyListItem.m */; };
@@ -108,8 +108,8 @@
 		FA53CA361354FB4700D60A4A /* OOTObjectCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOTObjectCreator.m; sourceTree = "<group>"; };
 		FA807030135B264C00E46812 /* JIMPBuddyListManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JIMPBuddyListManager.h; sourceTree = "<group>"; };
 		FA807031135B264C00E46812 /* JIMPBuddyListManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JIMPBuddyListManager.m; sourceTree = "<group>"; };
-		FA8DFD45135A057600BA0CA2 /* BuddyOutline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuddyOutline.h; sourceTree = "<group>"; };
-		FA8DFD46135A057600BA0CA2 /* BuddyOutline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuddyOutline.m; sourceTree = "<group>"; };
+		FA8DFD45135A057600BA0CA2 /* JKBuddyOutline.h */ = {isa = PBXFileReference; fileEncoding = 4; path = JKBuddyOutline.h; sourceTree = "<group>"; };
+		FA8DFD46135A057600BA0CA2 /* JKBuddyOutline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKBuddyOutline.m; sourceTree = "<group>"; };
 		FA8DFD48135A1BE400BA0CA2 /* expand1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = expand1.png; sourceTree = "<group>"; };
 		FA8DFD49135A1BE400BA0CA2 /* expand2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = expand2.png; sourceTree = "<group>"; };
 		FA8DFD4C135A202000BA0CA2 /* BuddyListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuddyListItem.h; sourceTree = "<group>"; };
@@ -302,8 +302,8 @@
 			children = (
 				FAFD2F9A135501F600534232 /* BuddyListDisplayView.h */,
 				FAFD2F9B135501F600534232 /* BuddyListDisplayView.m */,
-				FA8DFD45135A057600BA0CA2 /* BuddyOutline.h */,
-				FA8DFD46135A057600BA0CA2 /* BuddyOutline.m */,
+				FA8DFD45135A057600BA0CA2 /* JKBuddyOutline.h */,
+				FA8DFD46135A057600BA0CA2 /* JKBuddyOutline.m */,
 				FA8DFD4C135A202000BA0CA2 /* BuddyListItem.h */,
 				FA8DFD4D135A202100BA0CA2 /* BuddyListItem.m */,
 			);
@@ -655,7 +655,7 @@
 				FA4270021357C91700E0D8EC /* OOTInsertGroup.m in Sources */,
 				FAE517AA1357E7DC00788706 /* BuddyListCell.m in Sources */,
 				FADAF1C9135912B300409D27 /* OOTDeleteBuddy.m in Sources */,
-				FA8DFD47135A057600BA0CA2 /* BuddyOutline.m in Sources */,
+				FA8DFD47135A057600BA0CA2 /* JKBuddyOutline.m in Sources */,
 				FA8DFD4E135A202100BA0CA2 /* BuddyListItem.m in Sources */,
 				FADCFE53135A6FC000F837C4 /* OOTDeleteGroup.m in Sources */,
 				FA807032135B264C00E46812 /* JIMPBuddyListManager.m in Sources */,

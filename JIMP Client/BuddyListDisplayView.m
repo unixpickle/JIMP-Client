@@ -17,7 +17,7 @@
     if ((self = [super initWithFrame:frame])) {
         // Initialization code here.
 		NSRect bounds = self.bounds;
-		buddyOutline = [[BuddyOutline alloc] initWithFrame:NSMakeRect(0, 0, bounds.size.width, bounds.size.height)];
+		buddyOutline = [[JKBuddyOutline alloc] initWithFrame:NSMakeRect(0, 0, bounds.size.width, bounds.size.height)];
 		[buddyOutline setDataSource:self];
 		[buddyOutline setDelegate:self];
 		
@@ -100,7 +100,7 @@
 		NSAttributedString * string = [[NSAttributedString alloc] initWithString:[item title] attributes:attributes];
 		
 		[buddyTitle setAttributedStringValue:string];
-		[buddyTitle setOutlineView:(BuddyOutline *)outlineView];
+		[buddyTitle setOutlineView:(JKBuddyOutline *)outlineView];
 		[buddyTitle setItem:item];
 		
 		[string release];

@@ -7,7 +7,7 @@
 //
 
 #import "BuddyTitleCell.h"
-#import "BuddyOutline.h"
+#import "JKBuddyOutline.h"
 
 
 @implementation BuddyTitleCell
