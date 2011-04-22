@@ -29,8 +29,8 @@
 	[super loadView];
 	[self configureMenuItems];
 	
-	buddyDisplay = [[BuddyListDisplayView alloc] initWithFrame:NSMakeRect(0, 0, self.view.frame.size.width, self.view.frame.size.height - 45)];
-	statusPicker = [[StatusPickerView alloc] initWithFrame:NSMakeRect(10, self.view.frame.size.height - 35, 20, 15)];
+	buddyDisplay = [[JKBuddyListDisplayView alloc] initWithFrame:NSMakeRect(0, 0, self.view.frame.size.width, self.view.frame.size.height - 45)];
+	statusPicker = [[JKStatusPickerView alloc] initWithFrame:NSMakeRect(10, self.view.frame.size.height - 35, 20, 15)];
 	signoffButton = [[NSButton alloc] initWithFrame:NSMakeRect(self.view.frame.size.width - 90, self.view.frame.size.height - 35, 80, 25)];
 	NSBox * line = [[NSBox alloc] initWithFrame:NSMakeRect(-10, self.view.frame.size.height - 44, self.view.frame.size.width + 20, 1)];
 	self.usernameLabel = [NSTextField labelTextFieldWithFont:[NSFont systemFontOfSize:12]];
@@ -117,7 +117,7 @@
 
 #pragma mark Buddy List Handler
 
-- (void)buddyListUpdated:(BuddyList *)newBuddylist {
+- (void)buddyListUpdated:(JKBuddyList *)newBuddylist {
 	NSLog(@"-buddyListUpdated:");
 	[buddyDisplay setBuddyList:newBuddylist];
 }

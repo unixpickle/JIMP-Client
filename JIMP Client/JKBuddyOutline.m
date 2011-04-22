@@ -7,7 +7,7 @@
 //
 
 #import "JKBuddyOutline.h"
-#import "BuddyListItem.h"
+#import "JKBuddyListItem.h"
 #import "BuddyTitleCell.h"
 
 @implementation JKBuddyOutline
@@ -41,7 +41,7 @@
 			
 			if (row >= 0) {
 				id item = [self itemAtRow:row];
-				if ([(BuddyListItem *)item type] == BuddyListItemTypeBuddy) {
+				if ([(JKBuddyListItem *)item type] == BuddyListItemTypeBuddy) {
 					NSMenuItem * item = [menu addItemWithTitle:@"New Chat" action:@selector(newChat:) keyEquivalent:@"C"];
 					[item setKeyEquivalentModifierMask:NSCommandKeyMask];
 				}
@@ -111,26 +111,26 @@
 }
 
 - (BOOL)isExpanded:(id)item {
-	return ([(BuddyListItem *)item isExpanded]);
+	return ([(JKBuddyListItem *)item isExpanded]);
 }
 
 - (void)collapseItem:(id)item collapseChildren:(BOOL)collapseChildren {
-	[(BuddyListItem *)item setExpanded:NO];
+	[(JKBuddyListItem *)item setExpanded:NO];
 	[super collapseItem:item collapseChildren:collapseChildren];
 }
 
 - (void)collapseItem:(id)item {
-	[(BuddyListItem *)item setExpanded:NO];
+	[(JKBuddyListItem *)item setExpanded:NO];
 	[super collapseItem:item];
 }
 
 - (void)expandItem:(id)item {
-	[(BuddyListItem *)item setExpanded:YES];
+	[(JKBuddyListItem *)item setExpanded:YES];
 	[super expandItem:item];
 }
 
 - (void)expandItem:(id)item expandChildren:(BOOL)expandChildren {
-	[(BuddyListItem *)item setExpanded:YES];
+	[(JKBuddyListItem *)item setExpanded:YES];
 	[super expandItem:item expandChildren:expandChildren];
 }
 
@@ -140,9 +140,9 @@
 
 - (void)deleteClick:(id)sender {
 	id item = [self itemAtRow:[self selectedRow]];
-	if ([item isKindOfClass:[BuddyListItem class]]) {
+	if ([item isKindOfClass:[JKBuddyListItem class]]) {
 		NSString * textItem = (NSString *)[item title];
-		if ([(BuddyListItem *)item type] == BuddyListItemTypeGroup) {
+		if ([(JKBuddyListItem *)item type] == BuddyListItemTypeGroup) {
 			// delete the group
 			[buddyDelegate buddyOutlineDeleteGroup:textItem];
 		} else {

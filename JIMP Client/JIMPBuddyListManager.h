@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "OOTConnection.h"
 #import "OOTBuddyList.h"
-#import "BuddyList.h"
+#import "JKBuddyList.h"
 
 #import "OOTInsertBuddy.h"
 #import "OOTInsertGroup.h"
@@ -25,7 +25,7 @@
  * initialial buddy list arrives.
  * @param newBuddyList	The new buddy list.
 */
-- (void)buddyListUpdated:(BuddyList *)newBuddylist;
+- (void)buddyListUpdated:(JKBuddyList *)newBuddylist;
 
 @end
 
@@ -50,14 +50,14 @@
  * Returns a shared buddy list object.
  * @return	The current shared buddy list object.
  */
-+ (BuddyList *)sharedBuddyList;
++ (JKBuddyList *)sharedBuddyList;
 
 /**
  * Changes the shared buddy list, retaining
  * the list provided.
  * @param aList	The new buddy list of which to share
  */
-+ (void)setSharedBuddyList:(BuddyList *)aList;
++ (void)setSharedBuddyList:(JKBuddyList *)aList;
 
 /**
  * Modifies the shared buddy list to accomedate an insert

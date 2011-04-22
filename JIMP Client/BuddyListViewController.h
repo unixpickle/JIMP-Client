@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "ANViewController.h"
 #import "NSTextField+Label.h"
-#import "BuddyListDisplayView.h"
+#import "JKBuddyListDisplayView.h"
 #import "AddBuddyWindow.h"
 #import "AddGroupWindow.h"
-#import "StatusPickerView.h"
+#import "JKStatusPickerView.h"
 
 #import "JIMPSessionManager.h"
 #import "JIMPBuddyListManager.h"
@@ -29,13 +29,13 @@
 #import "NSView+Translate.h"
 
 
-@interface BuddyListViewController : ANViewController <AddBuddyWindowDelegate, AddGroupWindowDelegate, JKBuddyOutlineDelegate, JIMPBuddyListManagerDelegate, JIMPStatusHandlerDelegate, StatusPickerViewDelegate> {
+@interface BuddyListViewController : ANViewController <AddBuddyWindowDelegate, AddGroupWindowDelegate, JKBuddyOutlineDelegate, JIMPBuddyListManagerDelegate, JIMPStatusHandlerDelegate, JKStatusPickerViewDelegate> {
 	NSString * currentUsername;
 	OOTConnection * currentConnection;
-	BuddyListDisplayView * buddyDisplay;
+	JKBuddyListDisplayView * buddyDisplay;
 	JIMPBuddyListManager * buddylistManager;
 	JIMPStatusHandler * statusHandler;
-	StatusPickerView * statusPicker;
+	JKStatusPickerView * statusPicker;
 	
 	NSTextField * usernameLabel;
 	NSButton * signoffButton;
@@ -44,8 +44,8 @@
 @property (nonatomic, retain) NSString * currentUsername;
 @property (nonatomic, retain) NSTextField * usernameLabel;
 @property (nonatomic, retain) NSButton * signoffButton;
-@property (nonatomic, retain) BuddyListDisplayView * buddyDisplay;
-@property (nonatomic, retain) StatusPickerView * statusPicker;
+@property (nonatomic, retain) JKBuddyListDisplayView * buddyDisplay;
+@property (nonatomic, retain) JKStatusPickerView * statusPicker;
 
 - (void)connectionGotData:(NSNotification *)notification;
 - (void)connectionDidClose:(NSNotification *)notification;

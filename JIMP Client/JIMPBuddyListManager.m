@@ -12,7 +12,7 @@
 
 - (void)connectionNewPacket:(NSNotification *)notification;
 - (void)connectionDidClose:(NSNotification *)notification;
-+ (BuddyList **)sharedBuddyListAddress;
++ (JKBuddyList **)sharedBuddyListAddress;
 
 @end
 
@@ -22,20 +22,20 @@
 
 #pragma mark Static
 
-+ (BuddyList **)sharedBuddyListAddress {
-	static BuddyList * list;
++ (JKBuddyList **)sharedBuddyListAddress {
+	static JKBuddyList * list;
 	return &list;
 }
 
-+ (BuddyList *)sharedBuddyList {
++ (JKBuddyList *)sharedBuddyList {
 	return *[JIMPBuddyListManager sharedBuddyListAddress];
 }
-+ (void)setSharedBuddyList:(BuddyList *)aList {
++ (void)setSharedBuddyList:(JKBuddyList *)aList {
 	[*[JIMPBuddyListManager sharedBuddyListAddress] autorelease];
 	*[JIMPBuddyListManager sharedBuddyListAddress] = [aList retain];
 }
 + (BOOL)handleInsert:(OOTInsertBuddy *)buddyInsert {
-	BuddyList * buddyList = [JIMPBuddyListManager sharedBuddyList];
+	JKBuddyList * buddyList = [JIMPBuddyListManager sharedBuddyList];
 	OOTBuddyList * list = [buddyList buddyList];
 	NSMutableArray * buddies = [NSMutableArray arrayWithArray:[list buddies]];
 	NSMutableArray * groups = [NSMutableArray arrayWithArray:[list groups]];
@@ -44,14 +44,14 @@
 	if (!newOOTList) {
 		return NO;
 	}
-	BuddyList * blist = [[BuddyList alloc] initWithBuddyList:newOOTList];
+	JKBuddyList * blist = [[JKBuddyList alloc] initWithBuddyList:newOOTList];
 	[JIMPBuddyListManager setSharedBuddyList:blist];
 	[blist release];
 	[newOOTList release];
 	return YES;
 }
 + (BOOL)handleInsertG:(OOTInsertGroup *)groupInsert {
-	BuddyList * buddyList = [JIMPBuddyListManager sharedBuddyList];
+	JKBuddyList * buddyList = [JIMPBuddyListManager sharedBuddyList];
 	OOTBuddyList * list = [buddyList buddyList];
 	NSMutableArray * buddies = [NSMutableArray arrayWithArray:[list buddies]];
 	NSMutableArray * groups = [NSMutableArray arrayWithArray:[list groups]];
@@ -60,7 +60,7 @@
 	if (!newOOTList) {
 		return NO;
 	}
-	BuddyList * blist = [[BuddyList alloc] initWithBuddyList:newOOTList];
+	JKBuddyList * blist = [[JKBuddyList alloc] initWithBuddyList:newOOTList];
 	[JIMPBuddyListManager setSharedBuddyList:blist];
 	[blist release];
 	[newOOTList release];
@@ -68,7 +68,7 @@
 }
 + (BOOL)handleDelete:(OOTDeleteBuddy *)buddyDelete {
 	NSString * deleteSN = [[buddyDelete screenName] lowercaseString];
-	BuddyList * buddyList = [JIMPBuddyListManager sharedBuddyList];
+	JKBuddyList * buddyList = [JIMPBuddyListManager sharedBuddyList];
 	OOTBuddyList * list = [buddyList buddyList];
 	NSMutableArray * buddies = [NSMutableArray arrayWithArray:[list buddies]];
 	NSMutableArray * groups = [NSMutableArray arrayWithArray:[list groups]];
@@ -83,7 +83,7 @@
 	if (!newOOTList) {
 		return NO;
 	}
-	BuddyList * blist = [[BuddyList alloc] initWithBuddyList:newOOTList];
+	JKBuddyList * blist = [[JKBuddyList alloc] initWithBuddyList:newOOTList];
 	[JIMPBuddyListManager setSharedBuddyList:blist];
 	[blist release];
 	[newOOTList release];
@@ -93,7 +93,7 @@
 
 
 + (BOOL)handleDeleteG:(OOTDeleteGroup *)groupDelete {
-	BuddyList * buddyList = [JIMPBuddyListManager sharedBuddyList];
+	JKBuddyList * buddyList = [JIMPBuddyListManager sharedBuddyList];
 	OOTBuddyList * list = [buddyList buddyList];
 	NSMutableArray * buddies = [NSMutableArray arrayWithArray:[list buddies]];
 	NSMutableArray * groups = [NSMutableArray arrayWithArray:[list groups]];
@@ -114,7 +114,7 @@
 	if (!newOOTList) {
 		return NO;
 	}
-	BuddyList * blist = [[BuddyList alloc] initWithBuddyList:newOOTList];
+	JKBuddyList * blist = [[JKBuddyList alloc] initWithBuddyList:newOOTList];
 	[JIMPBuddyListManager setSharedBuddyList:blist];
 	[blist release];
 	[newOOTList release];
@@ -122,7 +122,7 @@
 }
 
 + (void)regenerateBuddyList {
-	BuddyList * newList = [[BuddyList alloc] initWithBuddyList:[[JIMPBuddyListManager sharedBuddyList] buddyList]];
+	JKBuddyList * newList = [[JKBuddyList alloc] initWithBuddyList:[[JIMPBuddyListManager sharedBuddyList] buddyList]];
 	[JIMPBuddyListManager setSharedBuddyList:newList];
 	[newList release];
 }
@@ -220,7 +220,7 @@
 		JIMPStatusHandler * handler = *[JIMPStatusHandler firstStatusHandler];
 		[handler removeBuddyStatuses:[buddyListObj buddies]];
 		
-		BuddyList * buddyList = [[BuddyList alloc] initWithBuddyList:buddyListObj];
+		JKBuddyList * buddyList = [[JKBuddyList alloc] initWithBuddyList:buddyListObj];
 		[JIMPBuddyListManager setSharedBuddyList:buddyList];
 		[delegate buddyListUpdated:[JIMPBuddyListManager sharedBuddyList]];
 		
