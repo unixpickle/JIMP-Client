@@ -62,6 +62,14 @@
 		FADAF1C9135912B300409D27 /* OOTDeleteBuddy.m in Sources */ = {isa = PBXBuildFile; fileRef = FADAF1C8135912B300409D27 /* OOTDeleteBuddy.m */; };
 		FADCFE53135A6FC000F837C4 /* OOTDeleteGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = FADCFE52135A6FC000F837C4 /* OOTDeleteGroup.m */; };
 		FAE517AA1357E7DC00788706 /* BuddyListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE517A91357E7DC00788706 /* BuddyListCell.m */; };
+		FAEBE3171361ECFB00661702 /* idle.png in Resources */ = {isa = PBXBuildFile; fileRef = FAEBE3131361ECFB00661702 /* idle.png */; };
+		FAEBE3181361ECFB00661702 /* invisible.png in Resources */ = {isa = PBXBuildFile; fileRef = FAEBE3141361ECFB00661702 /* invisible.png */; };
+		FAEBE3191361ECFB00661702 /* away.png in Resources */ = {isa = PBXBuildFile; fileRef = FAEBE3151361ECFB00661702 /* away.png */; };
+		FAEBE31A1361ECFB00661702 /* available.png in Resources */ = {isa = PBXBuildFile; fileRef = FAEBE3161361ECFB00661702 /* available.png */; };
+		FAEBE31F1361FC7800661702 /* status-away.tiff in Resources */ = {isa = PBXBuildFile; fileRef = FAEBE31B1361FC7700661702 /* status-away.tiff */; };
+		FAEBE3201361FC7800661702 /* status-idle.tiff in Resources */ = {isa = PBXBuildFile; fileRef = FAEBE31C1361FC7700661702 /* status-idle.tiff */; };
+		FAEBE3211361FC7800661702 /* status-available.tiff in Resources */ = {isa = PBXBuildFile; fileRef = FAEBE31D1361FC7700661702 /* status-available.tiff */; };
+		FAEBE3221361FC7800661702 /* status-nostatus.tiff in Resources */ = {isa = PBXBuildFile; fileRef = FAEBE31E1361FC7800661702 /* status-nostatus.tiff */; };
 		FAF97A42135788AA00B4A9E9 /* OOTInsertBuddy.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF97A41135788AA00B4A9E9 /* OOTInsertBuddy.m */; };
 		FAFD2F9C135501F600534232 /* JKBuddyListDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFD2F9B135501F600534232 /* JKBuddyListDisplayView.m */; };
 		FAFD2F9F1355021D00534232 /* JKBuddyList.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFD2F9E1355021D00534232 /* JKBuddyList.m */; };
@@ -78,11 +86,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		FA0247BC135F741D00410029 /* JKStatusPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; path = JKStatusPickerView.h; sourceTree = "<group>"; };
+		FA0247BC135F741D00410029 /* JKStatusPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKStatusPickerView.h; sourceTree = "<group>"; };
 		FA0247BD135F741D00410029 /* JKStatusPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKStatusPickerView.m; sourceTree = "<group>"; };
 		FA13932D135F9F3F001FE21D /* NSView+Translate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+Translate.h"; sourceTree = "<group>"; };
 		FA13932E135F9F3F001FE21D /* NSView+Translate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+Translate.m"; sourceTree = "<group>"; };
-		FA1393481360CCF6001FE21D /* JKStatusPickerMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; path = JKStatusPickerMenuItem.h; sourceTree = "<group>"; };
+		FA1393481360CCF6001FE21D /* JKStatusPickerMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKStatusPickerMenuItem.h; sourceTree = "<group>"; };
 		FA1393491360CCF6001FE21D /* JKStatusPickerMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKStatusPickerMenuItem.m; sourceTree = "<group>"; };
 		FA34E42113553D0F004F4C20 /* BuddyTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuddyTitleCell.h; sourceTree = "<group>"; };
 		FA34E42213553D0F004F4C20 /* BuddyTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuddyTitleCell.m; sourceTree = "<group>"; };
@@ -112,7 +120,7 @@
 		FA8DFD46135A057600BA0CA2 /* JKBuddyOutline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKBuddyOutline.m; sourceTree = "<group>"; };
 		FA8DFD48135A1BE400BA0CA2 /* expand1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = expand1.png; sourceTree = "<group>"; };
 		FA8DFD49135A1BE400BA0CA2 /* expand2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = expand2.png; sourceTree = "<group>"; };
-		FA8DFD4C135A202000BA0CA2 /* JKBuddyListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; path = JKBuddyListItem.h; sourceTree = "<group>"; };
+		FA8DFD4C135A202000BA0CA2 /* JKBuddyListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKBuddyListItem.h; sourceTree = "<group>"; };
 		FA8DFD4D135A202100BA0CA2 /* JKBuddyListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKBuddyListItem.m; sourceTree = "<group>"; };
 		FA8DFD4F135A3AF300BA0CA2 /* jitsikIM.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = jitsikIM.icns; sourceTree = "<group>"; };
 		FA9868301350940C00EB7F4E /* JIMP Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JIMP Client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -182,11 +190,19 @@
 		FADCFE52135A6FC000F837C4 /* OOTDeleteGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOTDeleteGroup.m; sourceTree = "<group>"; };
 		FAE517A81357E7DC00788706 /* BuddyListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuddyListCell.h; sourceTree = "<group>"; };
 		FAE517A91357E7DC00788706 /* BuddyListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuddyListCell.m; sourceTree = "<group>"; };
+		FAEBE3131361ECFB00661702 /* idle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = idle.png; sourceTree = "<group>"; };
+		FAEBE3141361ECFB00661702 /* invisible.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = invisible.png; sourceTree = "<group>"; };
+		FAEBE3151361ECFB00661702 /* away.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = away.png; sourceTree = "<group>"; };
+		FAEBE3161361ECFB00661702 /* available.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = available.png; sourceTree = "<group>"; };
+		FAEBE31B1361FC7700661702 /* status-away.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "status-away.tiff"; sourceTree = "<group>"; };
+		FAEBE31C1361FC7700661702 /* status-idle.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "status-idle.tiff"; sourceTree = "<group>"; };
+		FAEBE31D1361FC7700661702 /* status-available.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "status-available.tiff"; sourceTree = "<group>"; };
+		FAEBE31E1361FC7800661702 /* status-nostatus.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "status-nostatus.tiff"; sourceTree = "<group>"; };
 		FAF97A40135788AA00B4A9E9 /* OOTInsertBuddy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOTInsertBuddy.h; sourceTree = "<group>"; };
 		FAF97A41135788AA00B4A9E9 /* OOTInsertBuddy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOTInsertBuddy.m; sourceTree = "<group>"; };
-		FAFD2F9A135501F600534232 /* JKBuddyListDisplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; path = JKBuddyListDisplayView.h; sourceTree = "<group>"; };
+		FAFD2F9A135501F600534232 /* JKBuddyListDisplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKBuddyListDisplayView.h; sourceTree = "<group>"; };
 		FAFD2F9B135501F600534232 /* JKBuddyListDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKBuddyListDisplayView.m; sourceTree = "<group>"; };
-		FAFD2F9D1355021D00534232 /* JKBuddyList.h */ = {isa = PBXFileReference; fileEncoding = 4; path = JKBuddyList.h; sourceTree = "<group>"; };
+		FAFD2F9D1355021D00534232 /* JKBuddyList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKBuddyList.h; sourceTree = "<group>"; };
 		FAFD2F9E1355021D00534232 /* JKBuddyList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKBuddyList.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -373,6 +389,7 @@
 		FA98683B1350940C00EB7F4E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FAEBE3121361ECEC00661702 /* Status Indicators */,
 				FA98683C1350940C00EB7F4E /* JIMP Client-Info.plist */,
 				FA98683D1350940C00EB7F4E /* InfoPlist.strings */,
 				FAAE96C5135F947400AA39B4 /* smallexpand.png */,
@@ -495,6 +512,21 @@
 			name = Managers;
 			sourceTree = "<group>";
 		};
+		FAEBE3121361ECEC00661702 /* Status Indicators */ = {
+			isa = PBXGroup;
+			children = (
+				FAEBE31B1361FC7700661702 /* status-away.tiff */,
+				FAEBE31C1361FC7700661702 /* status-idle.tiff */,
+				FAEBE31D1361FC7700661702 /* status-available.tiff */,
+				FAEBE31E1361FC7800661702 /* status-nostatus.tiff */,
+				FAEBE3131361ECFB00661702 /* idle.png */,
+				FAEBE3141361ECFB00661702 /* invisible.png */,
+				FAEBE3151361ECFB00661702 /* away.png */,
+				FAEBE3161361ECFB00661702 /* available.png */,
+			);
+			name = "Status Indicators";
+			sourceTree = "<group>";
+		};
 		FAF97A3F1357887B00B4A9E9 /* Editing */ = {
 			isa = PBXGroup;
 			children = (
@@ -585,6 +617,14 @@
 				FA8DFD50135A3AF300BA0CA2 /* jitsikIM.icns in Resources */,
 				FAAE96C7135F947400AA39B4 /* smallexpand.png in Resources */,
 				FAAE96C8135F947400AA39B4 /* smallexpand_h.png in Resources */,
+				FAEBE3171361ECFB00661702 /* idle.png in Resources */,
+				FAEBE3181361ECFB00661702 /* invisible.png in Resources */,
+				FAEBE3191361ECFB00661702 /* away.png in Resources */,
+				FAEBE31A1361ECFB00661702 /* available.png in Resources */,
+				FAEBE31F1361FC7800661702 /* status-away.tiff in Resources */,
+				FAEBE3201361FC7800661702 /* status-idle.tiff in Resources */,
+				FAEBE3211361FC7800661702 /* status-available.tiff in Resources */,
+				FAEBE3221361FC7800661702 /* status-nostatus.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

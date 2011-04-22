@@ -36,6 +36,11 @@
 	return self;
 }
 
+- (id)copyWithZone:(NSZone *)zone {
+	id anObject = [super copyWithZone:zone];
+	return anObject;
+}
+
 - (void)drawInteriorWithFrame:(NSRect)cellFrame inView:(NSView *)controlView {
 	[super drawInteriorWithFrame:cellFrame inView:controlView];
 }

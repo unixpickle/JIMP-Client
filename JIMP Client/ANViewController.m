@@ -135,6 +135,8 @@
 	[subviewController release];
 	subviewController = nil;
 	
+	[[self window] makeFirstResponder:self.view];
+	
 	NSRect windowFrame = [[self window] frame];
 	CGFloat topBar = windowFrame.size.height - [[[self window] contentView] frame].size.height;
 	if (windowFrame.size.width != self.view.frame.size.width 

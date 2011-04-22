@@ -17,6 +17,7 @@
 @interface JKBuddyListDisplayView : NSView <NSOutlineViewDataSource, NSOutlineViewDelegate> {
     JKBuddyList * buddyList;
 	JKBuddyOutline * buddyOutline;
+	NSMutableArray * itemCache;
 }
 
 - (void)setBuddyList:(JKBuddyList *)_buddyList;

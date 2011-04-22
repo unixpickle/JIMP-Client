@@ -24,7 +24,7 @@
 #import "OOTInsertGroup.h"
 #import "OOTDeleteGroup.h"
 #import "OOTDeleteBuddy.h"
-#import "BuddyListItem.h"
+#import "JKBuddyListItem.h"
 #import "JKBuddyOutline.h"
 #import "NSView+Translate.h"
 

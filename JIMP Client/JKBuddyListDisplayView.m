@@ -21,6 +21,8 @@
 		[buddyOutline setDataSource:self];
 		[buddyOutline setDelegate:self];
 		
+		itemCache = [[NSMutableArray alloc] init];
+		
 		NSTableColumn * c = [[NSTableColumn alloc] initWithIdentifier:@"NAME"];
 		[c setEditable:NO];
 		[c setMinWidth:150.0];
@@ -78,11 +80,25 @@
 
 - (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(JKBuddyListItem *)item {
 	if (!item) {
-		id newItem = [buddyList groupTitle:(int)index];
-		return [[JKBuddyListItem itemWithTitle:newItem type:BuddyListItemTypeGroup index:index] retain];
+		NSString * groupTitle = [buddyList groupTitle:(int)index];
+		for (JKBuddyListItem * object in itemCache) {
+			if ([[object title] isEqual:groupTitle] && [object type] == BuddyListItemTypeGroup && [object index] == index) {
+				return object;
+			}
+		}
+		JKBuddyListItem * anItem = [JKBuddyListItem itemWithTitle:groupTitle type:BuddyListItemTypeGroup index:index];
+		[itemCache addObject:anItem];
+		return anItem;
 	} else {
 		NSString * titleItem = [buddyList itemAtIndex:(int)index ofGroup:(int)[(JKBuddyListItem *)item index]];
-		return [[JKBuddyListItem itemWithTitle:titleItem type:BuddyListItemTypeBuddy index:index] retain];
+		for (JKBuddyListItem * object in itemCache) {
+			if ([[object title] isEqual:titleItem] && [object type] == BuddyListItemTypeBuddy && [object index] == index) {
+				return object;
+			}
+		}
+		JKBuddyListItem * anItem = [JKBuddyListItem itemWithTitle:titleItem type:BuddyListItemTypeBuddy index:index];
+		[itemCache addObject:anItem];
+		return anItem;
 	}
 }
 
@@ -105,7 +121,7 @@
 		
 		[string release];
 		
-		return [buddyTitle autorelease];
+		return buddyTitle;
 	} else {
 		BuddyListCell * cell = [[BuddyListCell alloc] initTextCell:[item title]];
 		int buddyItemIndex = 0;
@@ -117,10 +133,18 @@
 				buddyItemIndex += 1;
 			}
 		}
+		JIMPStatusHandler * handler = *[JIMPStatusHandler firstStatusHandler];
+		OOTStatus * status = [handler statusMessageForBuddy:[item title]];
+		if (status) {
+			[cell setCurrentStatus:status];
+		}
 		if (buddyItemIndex % 2 == 0) {
 			[cell setBackgroundColor:[NSColor colorWithDeviceRed:0.929 green:0.953 blue:0.996 alpha:1]];
+		} else {
+			[cell setBackgroundColor:nil];
 		}
-		return [cell autorelease];
+
+		return cell;
 	}
 	return nil;
 }
@@ -150,6 +174,7 @@
 
 - (void)dealloc {
 	self.buddyOutline = nil;
+	[itemCache release];
     [super dealloc];
 }
 

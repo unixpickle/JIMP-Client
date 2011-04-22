@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "JIMPStatusHandler.h"
 #import "JKStatusPickerMenuItem.h"
+#import "BuddyListCell.h"
 
 
 @protocol JKStatusPickerViewDelegate <NSObject>
@@ -25,7 +26,7 @@ typedef enum {
 	StatusPickerViewStateHover
 } StatusPickerViewState;
 
-@interface JKStatusPickerView : NSView <NSMenuDelegate> {
+@interface JKStatusPickerView : NSView <NSMenuDelegate, NSTextFieldDelegate> {
     JIMPStatusHandler * statusHandler;
 	OOTStatus * currentStatus;
 	
@@ -33,19 +34,25 @@ typedef enum {
 	NSTextField * statusTextPicker;
 	NSMutableArray * menuItems;
 	
+	char enteringStatusType;
+	
 	id<JKStatusPickerViewDelegate> delegate;
 	
 	StatusPickerViewState currentState;
 }
 
+- (void)generateMenuItems;
+
 - (void)setHovering;
 - (void)setMouseDown;
 - (void)setMouseUp;
 - (void)setUnhovering;
+- (void)setTypingStatus;
 - (void)menuItemSelected:(NSMenuItem *)item;
 
 - (NSString *)encodedSavePath;
 - (void)drawBackgroundComponents;
+- (void)textFieldEnter:(id)sender;
 
 @property (nonatomic, assign) id<JKStatusPickerViewDelegate> delegate;
 @property (nonatomic, retain) OOTStatus * currentStatus;

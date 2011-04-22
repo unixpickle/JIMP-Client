@@ -130,7 +130,7 @@
 		[[NSNotificationCenter defaultCenter] removeObserver:self name:OOTConnectionHasObjectNotification object:connection];
 		NSLog(@"Signon successful.");
 		BuddyListViewController * blv = [[BuddyListViewController alloc] init];
-		[blv setCurrentUsername:[username stringValue]];
+		[blv setCurrentUsername:[NSString stringWithString:[username stringValue]]];
 		[self presentViewController:blv];
 		[blv release];
 	} else if ([[object className] isEqual:@"errr"]) {

@@ -7,12 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "OOTStatus.h"
 
 
 @interface BuddyListCell : NSCell {
     NSColor * backgroundColor;
+	OOTStatus * currentStatus;
 }
 
+// invisible, away, idle, available
+
++ (NSArray *)statusImages;
++ (NSArray *)statusImagesNoflipped;
+
+@property (nonatomic, retain) OOTStatus * currentStatus;
 @property (nonatomic, retain) NSColor * backgroundColor;
 
 @end

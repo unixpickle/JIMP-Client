@@ -87,7 +87,7 @@
 	int count = 0;
 	for (NSString * sn in buddies) {
 		if (![offline containsObject:[sn lowercaseString]]) {
-			if (count == index) return sn;
+			if (count == index) return [[sn retain] autorelease];
 			count += 1;
 		}
 	}

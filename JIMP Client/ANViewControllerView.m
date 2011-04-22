@@ -22,10 +22,6 @@
 	return YES;
 }
 
-- (BOOL)canBecomeKeyView {
-	return YES;
-}
-
 - (BOOL)acceptsFirstResponder {
 	return YES;
 }

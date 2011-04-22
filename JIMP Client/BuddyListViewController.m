@@ -77,6 +77,7 @@
 - (void)configureMenuItems {
 	JIMP_ClientAppDelegate * appDelegate = (JIMP_ClientAppDelegate *)[[NSApplication sharedApplication] delegate];
 	NSMenuItem * addItem = [appDelegate menuItemAddBuddy];
+	[[addItem menu] setAutoenablesItems:NO];
 	[addItem setTarget:self];
 	[addItem setAction:@selector(addBuddy:)];
 	[addItem setEnabled:YES];
@@ -106,19 +107,21 @@
 	JIMP_ClientAppDelegate * appDelegate = (JIMP_ClientAppDelegate *)[[NSApplication sharedApplication] delegate];
 	NSMenuItem * addItem = [appDelegate menuItemAddBuddy];
 	[addItem setTarget:nil];
+	[addItem setAction:NULL];
 	[addItem setEnabled:NO];
 	NSMenuItem * addGItem = [appDelegate menuItemAddGroup];
 	[addGItem setTarget:nil];
+	[addGItem setAction:NULL];
 	[addGItem setEnabled:NO];
-	NSMenuItem * removeBuddy = [appDelegate menuItemAddGroup];
+	NSMenuItem * removeBuddy = [appDelegate menuItemRemoveBuddy];
 	[removeBuddy setTarget:nil];
+	[removeBuddy setAction:NULL];
 	[removeBuddy setEnabled:NO];
 }
 
 #pragma mark Buddy List Handler
 
 - (void)buddyListUpdated:(JKBuddyList *)newBuddylist {
-	NSLog(@"-buddyListUpdated:");
 	[buddyDisplay setBuddyList:newBuddylist];
 }
 
@@ -304,7 +307,7 @@
 
 - (BOOL)statusPicker:(id)sender requestResize:(float)newWidth {
 	NSView * theView = (NSView *)sender;
-	if ([theView frame].origin.x + newWidth > self.view.frame.size.width - 10) {
+	if ([theView frame].origin.x + newWidth > (signoffButton.frame.origin.x) - 10) {
 		return NO;
 	}
 	return YES;
