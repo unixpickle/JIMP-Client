@@ -7,11 +7,13 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
+#import "JKBuddyListTest.h"
 
 
 @interface JIMP_ClientTests : SenTestCase {
-@private
-    
+	
 }
+
+- (void)testBuddyList;
 
 @end

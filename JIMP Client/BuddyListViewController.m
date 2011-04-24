@@ -29,6 +29,7 @@
 	[super loadView];
 	[self configureMenuItems];
 	
+	idleManager = [[JKComputerIdleManager alloc] initWithIdleDelay:10];
 	buddyDisplay = [[JKBuddyListDisplayView alloc] initWithFrame:NSMakeRect(0, 0, self.view.frame.size.width, self.view.frame.size.height - 45)];
 	statusPicker = [[JKStatusPickerView alloc] initWithFrame:NSMakeRect(10, self.view.frame.size.height - 35, 20, 15)];
 	signoffButton = [[NSButton alloc] initWithFrame:NSMakeRect(self.view.frame.size.width - 90, self.view.frame.size.height - 35, 80, 25)];
@@ -39,6 +40,8 @@
 	[line setBorderType:NSLineBorder];
 	[line setBoxType:NSBoxSeparator];
 	[line setBorderWidth:2];
+	
+	[buddyDisplay setDelegate:self];
 	
 	[signoffButton setTitle:@"Gtfo"];
 	[signoffButton setTarget:self];
@@ -66,10 +69,13 @@
 	
 	[self configureManagers];
 	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(computerWentIdle:) name:JKComputerIdleManagerIdleNotification object:idleManager];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(computerWentActive:) name:JKComputerIdleManagerActiveNotification object:idleManager];
+	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(connectionGotData:) name:OOTConnectionHasObjectNotification object:currentConnection];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(connectionDidClose:) name:OOTConnectionClosedNotification object:currentConnection];
 	
-	OOTStatus * status = [[OOTStatus alloc] initWithMessage:@"Available" owner:@"" type:'o'];
+	OOTStatus * status = [[OOTStatus alloc] initWithMessage:@"" owner:@"" type:'o'];
 	[statusHandler setStatus:status];
 	[status release];
 }
@@ -98,8 +104,13 @@
 	[manager getBuddylist];
 	buddylistManager = manager;
 	
+	if (![idleManager startTracking]) {
+		NSLog(@"Idle tracking failed.");
+	}
+	
 	statusHandler = [[JIMPStatusHandler alloc] initWithConnection:connection];
 	[statusHandler setDelegate:self];
+	[manager setStatusHandler:statusHandler];
 	
 	currentConnection = [connection retain];
 }
@@ -160,7 +171,7 @@
 	AddBuddyWindow * addWindow = [[AddBuddyWindow alloc] initWithContentRect:addBuddyWindowFrame styleMask:NSTitledWindowMask backing:NSBackingStoreBuffered defer:NO];
 	
 	[addWindow setDelegate:self];
-	[addWindow setGroupNames:[[JIMPBuddyListManager sharedBuddyList] groupNames]];
+	[addWindow setGroupNames:[[buddylistManager buddyList] groupNames]];
 	[addWindow setContentView:contentView];
 	[addWindow configureContent];
 		
@@ -215,6 +226,8 @@
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:ANViewControllerViewMouseMovedNotification object:self.view];
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:ANViewControllerViewMouseDownNotification object:self.view];
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:ANViewControllerViewMouseUpNotification object:self.view];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:JKComputerIdleManagerActiveNotification object:idleManager];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:JKComputerIdleManagerIdleNotification object:idleManager];
 	[currentConnection release];
 	currentConnection = nil;
 	[buddylistManager stopManaging];
@@ -223,6 +236,9 @@
 	[statusHandler stopManaging];
 	[statusHandler release];
 	statusHandler = nil;
+	[idleManager stopTracking];
+	[idleManager release];
+	idleManager = nil;
 	
 	[self disableMenuItems];
 	
@@ -269,15 +285,28 @@
 	}
 }
 
+- (void)computerWentIdle:(NSNotification *)notification {
+	NSNumber * idleSeconds = [[notification userInfo] objectForKey:@"timeInterval"];
+	OOTStatus * idleStatus = [[OOTStatus alloc] initWithMessage:@"" owner:@"" type:'i' idle:[idleSeconds longValue]];
+	[currentConnection writeObject:idleStatus];
+	[idleStatus release];
+}
+
+- (void)computerWentActive:(NSNotification *)notification {
+	OOTStatus * onlineStatus = [[OOTStatus alloc] initWithMessage:@"" owner:@"" type:'o' idle:0];
+	[currentConnection writeObject:onlineStatus];
+	[onlineStatus release];
+}
+
 #pragma mark Buddy Operations (Work)
 
 - (void)addBuddy:(NSString *)username toGroup:(NSString *)group {
-	int index = (int)[[[[JIMPBuddyListManager sharedBuddyList] buddyList] buddies] count];
+	int index = (int)[[[[buddylistManager buddyList] buddyList] buddies] count];
 	[buddylistManager insertBuddy:username group:group index:index];
 }
 
 - (void)addGroupClicked:(NSString *)aGroup {
-	int index = (int)[[[[JIMPBuddyListManager sharedBuddyList] buddyList] groups] count];
+	int index = (int)[[[[buddylistManager buddyList] buddyList] groups] count];
 	[buddylistManager insertGroup:aGroup index:index];
 }
 
@@ -292,9 +321,13 @@
 
 #pragma mark Statuses
 
+- (JIMPStatusHandler *)buddyListDisplayViewGetStatusHandler:(id)sender {
+	return statusHandler;
+}
+
 - (void)statusHandler:(id)sender gotStatus:(OOTStatus *)aStatus previousStatus:(OOTStatus *)anotherStatus {
-	[JIMPBuddyListManager regenerateBuddyList];
-	[buddyDisplay setBuddyList:[JIMPBuddyListManager sharedBuddyList]];
+	[buddylistManager regenerateBuddyList];
+	[buddyDisplay setBuddyList:[buddylistManager buddyList]];
 	if ([[aStatus owner] isEqual:[currentUsername lowercaseString]]) {
 		[statusPicker setCurrentStatus:aStatus];
 	}
@@ -314,9 +347,11 @@
 }
 
 - (void)dealloc {
+	[idleManager stopTracking];
 	[currentConnection release];
 	[buddylistManager release];
 	[statusHandler release];
+	[idleManager release];
 	self.currentUsername = nil;
 	self.usernameLabel = nil;
 	self.signoffButton = nil;

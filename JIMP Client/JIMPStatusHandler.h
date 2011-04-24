@@ -39,8 +39,7 @@
 }
 
 @property (assign) id<JIMPStatusHandlerDelegate> delegate;
-
-+ (JIMPStatusHandler **)firstStatusHandler;
+@property (readonly, getter=allStatuses) NSArray * statuses;
 
 /**
  * Creates a new JIMPStatusHandler with an open connection.

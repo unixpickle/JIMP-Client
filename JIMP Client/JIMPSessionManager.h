@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "OOTConnection.h"
 
-#define kJIMPHost @"71.224.215.41"
+#define kJIMPHost @"127.0.0.1"
 #define kJIMPPort 1338
 
 /**

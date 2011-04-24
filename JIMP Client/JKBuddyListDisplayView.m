@@ -12,6 +12,7 @@
 @implementation JKBuddyListDisplayView
 
 @synthesize buddyOutline;
+@synthesize delegate;
 
 - (id)initWithFrame:(NSRect)frame {
     if ((self = [super initWithFrame:frame])) {
@@ -133,7 +134,7 @@
 				buddyItemIndex += 1;
 			}
 		}
-		JIMPStatusHandler * handler = *[JIMPStatusHandler firstStatusHandler];
+		JIMPStatusHandler * handler = [delegate buddyListDisplayViewGetStatusHandler:self];
 		OOTStatus * status = [handler statusMessageForBuddy:[item title]];
 		if (status) {
 			[cell setCurrentStatus:status];

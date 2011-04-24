@@ -19,16 +19,17 @@
 @implementation JIMPStatusHandler
 
 @synthesize delegate;
+@synthesize statuses;
 
-+ (JIMPStatusHandler **)firstStatusHandler {
-	static JIMPStatusHandler * handler = nil;
-	return &handler;
-}
-
-+ (void)setFirstStatusHandler:(id)object {
-	[*[JIMPStatusHandler firstStatusHandler] autorelease];
-	*[JIMPStatusHandler firstStatusHandler] = [object retain];
-}
+//+ (JIMPStatusHandler **)firstStatusHandler {
+//	static JIMPStatusHandler * handler = nil;
+//	return &handler;
+//}
+//
+//+ (void)setFirstStatusHandler:(id)object {
+//	[*[JIMPStatusHandler firstStatusHandler] autorelease];
+//	*[JIMPStatusHandler firstStatusHandler] = [object retain];
+//}
 
 - (id)init {
     if ((self = [super init])) {
@@ -40,7 +41,6 @@
 
 - (id)initWithConnection:(OOTConnection *)aConnection {
 	if ((self = [super init])) {
-		[JIMPStatusHandler setFirstStatusHandler:self];
 		statuses = [[NSMutableArray alloc] init];
 		queued = [[NSMutableArray alloc] init];
 		connection = [aConnection retain];
@@ -94,7 +94,6 @@
 
 
 - (void)stopManaging {
-	if (*[JIMPStatusHandler firstStatusHandler] == self) [JIMPStatusHandler setFirstStatusHandler:nil];
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:OOTConnectionHasObjectNotification object:connection];
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:OOTConnectionClosedNotification object:connection];
 	[connection release];

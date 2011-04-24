@@ -22,7 +22,7 @@
     return self;
 }
 
-- (id)initWithBuddyList:(OOTBuddyList *)aBuddyList {
+- (id)initWithBuddyList:(OOTBuddyList *)aBuddyList statuses:(NSArray *)statuses {
 	if ((self = [super init])) {
 		offline = [[NSMutableArray alloc] init];
 		NSMutableArray * groupList = [NSMutableArray array];
@@ -43,9 +43,13 @@
 		 Filter out the buddies that are offline, moving them
 		 to the temporary Offline group.
 		 */
-		JIMPStatusHandler * handler = *[JIMPStatusHandler firstStatusHandler];
 		for (OOTBuddy * buddy in [aBuddyList buddies]) {
-			OOTStatus * status = [handler statusMessageForBuddy:[buddy screenName]];
+			OOTStatus * status = nil;
+			for (OOTStatus * aStatus in statuses) {
+				if ([[[aStatus owner] lowercaseString] isEqual:[[buddy screenName] lowercaseString]]) {
+					status = aStatus;
+				}
+			}
 			if (!status || [status statusType] == 'n') {
 				[offline addObject:[[buddy screenName] lowercaseString]];
 			}

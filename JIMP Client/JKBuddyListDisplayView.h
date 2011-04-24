@@ -13,16 +13,25 @@
 #import "BlankCell.h"
 #import "JKBuddyOutline.h"
 #import "JKBuddyListItem.h"
+#import "JIMPStatusHandler.h"
+
+@protocol JKBuddyListDisplayViewDelegate <NSObject>
+
+- (JIMPStatusHandler *)buddyListDisplayViewGetStatusHandler:(id)sender;
+
+@end
 
 @interface JKBuddyListDisplayView : NSView <NSOutlineViewDataSource, NSOutlineViewDelegate> {
     JKBuddyList * buddyList;
 	JKBuddyOutline * buddyOutline;
 	NSMutableArray * itemCache;
+	id<JKBuddyListDisplayViewDelegate> delegate;
 }
 
 - (void)setBuddyList:(JKBuddyList *)_buddyList;
 - (void)deleteClick:(id)sender;
 
 @property (nonatomic, retain) NSOutlineView * buddyOutline;
+@property (nonatomic, assign) id<JKBuddyListDisplayViewDelegate> delegate;
 
 @end

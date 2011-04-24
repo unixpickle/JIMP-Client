@@ -23,7 +23,7 @@
  * Called when we have successfully modified the buddy list,
  * or another client has.  This will also be called when the
  * initialial buddy list arrives.
- * @param newBuddyList	The new buddy list.
+ * @param newBuddyList The new buddy list.
 */
 - (void)buddyListUpdated:(JKBuddyList *)newBuddylist;
 
@@ -37,6 +37,8 @@
  */
 @interface JIMPBuddyListManager : NSObject {
 	OOTConnection * connection;
+	JIMPStatusHandler * statusHandler;
+	JKBuddyList * buddyList;
 	id <JIMPBuddyListManagerDelegate> delegate;
 }
 
@@ -46,56 +48,47 @@
 */
 @property (assign) id <JIMPBuddyListManagerDelegate> delegate;
 
-/**
- * Returns a shared buddy list object.
- * @return	The current shared buddy list object.
- */
-+ (JKBuddyList *)sharedBuddyList;
-
-/**
- * Changes the shared buddy list, retaining
- * the list provided.
- * @param aList	The new buddy list of which to share
- */
-+ (void)setSharedBuddyList:(JKBuddyList *)aList;
+@property (nonatomic, retain) JIMPStatusHandler * statusHandler;
+@property (nonatomic, retain) JKBuddyList * buddyList;
 
 /**
  * Modifies the shared buddy list to accomedate an insert
  * that came from the server.
- * @param buddyInsert	The insert object that came from the server.
+ * @param buddyInsert The insert object that came from the server.
  * @return	YES if the buddy was successfully inserted, NO if not.
  */
-+ (BOOL)handleInsert:(OOTInsertBuddy *)buddyInsert;
+- (BOOL)handleInsert:(OOTInsertBuddy *)buddyInsert;
 
 /**
  * Modifies the shared buddy list to accomedate an insert
  * that came from the server.
- * @param groupInsert	The insert object that came from the server.
+ * @param groupInsert The insert object that came from the server.
  * @return	YES if the group was successfully inserted, NO if not.
  */
-+ (BOOL)handleInsertG:(OOTInsertGroup *)groupInsert;
+- (BOOL)handleInsertG:(OOTInsertGroup *)groupInsert;
 
 /**
  * Modifies the shared buddy list to accomedate a delete
  * that came from the server.
- * @param buddyDelete	The delete object that came from the server.
+ * @param buddyDelete The delete object that came from the server.
  * @return YES if the buddy was successfully deleted, NO if not.
  */
-+ (BOOL)handleDelete:(OOTDeleteBuddy *)buddyDelete;
+- (BOOL)handleDelete:(OOTDeleteBuddy *)buddyDelete;
 
 /**
  * Modifies the shared buddy list to accomedate a delete
  * that came from the server.
- * @param groupDelete	The delete object that came from the server.
+ * @param groupDelete The delete object that came from the server.
  * @return YES if the group was successfully deleted, NO if not.
+
  */
-+ (BOOL)handleDeleteG:(OOTDeleteGroup *)groupDelete;
+- (BOOL)handleDeleteG:(OOTDeleteGroup *)groupDelete;
 
 /**
  * Regenerates the entire buddy list, only changing
  * the online/offline portion of the buddy list.
  */
-+ (void)regenerateBuddyList;
+- (void)regenerateBuddyList;
 
 #pragma mark Buddy List
 

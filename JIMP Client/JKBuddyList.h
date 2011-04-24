@@ -13,6 +13,7 @@
 #import "OOTInsertGroup.h"
 #import "OOTDeleteBuddy.h"
 #import "OOTDeleteGroup.h"
+#import "OOTStatus.h"
 #import "JIMPStatusHandler.h"
 
 
@@ -31,10 +32,11 @@
  * buddies for use in the buddy list.
  * @param aBuddyList An OOT Buddy List object of which to use
  * for our initial data.
+ * @param statuses An array of OOTStatus
  * @return Returns a new BuddyList containing the groups that were
  * encoded in the OOTBuddyList.
  */
-- (id)initWithBuddyList:(OOTBuddyList *)aBuddyList;
+- (id)initWithBuddyList:(OOTBuddyList *)aBuddyList statuses:(NSArray *)statuses;
 
 /**
  @return An array of group names.

@@ -27,15 +27,18 @@
 #import "JKBuddyListItem.h"
 #import "JKBuddyOutline.h"
 #import "NSView+Translate.h"
+#import "JKComputerIdleManager.h"
 
 
-@interface BuddyListViewController : ANViewController <AddBuddyWindowDelegate, AddGroupWindowDelegate, JKBuddyOutlineDelegate, JIMPBuddyListManagerDelegate, JIMPStatusHandlerDelegate, JKStatusPickerViewDelegate> {
+@interface BuddyListViewController : ANViewController <AddBuddyWindowDelegate, AddGroupWindowDelegate, JKBuddyOutlineDelegate, JIMPBuddyListManagerDelegate, JIMPStatusHandlerDelegate, JKStatusPickerViewDelegate, JKBuddyListDisplayViewDelegate> {
 	NSString * currentUsername;
 	OOTConnection * currentConnection;
 	JKBuddyListDisplayView * buddyDisplay;
 	JIMPBuddyListManager * buddylistManager;
 	JIMPStatusHandler * statusHandler;
 	JKStatusPickerView * statusPicker;
+	JKComputerIdleManager * idleManager;
+	
 	
 	NSTextField * usernameLabel;
 	NSButton * signoffButton;
@@ -61,6 +64,9 @@
 - (void)mouseMoved:(NSNotification *)notification;
 - (void)mouseDown:(NSNotification *)notification;
 - (void)mouseUp:(NSNotification *)notification;
+
+- (void)computerWentIdle:(NSNotification *)notification;
+- (void)computerWentActive:(NSNotification *)notification;
 
 - (void)sheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo;
 - (void)closeView:(id)sender;

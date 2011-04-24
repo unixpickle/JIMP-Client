@@ -52,7 +52,7 @@ static float textWidth (NSAttributedString * myString, float height) {
 		} else {
 			menuItems = [[NSMutableArray alloc] init];
 			OOTStatus * invisible = [[OOTStatus alloc] initWithMessage:@"Invisible" owner:@"" type:'n'];
-			OOTStatus * available = [[OOTStatus alloc] initWithMessage:@"Available" owner:@"" type:'o'];
+			OOTStatus * available = [[OOTStatus alloc] initWithMessage:@"" owner:@"" type:'o'];
 			OOTStatus * away = [[OOTStatus alloc] initWithMessage:@"Away" owner:@"" type:'a'];
 			[menuItems addObject:[JKStatusPickerMenuItem menuItemWithStatus:invisible]];
 			[menuItems addObject:[JKStatusPickerMenuItem menuItemWithStatus:available]];
@@ -64,12 +64,9 @@ static float textWidth (NSAttributedString * myString, float height) {
 		
 		NSRect pulldownFrame = self.bounds;
 		
-		statusHandler = *[JIMPStatusHandler firstStatusHandler];
 		statusPulldown = [[NSPopUpButton alloc] initWithFrame:pulldownFrame pullsDown:YES];
 		statusTextPicker = [[NSTextField alloc] initWithFrame:self.bounds];
-		
-		//[statusPulldown setPullsDown:YES];
-		
+				
 		[self generateMenuItems];
 		
 		[[statusPulldown menu] setDelegate:self];
@@ -163,7 +160,7 @@ static float textWidth (NSAttributedString * myString, float height) {
 	BOOL wasFound = NO;
 	for (JKStatusPickerMenuItem * item in menuItems) {
 		if ([[item status] statusType] == [aStatus statusType]) {
-			if ([[[item status] statusMessage] isEqual:[aStatus statusMessage]]) {
+			if ([[item statusString] isEqual:[aStatus statusMessage]] || [[[item status] statusMessage] isEqual:[aStatus statusMessage]]) {
 				[[item menuItem] setState:1];
 				wasFound = YES;
 			} else {
@@ -363,6 +360,7 @@ static float textWidth (NSAttributedString * myString, float height) {
 	[self generateMenuItems];
 	[self setUnhovering];
 	[self setCurrentStatus:newStatus];
+	[delegate statusPicker:self setStatus:newStatus];
 	[newStatus release];
 	[statusTextPicker setStringValue:@""];
 	[statusTextPicker removeFromSuperview];

@@ -101,7 +101,28 @@
 		[statusImage drawInRect:NSMakeRect(newFrame.origin.x - 14, newFrame.origin.y + 1, statusImage.size.width, statusImage.size.height) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
 	}
 	
-	[super drawWithFrame:newFrame inView:controlView];
+	newFrame.origin.x += 3;
+	
+	if (([[currentStatus statusMessage] length] > 0 && [currentStatus statusType] != 'n') || ([currentStatus statusType] == 'i')) {
+		NSString * statusMessage = [currentStatus statusMessage];
+		if ([currentStatus statusType] == 'i') {
+			statusMessage = [NSString stringWithFormat:@"Idle (%d minutes)", [currentStatus idleTime]/60];
+		}
+		newFrame.origin.y -= 7;
+		NSFont * font = [NSFont systemFontOfSize:11];
+		NSColor * fontColor = nil;
+		if ([self isHighlighted]) {
+			fontColor = [NSColor whiteColor];
+		} else fontColor = [NSColor blackColor];
+		NSDictionary * attributes = [NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName,
+									 fontColor, NSForegroundColorAttributeName, nil];
+		NSAttributedString * string = [[NSAttributedString alloc] initWithString:statusMessage attributes:attributes];
+		[string drawInRect:NSMakeRect(newFrame.origin.x + 2, newFrame.origin.y + 17, newFrame.size.width, 20)];
+		[string release];
+		
+		[super drawWithFrame:newFrame inView:controlView];
+		
+	} else [super drawWithFrame:newFrame inView:controlView];
 }
 
 - (void)setCurrentStatus:(OOTStatus *)aStatus {
