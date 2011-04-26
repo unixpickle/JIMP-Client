@@ -17,12 +17,19 @@
 #import "OOTSignup.h"
 #import "OOTError.h"
 
+@protocol SignupViewControllerDelegate
+
+- (void)signupViewControllerDone:(id)sender;
+
+@end
+
 @interface SignupViewController : ANViewController <NSTextFieldDelegate> {
     NSTextField * usernameField;
 	NSSecureTextField * passwordField;
 	NSSecureTextField * confirmPasswordField;
 	NSButton * cancelButton;
 	NSButton * createButton;
+	id<SignupViewControllerDelegate> delegate;
 }
 
 @property (nonatomic, retain) NSTextField * usernameField;
@@ -30,6 +37,7 @@
 @property (nonatomic, retain) NSSecureTextField * confirmPasswordField;
 @property (nonatomic, retain) NSButton * cancelButton;
 @property (nonatomic, retain) NSButton * createButton;
+@property (assign) id<SignupViewControllerDelegate> delegate;
 
 - (void)cancelSignup:(id)sender;
 - (void)createPressed:(id)sender;

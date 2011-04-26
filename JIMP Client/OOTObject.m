@@ -21,6 +21,7 @@
 }
 
 - (id)initWithObject:(OOTObject *)object {
+	NSAssert(object != nil, @"Object was nil.");
 	if ((self = [super init])) {
 		className = [[object className] retain];
 		classData = [[object classData] retain];
@@ -29,6 +30,7 @@
 }
 
 - (id)initWithByteBuffer:(ANByteBuffer *)buffer {
+	NSAssert(buffer != nil, @"Cannot create an OOTObject with a nil buffer.");
 	if ((self = [super init])) {
 		const char * header = [buffer getBytes:12];
 		NSString * classLength = [[[NSString alloc] initWithBytes:header 
@@ -44,6 +46,7 @@
 	return self;
 }
 - (id)initWithData:(NSData *)data {
+	NSAssert(data != nil, @"Cannot create an OOTObject with nil data.");
 	if ((self = [super init])) {
 		if ([data length] < 12) {
 			@throw [NSException exceptionWithName:@"BufferUnderflowException" reason:@"The offset was greater than the number of bytes requested." userInfo:nil];
@@ -66,6 +69,8 @@
 	return self;
 }
 - (id)initWithHeader:(NSData *)header fromSocket:(int)fileDescriptor {
+	NSAssert(fileDescriptor >= 0, @"Invalid file descriptor");
+	NSAssert([header length] == 12, @"Header must be 12 bytes long.");
 	if ((self = [super init])) {
 		const char * headerBytes = (const char *)[header bytes];
 		NSString * classLength = [[[NSString alloc] initWithBytes:headerBytes 
@@ -97,6 +102,7 @@
 		}
 		className = [_className copy];
 		classData = [_classData copy];
+		if (!classData) classData = [[NSData data] retain];
 	}
 	return self;
 }

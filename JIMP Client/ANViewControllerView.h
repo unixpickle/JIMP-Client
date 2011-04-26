@@ -13,8 +13,9 @@
 #define ANViewControllerViewMouseUpNotification @"ANViewControllerViewMouseUpNotification"
 
 @interface ANViewControllerView : NSView {
-    
+    NSColor * backgroundColor;
 }
 
+- (void)setBackgroundColor:(NSColor *)aColor;
 
 @end

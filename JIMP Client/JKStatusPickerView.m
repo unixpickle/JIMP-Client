@@ -266,7 +266,7 @@ static float textWidth (NSAttributedString * myString, float height) {
 		} else if ([currentStatus statusType] == 'o') {
 			myString = @"Available";
 		} else if ([currentStatus statusType] == 'i') {
-			myString = [NSString stringWithFormat:@"Idle %d minutes", [currentStatus idleTime] / 60];
+			myString = [NSString stringWithFormat:@"Idle (%d minutes)", [currentStatus idleTime] / 60];
 		}
 	}
 	

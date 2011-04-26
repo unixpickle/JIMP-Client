@@ -10,6 +10,16 @@
 		FA0247BE135F741D00410029 /* JKStatusPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0247BD135F741D00410029 /* JKStatusPickerView.m */; };
 		FA13932F135F9F3F001FE21D /* NSView+Translate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA13932E135F9F3F001FE21D /* NSView+Translate.m */; };
 		FA13934A1360CCF7001FE21D /* JKStatusPickerMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1393491360CCF6001FE21D /* JKStatusPickerMenuItem.m */; };
+		FA27603F1364E3F800D363B2 /* JKChat.m in Sources */ = {isa = PBXBuildFile; fileRef = FA27603E1364E3F800D363B2 /* JKChat.m */; };
+		FA2760421364E6E200D363B2 /* JKMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2760411364E6E200D363B2 /* JKMessageHandler.m */; };
+		FA2760461364E76C00D363B2 /* OOTMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2760451364E76C00D363B2 /* OOTMessage.m */; };
+		FA2760491364EC7600D363B2 /* JKMessageWaitingWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2760481364EC7500D363B2 /* JKMessageWaitingWindow.m */; };
+		FA27604D1364F7B500D363B2 /* JKChatTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FA27604B1364F42200D363B2 /* JKChatTest.m */; };
+		FA2760511364FB7700D363B2 /* OOTObjectTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FA27604F1364FB6800D363B2 /* OOTObjectTest.m */; };
+		FA276054136630E300D363B2 /* JKMessageWaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA276053136630E300D363B2 /* JKMessageWaitingView.m */; };
+		FA2760591366379200D363B2 /* JKChatPreviewWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2760581366379200D363B2 /* JKChatPreviewWindow.m */; };
+		FA27605C1366426800D363B2 /* JKChatView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA27605B1366426800D363B2 /* JKChatView.m */; };
+		FA27605F1366441200D363B2 /* JKChatBottom.m in Sources */ = {isa = PBXBuildFile; fileRef = FA27605E1366441100D363B2 /* JKChatBottom.m */; };
 		FA3121B61354FF0500BC1F64 /* OOTBuddyList.m in Sources */ = {isa = PBXBuildFile; fileRef = FA53CA331354F3B800D60A4A /* OOTBuddyList.m */; };
 		FA34E42313553D0F004F4C20 /* BuddyTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA34E42213553D0F004F4C20 /* BuddyTitleCell.m */; };
 		FA34E426135540E7004F4C20 /* BlankCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA34E425135540E6004F4C20 /* BlankCell.m */; };
@@ -22,6 +32,7 @@
 		FA53CA311354ECE100D60A4A /* OOTBuddy.m in Sources */ = {isa = PBXBuildFile; fileRef = FA53CA301354ECE100D60A4A /* OOTBuddy.m */; };
 		FA53CA371354FB4A00D60A4A /* OOTObjectCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = FA53CA361354FB4700D60A4A /* OOTObjectCreator.m */; };
 		FA807032135B264C00E46812 /* JIMPBuddyListManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA807031135B264C00E46812 /* JIMPBuddyListManager.m */; };
+		FA852B371366642400435B4A /* JKChatWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FA852B361366642400435B4A /* JKChatWindow.m */; };
 		FA8DFD47135A057600BA0CA2 /* JKBuddyOutline.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8DFD46135A057600BA0CA2 /* JKBuddyOutline.m */; };
 		FA8DFD4A135A1BE400BA0CA2 /* expand1.png in Resources */ = {isa = PBXBuildFile; fileRef = FA8DFD48135A1BE400BA0CA2 /* expand1.png */; };
 		FA8DFD4B135A1BE400BA0CA2 /* expand2.png in Resources */ = {isa = PBXBuildFile; fileRef = FA8DFD49135A1BE400BA0CA2 /* expand2.png */; };
@@ -94,6 +105,26 @@
 		FA13932E135F9F3F001FE21D /* NSView+Translate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+Translate.m"; sourceTree = "<group>"; };
 		FA1393481360CCF6001FE21D /* JKStatusPickerMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKStatusPickerMenuItem.h; sourceTree = "<group>"; };
 		FA1393491360CCF6001FE21D /* JKStatusPickerMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKStatusPickerMenuItem.m; sourceTree = "<group>"; };
+		FA27603D1364E3F800D363B2 /* JKChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKChat.h; sourceTree = "<group>"; };
+		FA27603E1364E3F800D363B2 /* JKChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKChat.m; sourceTree = "<group>"; };
+		FA2760401364E6E200D363B2 /* JKMessageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKMessageHandler.h; sourceTree = "<group>"; };
+		FA2760411364E6E200D363B2 /* JKMessageHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKMessageHandler.m; sourceTree = "<group>"; };
+		FA2760441364E76C00D363B2 /* OOTMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOTMessage.h; sourceTree = "<group>"; };
+		FA2760451364E76C00D363B2 /* OOTMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOTMessage.m; sourceTree = "<group>"; };
+		FA2760471364EC7500D363B2 /* JKMessageWaitingWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKMessageWaitingWindow.h; sourceTree = "<group>"; };
+		FA2760481364EC7500D363B2 /* JKMessageWaitingWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKMessageWaitingWindow.m; sourceTree = "<group>"; };
+		FA27604A1364F42200D363B2 /* JKChatTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKChatTest.h; sourceTree = "<group>"; };
+		FA27604B1364F42200D363B2 /* JKChatTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKChatTest.m; sourceTree = "<group>"; };
+		FA27604E1364FB6800D363B2 /* OOTObjectTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOTObjectTest.h; sourceTree = "<group>"; };
+		FA27604F1364FB6800D363B2 /* OOTObjectTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOTObjectTest.m; sourceTree = "<group>"; };
+		FA276052136630E300D363B2 /* JKMessageWaitingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKMessageWaitingView.h; sourceTree = "<group>"; };
+		FA276053136630E300D363B2 /* JKMessageWaitingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKMessageWaitingView.m; sourceTree = "<group>"; };
+		FA2760571366379200D363B2 /* JKChatPreviewWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKChatPreviewWindow.h; sourceTree = "<group>"; };
+		FA2760581366379200D363B2 /* JKChatPreviewWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKChatPreviewWindow.m; sourceTree = "<group>"; };
+		FA27605A1366426800D363B2 /* JKChatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKChatView.h; sourceTree = "<group>"; };
+		FA27605B1366426800D363B2 /* JKChatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKChatView.m; sourceTree = "<group>"; };
+		FA27605D1366441100D363B2 /* JKChatBottom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKChatBottom.h; sourceTree = "<group>"; };
+		FA27605E1366441100D363B2 /* JKChatBottom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKChatBottom.m; sourceTree = "<group>"; };
 		FA34E42113553D0F004F4C20 /* BuddyTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuddyTitleCell.h; sourceTree = "<group>"; };
 		FA34E42213553D0F004F4C20 /* BuddyTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuddyTitleCell.m; sourceTree = "<group>"; };
 		FA34E424135540E6004F4C20 /* BlankCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlankCell.h; sourceTree = "<group>"; };
@@ -118,6 +149,8 @@
 		FA53CA361354FB4700D60A4A /* OOTObjectCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOTObjectCreator.m; sourceTree = "<group>"; };
 		FA807030135B264C00E46812 /* JIMPBuddyListManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JIMPBuddyListManager.h; sourceTree = "<group>"; };
 		FA807031135B264C00E46812 /* JIMPBuddyListManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JIMPBuddyListManager.m; sourceTree = "<group>"; };
+		FA852B351366642400435B4A /* JKChatWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKChatWindow.h; sourceTree = "<group>"; };
+		FA852B361366642400435B4A /* JKChatWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKChatWindow.m; sourceTree = "<group>"; };
 		FA8DFD45135A057600BA0CA2 /* JKBuddyOutline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKBuddyOutline.h; sourceTree = "<group>"; };
 		FA8DFD46135A057600BA0CA2 /* JKBuddyOutline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKBuddyOutline.m; sourceTree = "<group>"; };
 		FA8DFD48135A1BE400BA0CA2 /* expand1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = expand1.png; sourceTree = "<group>"; };
@@ -241,6 +274,54 @@
 				FA1393491360CCF6001FE21D /* JKStatusPickerMenuItem.m */,
 			);
 			name = Status;
+			sourceTree = "<group>";
+		};
+		FA27603C1364E3BC00D363B2 /* Chats */ = {
+			isa = PBXGroup;
+			children = (
+				FA2760561366377B00D363B2 /* Chat UI */,
+				FA2760551366376E00D363B2 /* Message Waiting */,
+				FA27603D1364E3F800D363B2 /* JKChat.h */,
+				FA27603E1364E3F800D363B2 /* JKChat.m */,
+				FA2760401364E6E200D363B2 /* JKMessageHandler.h */,
+				FA2760411364E6E200D363B2 /* JKMessageHandler.m */,
+			);
+			name = Chats;
+			sourceTree = "<group>";
+		};
+		FA2760431364E74800D363B2 /* Messaging */ = {
+			isa = PBXGroup;
+			children = (
+				FA2760441364E76C00D363B2 /* OOTMessage.h */,
+				FA2760451364E76C00D363B2 /* OOTMessage.m */,
+			);
+			name = Messaging;
+			sourceTree = "<group>";
+		};
+		FA2760551366376E00D363B2 /* Message Waiting */ = {
+			isa = PBXGroup;
+			children = (
+				FA2760471364EC7500D363B2 /* JKMessageWaitingWindow.h */,
+				FA2760481364EC7500D363B2 /* JKMessageWaitingWindow.m */,
+				FA276052136630E300D363B2 /* JKMessageWaitingView.h */,
+				FA276053136630E300D363B2 /* JKMessageWaitingView.m */,
+			);
+			name = "Message Waiting";
+			sourceTree = "<group>";
+		};
+		FA2760561366377B00D363B2 /* Chat UI */ = {
+			isa = PBXGroup;
+			children = (
+				FA2760571366379200D363B2 /* JKChatPreviewWindow.h */,
+				FA2760581366379200D363B2 /* JKChatPreviewWindow.m */,
+				FA852B351366642400435B4A /* JKChatWindow.h */,
+				FA852B361366642400435B4A /* JKChatWindow.m */,
+				FA27605A1366426800D363B2 /* JKChatView.h */,
+				FA27605B1366426800D363B2 /* JKChatView.m */,
+				FA27605D1366441100D363B2 /* JKChatBottom.h */,
+				FA27605E1366441100D363B2 /* JKChatBottom.m */,
+			);
+			name = "Chat UI";
 			sourceTree = "<group>";
 		};
 		FA34E42D13567709004F4C20 /* BuddyList */ = {
@@ -380,6 +461,7 @@
 				FA9868761350A19A00EB7F4E /* ANViewControllerView.m */,
 				FA98686B1350943D00EB7F4E /* Signon */,
 				FA9868AB1350F1F700EB7F4E /* Main Window */,
+				FA27603C1364E3BC00D363B2 /* Chats */,
 				FA9868461350940D00EB7F4E /* JIMP_ClientAppDelegate.h */,
 				FA9868471350940D00EB7F4E /* JIMP_ClientAppDelegate.m */,
 				FA9868721350987F00EB7F4E /* NSTextField+Label.h */,
@@ -417,6 +499,10 @@
 				FA98685E1350940D00EB7F4E /* JIMP_ClientTests.m */,
 				FA908FF11364613D00D66E10 /* JKBuddyListTest.h */,
 				FA908FF21364613D00D66E10 /* JKBuddyListTest.m */,
+				FA27604A1364F42200D363B2 /* JKChatTest.h */,
+				FA27604B1364F42200D363B2 /* JKChatTest.m */,
+				FA27604E1364FB6800D363B2 /* OOTObjectTest.h */,
+				FA27604F1364FB6800D363B2 /* OOTObjectTest.m */,
 				FA9868561350940D00EB7F4E /* Supporting Files */,
 			);
 			path = "JIMP ClientTests";
@@ -466,6 +552,7 @@
 		FA98689A1350CB0200EB7F4E /* OOTObject */ = {
 			isa = PBXGroup;
 			children = (
+				FA2760431364E74800D363B2 /* Messaging */,
 				FAB60B1D135BCD310094DC73 /* Presence */,
 				FA53CA2E1354ECD100D60A4A /* Buddy List */,
 				FA53CA2D1354ECC800D60A4A /* Accounts */,
@@ -716,6 +803,15 @@
 				FA13932F135F9F3F001FE21D /* NSView+Translate.m in Sources */,
 				FA13934A1360CCF7001FE21D /* JKStatusPickerMenuItem.m in Sources */,
 				FAA27A7113637A1C008D8CC0 /* JKComputerIdleManager.m in Sources */,
+				FA27603F1364E3F800D363B2 /* JKChat.m in Sources */,
+				FA2760421364E6E200D363B2 /* JKMessageHandler.m in Sources */,
+				FA2760461364E76C00D363B2 /* OOTMessage.m in Sources */,
+				FA2760491364EC7600D363B2 /* JKMessageWaitingWindow.m in Sources */,
+				FA276054136630E300D363B2 /* JKMessageWaitingView.m in Sources */,
+				FA2760591366379200D363B2 /* JKChatPreviewWindow.m in Sources */,
+				FA27605C1366426800D363B2 /* JKChatView.m in Sources */,
+				FA27605F1366441200D363B2 /* JKChatBottom.m in Sources */,
+				FA852B371366642400435B4A /* JKChatWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -723,8 +819,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA2760511364FB7700D363B2 /* OOTObjectTest.m in Sources */,
 				FA98685F1350940D00EB7F4E /* JIMP_ClientTests.m in Sources */,
 				FA908FF4136461E800D66E10 /* JKBuddyListTest.m in Sources */,
+				FA27604D1364F7B500D363B2 /* JKChatTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

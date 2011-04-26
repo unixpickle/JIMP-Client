@@ -16,6 +16,7 @@
 @synthesize confirmPasswordField;
 @synthesize cancelButton;
 @synthesize createButton;
+@synthesize delegate;
 
 - (id)init {
     if ((self = [super init])) {
@@ -58,7 +59,7 @@
 	[passwordFieldPrompt setAlignment:NSRightTextAlignment];
 	[confirmFieldPrompt setAlignment:NSRightTextAlignment];
 	
-	[usernameField becomeFirstResponder];
+	[usernameField performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:0.1];
 	
 	[createButton setButtonType:NSMomentaryLightButton];
 	[createButton setBezelStyle:NSTexturedSquareBezelStyle];
@@ -95,15 +96,18 @@
 - (BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector {
 	if (commandSelector == @selector(insertTab:)) {
 		if (control == usernameField) {
-			[passwordField becomeFirstResponder];
+			NSLog(@"Username tab");
+			[passwordField selectText:self];
 		} else if (control == passwordField) {
-			[confirmPasswordField becomeFirstResponder];
+			NSLog(@"Password tab");
+			[confirmPasswordField performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:0.1];
 		} else if (control == confirmPasswordField) {
+			NSLog(@"Confirm tab.");
 			[usernameField becomeFirstResponder];
 		}
     } else if (commandSelector == @selector(insertBacktab:)) {
 		if (control == confirmPasswordField) {
-			[passwordField becomeFirstResponder];
+			[passwordField performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:0.1];
 		} else if (control == usernameField) {
 			[confirmPasswordField becomeFirstResponder];
 		} else if (control == passwordField) {
@@ -114,7 +118,7 @@
 }
 
 - (void)cancelSignup:(id)sender {
-	[[self parentViewController] dismissViewController];
+	[delegate signupViewControllerDone:self];
 }
 
 - (void)createPressed:(id)sender {
@@ -163,6 +167,12 @@
 		NSLog(@"Signup complete.");
 		[self dismissViewController];
 		[[NSNotificationCenter defaultCenter] removeObserver:self name:OOTConnectionHasObjectNotification object:connection];
+		
+		NSAlert * alert = [[NSAlert alloc] init];
+		[alert setMessageText:@"Signup success"];
+		[alert setInformativeText:@"The account has been created.  Click done and sign in with your new account!"];
+		[alert beginSheetModalForWindow:[self window] modalDelegate:nil didEndSelector:0 contextInfo:NULL];
+		[alert autorelease];
 	} else if ([[object className] isEqual:@"errr"]) {
 		// we got an error.
 		OOTError * error = [[OOTError alloc] initWithObject:object];

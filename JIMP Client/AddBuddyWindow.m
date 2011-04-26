@@ -60,6 +60,8 @@
 	[groupLabel setFrame:NSMakeRect(15, 40, 95, 25)];
 	[groupLabel setStringValue:@"Add to group:"];
 	
+	[accountName performSelector:@selector(selectText:) withObject:self afterDelay:0.2];
+	
 	[groupOption addItemsWithTitles:groupNames];
 	
 	[self.contentView addSubview:accountLabel];

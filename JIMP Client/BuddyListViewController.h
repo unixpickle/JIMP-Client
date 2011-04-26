@@ -26,6 +26,7 @@
 #import "OOTDeleteBuddy.h"
 #import "JKBuddyListItem.h"
 #import "JKBuddyOutline.h"
+#import "JKMessageHandler.h"
 #import "NSView+Translate.h"
 #import "JKComputerIdleManager.h"
 
@@ -38,10 +39,11 @@
 	JIMPStatusHandler * statusHandler;
 	JKStatusPickerView * statusPicker;
 	JKComputerIdleManager * idleManager;
-	
+	JKMessageHandler * messageHandler;
 	
 	NSTextField * usernameLabel;
 	NSButton * signoffButton;
+	NSImageView * statusTypeIcon;
 }
 
 @property (nonatomic, retain) NSString * currentUsername;
@@ -49,6 +51,7 @@
 @property (nonatomic, retain) NSButton * signoffButton;
 @property (nonatomic, retain) JKBuddyListDisplayView * buddyDisplay;
 @property (nonatomic, retain) JKStatusPickerView * statusPicker;
+@property (nonatomic, retain) NSImageView * statusTypeIcon;
 
 - (void)connectionGotData:(NSNotification *)notification;
 - (void)connectionDidClose:(NSNotification *)notification;

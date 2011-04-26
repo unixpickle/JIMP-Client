@@ -59,6 +59,27 @@
 	return images;
 }
 
++ (NSImage *)statusImageForStatus:(OOTStatus *)status {
+	switch ([status statusType]) {
+		case 'n':
+			return [[BuddyListCell statusImagesNoflipped] objectAtIndex:0];
+			break;
+		case 'a':
+			return [[BuddyListCell statusImagesNoflipped] objectAtIndex:1];
+			break;		
+		case 'i':
+			return [[BuddyListCell statusImagesNoflipped] objectAtIndex:2];
+			break;
+		case 'o':
+			return [[BuddyListCell statusImagesNoflipped] objectAtIndex:3];
+			break;
+		default:
+			return [[BuddyListCell statusImagesNoflipped] objectAtIndex:0];
+			break;
+	}
+	return nil;
+}
+
 - (void)drawWithFrame:(NSRect)cellFrame inView:(NSView *)controlView {
 	NSRect backgroundFrame = cellFrame;
 	NSRect newFrame = cellFrame;

@@ -19,6 +19,7 @@
 }
 
 + (NSString *)paddLong:(long)l toLength:(int)requiredLength {
+	NSAssert(requiredLength > 0, @"Cannot make a string that is 0 or less bytes.");
 	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
 	NSString * paddedString = [NSString stringWithFormat:@"%ld", l];
 	while ([paddedString length] < requiredLength) {

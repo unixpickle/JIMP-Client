@@ -45,6 +45,8 @@
 		[cancelButton setAction:@selector(cancelPress:)];
 		[addButton setTarget:self];
 		[addButton setAction:@selector(addPress:)];
+		
+		[groupName performSelector:@selector(selectText:) withObject:self afterDelay:0.2];
 
 		
 		[groupLabel setFrame:NSMakeRect(10, 10, 90, 25)];

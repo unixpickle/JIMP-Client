@@ -19,6 +19,7 @@
 
 + (NSArray *)statusImages;
 + (NSArray *)statusImagesNoflipped;
++ (NSImage *)statusImageForStatus:(OOTStatus *)status;
 
 @property (nonatomic, retain) OOTStatus * currentStatus;
 @property (nonatomic, retain) NSColor * backgroundColor;

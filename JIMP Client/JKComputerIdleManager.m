@@ -83,7 +83,7 @@ CGEventRef myCGEventCallback (CGEventTapProxy proxy, CGEventType type, CGEventRe
 	
 	[currentTimer invalidate];
 	[currentTimer release];
-	currentTimer = [[NSTimer timerWithTimeInterval:idleDelay target:self selector:@selector(timerFire:) userInfo:nil repeats:YES] retain];
+	currentTimer = [[NSTimer timerWithTimeInterval:10 target:self selector:@selector(timerFire:) userInfo:nil repeats:YES] retain];
 	[[NSRunLoop currentRunLoop] addTimer:currentTimer forMode:NSDefaultRunLoopMode];
 	[lastMouseEvent release];
 	lastMouseEvent = [[NSDate date] retain];
@@ -106,7 +106,9 @@ CGEventRef myCGEventCallback (CGEventTapProxy proxy, CGEventType type, CGEventRe
 - (void)mouseMovedNotification:(id)aNotification {
 	[currentTimer invalidate];
 	[currentTimer release];
-	currentTimer = [[NSTimer timerWithTimeInterval:idleDelay target:self selector:@selector(timerFire:) userInfo:nil repeats:YES] retain];
+	currentTimer = [[NSTimer timerWithTimeInterval:10 target:self selector:@selector(timerFire:) userInfo:nil repeats:YES] retain];
+	[lastMouseEvent release];
+	lastMouseEvent = [[NSDate date] retain];
 	[[NSRunLoop currentRunLoop] addTimer:currentTimer forMode:NSDefaultRunLoopMode];
 	if (isIdle) {
 		isIdle = NO;
@@ -116,10 +118,12 @@ CGEventRef myCGEventCallback (CGEventTapProxy proxy, CGEventType type, CGEventRe
 }
 
 - (void)timerFire:(id)userInfo {
-	isIdle = YES;
 	NSTimeInterval idleTime = [[NSDate date] timeIntervalSinceDate:lastMouseEvent];
-	NSDictionary * info = [NSDictionary dictionaryWithObject:[NSNumber numberWithDouble:idleTime] forKey:@"timeInterval"];
-	[[NSNotificationCenter defaultCenter] postNotificationName:JKComputerIdleManagerIdleNotification object:self userInfo:info];
+	if (idleTime >= idleDelay) {
+		isIdle = YES;
+		NSDictionary * info = [NSDictionary dictionaryWithObject:[NSNumber numberWithDouble:idleTime] forKey:@"timeInterval"];
+		[[NSNotificationCenter defaultCenter] postNotificationName:JKComputerIdleManagerIdleNotification object:self userInfo:info];
+	}
 }
 
 - (void)dealloc {

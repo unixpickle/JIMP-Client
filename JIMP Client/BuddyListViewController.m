@@ -17,6 +17,7 @@
 @synthesize signoffButton;
 @synthesize buddyDisplay;
 @synthesize statusPicker;
+@synthesize statusTypeIcon;
 
 - (id)init {
     if ((self = [super init])) {
@@ -29,11 +30,14 @@
 	[super loadView];
 	[self configureMenuItems];
 	
-	idleManager = [[JKComputerIdleManager alloc] initWithIdleDelay:10];
+	NSBox * line;
+	
+	idleManager = [[JKComputerIdleManager alloc] initWithIdleDelay:5*60];
 	buddyDisplay = [[JKBuddyListDisplayView alloc] initWithFrame:NSMakeRect(0, 0, self.view.frame.size.width, self.view.frame.size.height - 45)];
-	statusPicker = [[JKStatusPickerView alloc] initWithFrame:NSMakeRect(10, self.view.frame.size.height - 35, 20, 15)];
+	statusPicker = [[JKStatusPickerView alloc] initWithFrame:NSMakeRect(20, self.view.frame.size.height - 22, 20, 15)];
 	signoffButton = [[NSButton alloc] initWithFrame:NSMakeRect(self.view.frame.size.width - 90, self.view.frame.size.height - 35, 80, 25)];
-	NSBox * line = [[NSBox alloc] initWithFrame:NSMakeRect(-10, self.view.frame.size.height - 44, self.view.frame.size.width + 20, 1)];
+	statusTypeIcon = [[NSImageView alloc] initWithFrame:NSMakeRect(6, self.view.frame.size.height - 32, 16, 16)];
+	line = [[NSBox alloc] initWithFrame:NSMakeRect(-10, self.view.frame.size.height - 44, self.view.frame.size.width + 20, 1)];
 	self.usernameLabel = [NSTextField labelTextFieldWithFont:[NSFont systemFontOfSize:12]];
 	
 	[(JKBuddyOutline *)[buddyDisplay buddyOutline] setBuddyDelegate:self];
@@ -47,9 +51,8 @@
 	[signoffButton setTarget:self];
 	[signoffButton setAction:@selector(signOffAndClose:)];
 	
-	[usernameLabel setFrame:NSMakeRect(10, self.view.frame.size.height - 30, self.view.frame.size.width - 20, 25)];
-	[usernameLabel setStringValue:[NSString stringWithFormat:@"Logged in as: %@", currentUsername]];
-	[usernameLabel setHidden:YES];
+	[usernameLabel setFrame:NSMakeRect(25, self.view.frame.size.height - 40, self.view.frame.size.width - 20, 25)];
+	[usernameLabel setStringValue:[NSString stringWithFormat:@"%@", currentUsername]];
 	
 	OOTStatus * myStatus = [[OOTStatus alloc] initWithMessage:@"" owner:nil type:'n'];
 	[statusPicker setCurrentStatus:myStatus];
@@ -61,6 +64,7 @@
 	[self.view addSubview:buddyDisplay];
 	[self.view addSubview:statusPicker];
 	[self.view addSubview:signoffButton];
+	[self.view addSubview:statusTypeIcon];
 	
 	[line release];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mouseMoved:) name:ANViewControllerViewMouseMovedNotification object:self.view];
@@ -78,6 +82,8 @@
 	OOTStatus * status = [[OOTStatus alloc] initWithMessage:@"" owner:@"" type:'o'];
 	[statusHandler setStatus:status];
 	[status release];
+	
+	messageHandler = [[JKMessageHandler alloc] initWithConnection:currentConnection account:currentUsername];
 }
 
 - (void)configureMenuItems {
@@ -239,6 +245,9 @@
 	[idleManager stopTracking];
 	[idleManager release];
 	idleManager = nil;
+	[messageHandler stopHandling];
+	[messageHandler release];
+	messageHandler = nil;
 	
 	[self disableMenuItems];
 	
@@ -330,6 +339,7 @@
 	[buddyDisplay setBuddyList:[buddylistManager buddyList]];
 	if ([[aStatus owner] isEqual:[currentUsername lowercaseString]]) {
 		[statusPicker setCurrentStatus:aStatus];
+		[statusTypeIcon setImage:[BuddyListCell statusImageForStatus:aStatus]];
 	}
 }
 
@@ -352,6 +362,7 @@
 	[buddylistManager release];
 	[statusHandler release];
 	[idleManager release];
+	self.statusTypeIcon = nil;
 	self.currentUsername = nil;
 	self.usernameLabel = nil;
 	self.signoffButton = nil;

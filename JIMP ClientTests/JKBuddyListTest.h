@@ -14,8 +14,11 @@
 
 
 @interface JKBuddyListTest : SenTestCase {
-    
 }
 
+- (void)testInitialize;
+- (void)testGroups;
+- (void)testBuddies;
+- (void)testDestroy;
 
 @end

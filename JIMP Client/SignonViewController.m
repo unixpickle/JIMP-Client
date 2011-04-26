@@ -39,7 +39,6 @@
 	[signonButton setButtonType:NSMomentaryLightButton];
 	[signonButton setBezelStyle:NSTexturedSquareBezelStyle];
 	[signonButton setTitle:@"Signon"];
-	
 	[signonButton setTarget:self];
 	[signonButton setAction:@selector(signonPressed:)];
 	
@@ -59,6 +58,8 @@
 	
 	[username setDelegate:self];
 	[password setDelegate:self];
+	
+	[username performSelector:@selector(selectText:) withObject:self afterDelay:0.2];
 	
 	[mainView addSubview:usernameIndicator];
 	[mainView addSubview:username];
@@ -81,14 +82,32 @@
 		} else {
 			[username becomeFirstResponder];
 		}
+	} else if (commandSelector == @selector(insertNewline:)) {
+		[self signonPressed:self];
 	}
     return NO;
 }
 
 - (void)showNewScreenname:(id)sender {
-	SignupViewController * snup = [[SignupViewController alloc] init];
-	[self presentViewController:snup];
-	[snup release];
+	NSRect signupWindowFrame = NSMakeRect(0, 0, 320, 150);
+	ANViewControllerView * vcv = [[ANViewControllerView alloc] initWithFrame:signupWindowFrame];
+	NSWindow * signupWindow = [[NSWindow alloc] initWithContentRect:signupWindowFrame styleMask:NSTitledWindowMask backing:NSBackingStoreBuffered defer:NO];
+	SignupViewController * snup = [[SignupViewController alloc] initWithWindow:signupWindow];
+	[snup setDelegate:self];
+	[signupWindow setContentView:vcv];
+	[ANViewController displayViewControllerInWindow:snup]; 
+	[NSApp beginSheet:signupWindow modalForWindow:[self window] modalDelegate:nil didEndSelector:NULL contextInfo:nil];
+	
+	[signupWindow release];
+	[vcv release];
+	modalView = snup;
+}
+
+- (void)signupViewControllerDone:(id)sender {
+	[NSApp endSheet:[modalView window]];
+	[[modalView window] orderOut:self];
+	[modalView autorelease];
+	modalView = nil;
 }
 
 - (void)signonPressed:(id)sender {

@@ -22,12 +22,14 @@
 
 - (id)initWithData:(NSData *)data {
 	if ((self = [self init])) {
+		//buffer = [[NSMutableData alloc] init];
 		[buffer appendData:data];
 	}
 	return self;
 }
 - (id)initWithBytes:(const char *)bytes length:(int)length {
 	if ((self = [self init])) {
+		//buffer = [[NSMutableData alloc] init];
 		[buffer appendBytes:bytes length:length];
 	}
 	return self;

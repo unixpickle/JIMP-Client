@@ -22,13 +22,14 @@
 #import "BuddyListViewController.h"
 
 
-@interface SignonViewController : ANViewController <NSTextFieldDelegate> {
+@interface SignonViewController : ANViewController <NSTextFieldDelegate, SignupViewControllerDelegate> {
     NSTextField * usernameIndicator;
 	NSTextField * username;
 	ANLinkButton * createUsername;
 	NSTextField * passwordIndicator;
 	NSSecureTextField * password;
 	NSButton * signonButton;
+	id modalView;
 }
 
 @property (nonatomic, retain) NSTextField * usernameIndicator;
