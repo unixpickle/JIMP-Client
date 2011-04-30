@@ -295,6 +295,7 @@
 }
 
 - (void)computerWentIdle:(NSNotification *)notification {
+	if ([[statusPicker currentStatus] statusType] == 'n') return; // invisible
 	NSNumber * idleSeconds = [[notification userInfo] objectForKey:@"timeInterval"];
 	OOTStatus * idleStatus = [[OOTStatus alloc] initWithMessage:@"" owner:@"" type:'i' idle:[idleSeconds longValue]];
 	[currentConnection writeObject:idleStatus];
@@ -326,6 +327,10 @@
 
 - (void)buddyOutlineDeleteGroup:(NSString *)group {
 	[buddylistManager deleteGroup:group];
+}
+
+- (void)buddyOutlineNewChat:(NSString *)buddy {
+	[messageHandler newChat:buddy];
 }
 
 #pragma mark Statuses

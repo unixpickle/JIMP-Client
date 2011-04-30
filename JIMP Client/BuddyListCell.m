@@ -156,7 +156,6 @@
 }
 
 - (void)dealloc {
-	NSLog(@"Dealloc.");
 	[self setCurrentStatus:nil];
 	self.backgroundColor = nil;
     [super dealloc];

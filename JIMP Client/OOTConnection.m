@@ -206,7 +206,6 @@
 				}
 			}
 		} @catch (NSException * e) {
-			NSLog(@"Got read exception: %@", e);
 			if ([self isOpen]) { // it thinks we are still open.
 				[self performSelector:@selector(connectionClosed) onThread:mainThread withObject:nil waitUntilDone:NO];
 				break;

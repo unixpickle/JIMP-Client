@@ -35,22 +35,44 @@
 	return self;
 }
 
-- (void)sendMessage:(OOTMessage *)message {
+- (JKChatMessage *)sendMessage:(OOTMessage *)message onChat:(JKChat *)theChat {
 	[connection writeObject:message];
+	JKChatMessage * aMessage = [JKChatMessage messageWithSource:JKChatMessageSourceLocal message:message];
+	[[theChat messages] addObject:aMessage];
+	return aMessage;
 }
 
 - (void)stopHandling {
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:OOTConnectionHasObjectNotification object:connection];
 }
 
+- (void)newChat:(NSString *)buddyName {
+	JKChat * chat = [JKChat chatWithAccount:account buddyName:[buddyName lowercaseString]];
+	[chat setHandler:self];
+	[[chat currentWindow] orderFront:self];
+	if (![chat currentWindow]) {
+		[chat setChatState:JKChatStateTwoWay];
+		JKChatWindow * window = [JKChatWindow currentChatWindow];
+		if (!window) {
+			window = [[JKChatWindow alloc] initWithChat:chat];
+			[window setReleasedWhenClosed:YES];
+		} else {
+			[window addChat:chat];
+		}
+		[chat setCurrentWindow:window];
+		[window makeKeyAndOrderFront:self];
+	}
+}
+
 - (void)connectionNewPacket:(NSNotification *)notification {
 	OOTObject * object = [[notification userInfo] objectForKey:@"object"];
 	if ([[object className] isEqual:@"mssg"]) {
 		OOTMessage * message = [[OOTMessage alloc] initWithObject:object];
-		NSLog(@"Got message: %@", message);
 		JKChat * chat = [JKChat chatWithAccount:account buddyName:[message username]];
+		[chat setHandler:self];
+		JKChatMessage * chatMessage = [JKChatMessage messageWithSource:JKChatMessageSourceRemote message:message];
+		[[chat messages] addObject:chatMessage];
 		if ([chat chatState] == JKChatStateUninitialized) {
-			NSLog(@"Creating chat.");
 			NSRect screen = [[NSScreen mainScreen] visibleFrame];
 			int activeCount = [JKChat chatCountOfState:JKChatStateNotAccepted];
 			NSRect contentFrame = NSMakeRect(screen.size.width - 350, screen.size.height - 70 - (60 * activeCount), 300, 50);
@@ -67,9 +89,20 @@
 			[chat setChatState:JKChatStateNotAccepted];
 			[waiting makeKeyAndOrderFront:self];
 			[waiting setChat:chat];
+			[contentView release];
 		} else {
-			NSLog(@"Chat exists.");
+			NSWindow * window = [chat currentWindow];
+			if ([window isKindOfClass:[JKChatWindow class]]) {
+				JKChatWindowContent * content = [(JKChatWindow *)window content];
+				if ([content currentChat] == chat) {
+					[[content chatView] addMessage:chatMessage];
+				}
+			} else if ([window isKindOfClass:[JKChatPreviewWindow class]]) {
+				JKChatView * chatView = [(JKChatPreviewWindow *)window chatView];
+				[chatView addMessage:chatMessage];
+			}
 		}
+		[message release];
 	}
 }
 
@@ -88,6 +121,7 @@
 	
 	[chatWindow setChat:theChat];
 	[theChat setChatState:JKChatStateViewOnly];
+	[theChat setCurrentWindow:chatWindow];
 	
 	float theDifference = [chatWindow frame].size.height - [sender frame].size.height;
 	originalFrame.origin.x = sender.frame.origin.x;

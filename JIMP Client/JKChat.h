@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "JKChatMessage.h"
 
 typedef enum {
 	JKChatStateUninitialized,		// the chat has not been started by either user.
@@ -16,19 +17,26 @@ typedef enum {
 	JKChatStateTwoWay				// both people are chatting, both windows are full sized.
 } JKChatState;
 
+@class JKMessageHandler;
+
 @interface JKChat : NSObject {
 	NSString * account;
 	NSString * buddyName;
 	NSWindow * currentWindow;
+	NSMutableArray * messages;
+	JKMessageHandler * handler;
 	JKChatState chatState;
 }
 
 @property (readonly) NSString * account;
 @property (readonly) NSString * buddyName;
-@property (nonatomic, retain) NSWindow * currentWindow;
+@property (nonatomic, assign) NSWindow * currentWindow;
 @property (readwrite) JKChatState chatState;
+@property (nonatomic, assign) JKMessageHandler * handler;
+@property (nonatomic, readonly) NSMutableArray * messages;
 
 + (int)chatCountOfState:(JKChatState)state;
+
 
 /**
  * Creates a new chat with defined parameters.

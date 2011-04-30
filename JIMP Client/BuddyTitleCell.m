@@ -62,7 +62,6 @@
 }
 
 - (void)setState:(NSInteger)value {
-	NSLog(@"State: %d", (int)value);
 }
 
 - (void)setRefusesFirstResponder:(BOOL)flag {

@@ -135,7 +135,8 @@
 }
 
 - (void)newChat:(id)sender {
-	NSLog(@"New chat.");
+	id item = [self itemAtRow:[self selectedRow]];
+	[buddyDelegate buddyOutlineNewChat:[item title]];
 }
 
 - (void)deleteClick:(id)sender {

@@ -122,15 +122,15 @@
 		
 		[string release];
 		
-		return buddyTitle;
+		return [buddyTitle autorelease];
 	} else {
 		BuddyListCell * cell = [[BuddyListCell alloc] initTextCell:[item title]];
 		int buddyItemIndex = 0;
-		int row = [outlineView rowForItem:item];
+		int row = (int)[outlineView rowForItem:item];
 		for (int i = 0; i < [outlineView numberOfRows]; i++) {
 			id anItem = [outlineView itemAtRow:i];
 			if (i == row) break;
-			if ([anItem type] == BuddyListItemTypeBuddy) {
+			if ([(JKBuddyListItem *)anItem type] == BuddyListItemTypeBuddy) {
 				buddyItemIndex += 1;
 			}
 		}
@@ -145,7 +145,7 @@
 			[cell setBackgroundColor:nil];
 		}
 
-		return cell;
+		return [cell autorelease];
 	}
 	return nil;
 }

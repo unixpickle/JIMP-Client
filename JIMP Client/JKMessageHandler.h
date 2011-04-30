@@ -8,11 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 #import "JKChat.h"
+#import "JKChatMessage.h"
 #import "OOTConnection.h"
-#import "OOTMessage.h"
+
 #import "JKMessageWaitingWindow.h"
 #import "JKMessageWaitingView.h"
 #import "JKChatPreviewWindow.h"
+#import "JKChatWindow.h"
 
 @interface JKMessageHandler : NSObject <JKMessageWaitingWindowDelegate> {
     NSString * account;
@@ -24,7 +26,8 @@
 
 - (id)initWithConnection:(OOTConnection *)connection account:(NSString *)account;
 
-- (void)sendMessage:(OOTMessage *)message;
+- (void)newChat:(NSString *)buddyName;
+- (JKChatMessage *)sendMessage:(OOTMessage *)message onChat:(JKChat *)theChat;
 - (void)stopHandling;
 
 @end

@@ -96,13 +96,10 @@
 - (BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector {
 	if (commandSelector == @selector(insertTab:)) {
 		if (control == usernameField) {
-			NSLog(@"Username tab");
 			[passwordField selectText:self];
 		} else if (control == passwordField) {
-			NSLog(@"Password tab");
 			[confirmPasswordField performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:0.1];
 		} else if (control == confirmPasswordField) {
-			NSLog(@"Confirm tab.");
 			[usernameField becomeFirstResponder];
 		}
     } else if (commandSelector == @selector(insertBacktab:)) {
@@ -164,7 +161,6 @@
 	OOTConnection * connection = [notification object];
 	OOTObject * object = [[notification userInfo] objectForKey:@"object"];
 	if ([[object className] isEqual:@"aded"]) {
-		NSLog(@"Signup complete.");
 		[self dismissViewController];
 		[[NSNotificationCenter defaultCenter] removeObserver:self name:OOTConnectionHasObjectNotification object:connection];
 		
@@ -187,7 +183,6 @@
 		
 		[self dismissViewController];
 		[[NSNotificationCenter defaultCenter] removeObserver:self name:OOTConnectionHasObjectNotification object:connection];
-		NSLog(@"Signup failed.");
 	}
 }
 

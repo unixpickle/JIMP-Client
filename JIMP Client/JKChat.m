@@ -7,6 +7,7 @@
 //
 
 #import "JKChat.h"
+#import "JKMessageHandler.h"
 
 @interface JKChat (private)
 
@@ -20,6 +21,8 @@
 @synthesize buddyName;
 @synthesize currentWindow;
 @synthesize chatState;
+@synthesize messages;
+@synthesize handler;
 
 + (int)chatCountOfState:(JKChatState)state {
 	int counter = 0;
@@ -46,6 +49,7 @@
 		buddyName = [_buddyName retain];
 		currentWindow = nil;
 		chatState = JKChatStateUninitialized;
+		messages = [[NSMutableArray alloc] init];
 	}
 	return self;
 }
@@ -80,6 +84,7 @@
 - (void)dealloc {
 	[account release];
 	[buddyName release];
+	[messages release];
     [super dealloc];
 }
 

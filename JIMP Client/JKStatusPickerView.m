@@ -13,36 +13,6 @@
 
 @synthesize delegate;
 
-static void drawText (NSAttributedString * myString, NSRect frame) {
-	NSTextStorage * textStorage = [[[NSTextStorage alloc]
-									initWithAttributedString:myString] autorelease];
-	NSTextContainer * textContainer = [[[NSTextContainer alloc]
-										initWithContainerSize:frame.size] autorelease];
-	NSLayoutManager * layoutManager = [[[NSLayoutManager alloc] init]
-									   autorelease];
-	[layoutManager addTextContainer:textContainer];
-	[textStorage addLayoutManager:layoutManager];
-	[textContainer setLineFragmentPadding:0.0];
-	[layoutManager glyphRangeForTextContainer:textContainer];
-	NSPoint newOrigin = NSMakePoint(frame.origin.x + 7, frame.origin.y - 7);
-	[layoutManager drawGlyphsForGlyphRange:NSMakeRange(0, [layoutManager numberOfGlyphs]) 
-								   atPoint:newOrigin];
-}
-
-static float textWidth (NSAttributedString * myString, float height) {
-	NSTextStorage * textStorage = [[[NSTextStorage alloc]
-									initWithAttributedString:myString] autorelease];
-	NSTextContainer * textContainer = [[[NSTextContainer alloc]
-										initWithContainerSize:NSMakeSize(FLT_MAX, height)] autorelease];
-	NSLayoutManager * layoutManager = [[[NSLayoutManager alloc] init]
-									   autorelease];
-	[layoutManager addTextContainer:textContainer];
-	[textStorage addLayoutManager:layoutManager];
-	[textContainer setLineFragmentPadding:0.0];
-	[layoutManager glyphRangeForTextContainer:textContainer];
-	return ceil([layoutManager
-			usedRectForTextContainer:textContainer].size.width);
-}
 
 - (id)initWithFrame:(NSRect)frame {
     if ((self = [super initWithFrame:frame])) {
@@ -351,7 +321,7 @@ static float textWidth (NSAttributedString * myString, float height) {
 			if ([[menuItem status] statusType] == 'a') break;
 		}
 	} else if (enteringStatusType == 'a') {
-		insertIndex = [menuItems count];
+		insertIndex = (int)[menuItems count];
 	}
 	OOTStatus * newStatus = [[OOTStatus alloc] initWithMessage:[statusTextPicker stringValue] owner:@"" type:enteringStatusType];
 	JKStatusPickerMenuItem * menuItem = [JKStatusPickerMenuItem menuItemWithStatus:newStatus];

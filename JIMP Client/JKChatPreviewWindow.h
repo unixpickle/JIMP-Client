@@ -10,9 +10,10 @@
 #import "JKChat.h"
 #import "JKChatView.h"
 #import "JKChatBottom.h"
+#import "JKChatWindow.h"
 
 
-@interface JKChatPreviewWindow : NSWindow {
+@interface JKChatPreviewWindow : NSWindow <NSWindowDelegate> {
 	JKChat * chat;
 	NSButton * acceptButton;
 	NSButton * declineButton;

@@ -77,7 +77,7 @@
 	}
 }
 - (int)numberOfItems:(int)group {
-	if (group == [groups count]) return [offline count];
+	if (group == [groups count]) return (int)[offline count];
 	NSArray * buddies = [[groups objectAtIndex:group] objectForKey:@"buddies"];
 	int count = 0;
 	for (NSString * sn in buddies) {

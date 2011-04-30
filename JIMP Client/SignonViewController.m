@@ -147,7 +147,6 @@
 		// we are now online
 		[self dismissViewController];
 		[[NSNotificationCenter defaultCenter] removeObserver:self name:OOTConnectionHasObjectNotification object:connection];
-		NSLog(@"Signon successful.");
 		BuddyListViewController * blv = [[BuddyListViewController alloc] init];
 		[blv setCurrentUsername:[NSString stringWithString:[username stringValue]]];
 		[self presentViewController:blv];
@@ -166,7 +165,6 @@
 		
 		[self dismissViewController];
 		[[NSNotificationCenter defaultCenter] removeObserver:self name:OOTConnectionHasObjectNotification object:connection];
-		NSLog(@"Signon error.");
 	}
 }
 

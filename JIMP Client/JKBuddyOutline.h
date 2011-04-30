@@ -12,6 +12,7 @@
 
 - (void)buddyOutlineDeleteBuddy:(NSString *)buddy;
 - (void)buddyOutlineDeleteGroup:(NSString *)group;
+- (void)buddyOutlineNewChat:(NSString *)buddy;
 
 @end
 

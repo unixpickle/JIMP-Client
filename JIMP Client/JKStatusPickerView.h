@@ -10,7 +10,7 @@
 #import "JIMPStatusHandler.h"
 #import "JKStatusPickerMenuItem.h"
 #import "BuddyListCell.h"
-
+#import "StringSize.h"
 
 @protocol JKStatusPickerViewDelegate <NSObject>
 

@@ -32,6 +32,7 @@
 }
 
 - (void)configureWindow:(NSString *)aUser {
+	[self setLevel:CGShieldingWindowLevel()];
 	alertText = [[NSTextField alloc] initWithFrame:NSMakeRect(10, 12, [[self contentView] frame].size.width - 20, [[self contentView] frame].size.height - 20)];
 	[alertText setFont:[NSFont systemFontOfSize:18]];
 	
@@ -76,6 +77,10 @@
 		[delegate messageWaitingWindowClicked:self];
 	}
 	wasDragged = NO;
+}
+
+- (void)orderOut:(id)sender {
+	[self autorelease];
 }
 
 - (BOOL)isFlipped {
